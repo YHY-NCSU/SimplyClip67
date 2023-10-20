@@ -4,7 +4,7 @@
 |-----|-|---------|
 |Video|3||
 |workload is spread over the whole team (so one team member is often Xtimes more productive than the others...but nevertheless, here is a track record that everyone is contributing a lot)|3|Work has been divided equally among all team members.Everyone has almost same number of commits.https://github.com/MeryHarikaG/SimplyClip-proj2/graphs/contributors|
-|Number of commits  |3|https://github.com/MeryHarikaG/SimplyClip-proj2/commits/main|
+|Number of commits  |3|https://github.com/MeryHarikaG/SimplyClip-proj2/commits/Group10DeveloperBranch|
 |Number of commits: by different people  |3|The number of commits are almost equal across all team members.|
 |Issues reports: there are many  |3| Every developer has the extension installed in chrome. Initially there are quite a number of issues. Whenever an issue is seen, it is reported immediately and issue will be created in issues section and assigned to one who has recently worked in those areas of code where bug is seen.|
 |issues are being closed |3|Closed 20 issues. <br> An open issue is closed only after verified by one of the members.|
@@ -22,7 +22,7 @@
 |other automated analysis tools  |3| Used automated tools like Selenium for testing, and Github Workflow/Actions for CI/CD pipeline. https://github.com/MeryHarikaG/SimplyClip-proj2/blob/Group10DeveloperBranch/seleniumTest.js|
 |test cases exist  |3| https://github.com/MeryHarikaG/SimplyClip-proj2/tree/Group10DeveloperBranch/test|
 |test cases are routinely executed |3| Github actions are used. After every commit to main branch, automated scripts are run for test cases and a badge is shown in the main project folder and README to indicate if build is successful. https://github.com/MeryHarikaG/SimplyClip-proj2/blob/Group10DeveloperBranch/seleniumTest.js|
-|the files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up  |3|Evidence in Contrbuting.md.https://github.com/MeryHarikaG/SimplyClip-proj2/blob/Group10DeveloperBranch/CONTRIBUTING.md#contributing-to-simplyclip-application|
+|the files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up  |3|Evidence in Contrbuting.md. https://github.com/MeryHarikaG/SimplyClip-proj2/blob/Group10DeveloperBranch/Project2/Contributing.md|
 |issues are discussed before they are closed |3| After a team member fix the issue, a PR is raised, and the code is reviewed by one of the team members. If any issue is observed, it is communicated through comments in the issue. Once good to be closed, developer is tagged in order to notify. https://chat.whatsapp.com/CcQJ1y1LjzRFgbpe7tvOuB|
 |Chat channel exists|3|https://chat.whatsapp.com/CcQJ1y1LjzRFgbpe7tvOuB|
 |test cases:.a large proportion of the issues related to handling failing cases. |3| We ensured that every part of the code works correctly by using selenium test| suite. But Whenever a test case is failed an issue is added in the issues section.https://github.com/MeryHarikaG/SimplyClip-proj2/issues|
