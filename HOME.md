@@ -18,7 +18,7 @@
  
  <!--https://github.com/umagnanasundaram2128/SimplyClip/blob/main/videos/Simply_clip.mp4-->
  
-[![Watch the video](https://img.youtube.com/vi/MYr_7qhdeLo/hqdefault.jpg)](https://youtu.be/773QRXIHMLM)
+[![Watch the video](https://img.youtube.com/vi/MYr_7qhdeLo/hqdefault.jpg)](https://youtu.be/MYr_7qhdeLo)
 
 
 
@@ -108,24 +108,13 @@ User is even allowed to edit the text entry copied to the extension clipboard. T
 1) If the text doesn't get copied, please make sure that the page has the permission to access and modify the system clipboard.
 2) When loading the extension for the first time, reload the pages in order to allow the URLs to prompt for permissions to access the system clipboard.
 3) If none of the above steps work, consider reloading the extension and all the browser pages.
-4) If the issue still persists, please consider writing us at simplyclipcedev@gmail.com and we will get back to you as soon as possible.
+4) If the issue still persists, please consider writing us at simlyclipse43@gmail.com and we will get back to you as soon as possible.
 5) You're also free to report a bug in our repository and clearly stating the issue that you're facing. Please make sure to follow the guidelines mentioned in CONTRIBUTING.md
 
 ## Road Map
 
 <img src="./images/RoadMap3.png"> </img>
 
-## Contributors
-
-<table>
-  <tr>
-    <td align="center"><a href="https://github.com/niveditalodha"><img src="https://avatars.githubusercontent.com/u/40229663?v=4" width="75px;" alt=""/><br /><sub><b>Nivedita Lodha</b></sub></a></td>
-    <td align="center"><a href="https://github.com/akhilkumarmengani"><img src="https://avatars.githubusercontent.com/u/70975566?v=4" width="75px;" alt=""/><br /><sub><b>Akhil Kumar Mengani</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/umagnanasundaram2128"><img src="https://avatars.githubusercontent.com/u/8946692?v=4" width="75px;" alt=""/><br /><sub><b>Uma Gnanasundaram</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/vamshi-chidara"><img src="https://avatars.githubusercontent.com/u/66715000?v=4" width="75px;" alt=""/><br /><sub><b>Vamshi Chidara</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/nehajaideep"><img src="https://avatars.githubusercontent.com/u/46373273?v=4" width="75px;" alt=""/><br /><sub><b>Neha</b></sub></a><br /></td>
-  </tr>
-</table>
 
 ***Enjoy using SimplyClip. Make sure to follow the page for any new updates!*** 
 
