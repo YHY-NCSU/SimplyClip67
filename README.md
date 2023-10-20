@@ -92,7 +92,7 @@ https://user-images.githubusercontent.com/66715000/139998327-13eff7db-3375-4a1b-
 
 ## Demo
 
-https://www.youtube.com/watch?v=ETtvNNvfhzU
+[https://www.youtube.com/watch?v=ETtvNNvfhzU](https://youtu.be/773QRXIHMLM)
 
 ---
 
