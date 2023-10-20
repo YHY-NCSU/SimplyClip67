@@ -18,7 +18,7 @@
  
  <!--https://github.com/umagnanasundaram2128/SimplyClip/blob/main/videos/Simply_clip.mp4-->
  
-[![Watch the video](https://img.youtube.com/vi/MYr_7qhdeLo/hqdefault.jpg)](https://youtu.be/MYr_7qhdeLo)
+[![Watch the video](https://img.youtube.com/vi/MYr_7qhdeLo/hqdefault.jpg)](https://youtu.be/773QRXIHMLM)
 
 
 
@@ -42,10 +42,10 @@ Basic knowledge of **JavaScript**, **HTML** ,**CSS** should be good enough to co
 All you need is Google Chrome! 🕺
 
 1.  Get the repsitory using any of the below two methords :
-    - Download :arrow_down: the ***[repository](https://github.com/umagnanasundaram2128/SimplyClip)*** using Code > Download Zip on our project github page.
+    - Download :arrow_down: the ***[repository](https://github.com/MeryHarikaG/SimplyClip-proj2)*** using Code > Download Zip on our project github page.
     - Clone the reporitory using  ***[GIT](https://git-scm.com)*** 
     ```
-    https://github.com/umagnanasundaram2128/SimplyClip/
+    https://github.com/MeryHarikaG/SimplyClip-proj2
     ```
 1. Manually install Entension using below steps.
     - Enable the developer mode from Chrome > Settings > extension.
