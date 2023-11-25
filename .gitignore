@@ -159,5 +159,9 @@ About
 #js doc documentation
 out/
 
+simplyclip_backend/venv
+.idea
+simplyclip_backend/simplyclip_backend/__pycache__
+simplyclip_backend/textanalysis/__pycache__
 
 .DS_Store

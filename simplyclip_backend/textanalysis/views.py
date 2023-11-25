@@ -1,30 +1,26 @@
-from django.http.response import FileResponse
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.core.files import File
-from django.core.files.storage import FileSystemStorage
-from . import summarizer
 import os
-from zipfile import ZipFile
+import pdb
 from os.path import basename
-import json
+from zipfile import ZipFile
 
-
+from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponse
+from django.http.response import FileResponse
 from django.views.decorators.csrf import csrf_exempt
 
+from . import summarizer
+
+
 @csrf_exempt
-def summarize(self, request, summ_input):
-    if request.method == 'POST':
+def summarize(request, summ_input):
+    if request.method == 'GET':
         body_data = summ_input
-        print(type(body_data))
-        print(body_data)
         summarized_output = summarizer.generate_summary(body_data)
-        #print(summarized_output)
         return HttpResponse(summarized_output, content_type='text/plain')
 
 @csrf_exempt
 def upload(request):
-    folder='docs/' 
+    folder='docs/'
     if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
         fs = FileSystemStorage(location=folder)
@@ -35,8 +31,10 @@ def upload(request):
         return HttpResponse(msg, content_type='text/plain')
 
 @csrf_exempt
-def fetch(request):
+def fetch(request, summary_in):
+    print(summary_in)
     if request.method == 'GET':
+        pdb.set_trace()
         with ZipFile('docs.zip', 'w') as zipObj:
             folderName, subfolders, filenames = os.walk("docs/")
             for filename in filenames:
@@ -46,7 +44,6 @@ def fetch(request):
             response = FileResponse(doczip)
             print("files returned")
             return response
-       
-    
+
 
 
