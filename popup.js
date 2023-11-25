@@ -219,6 +219,8 @@ function addClipboardListItem(text) {
         else
         {
             imagePopup.src = './images/url_icon.png';
+            imagePopup.style['margin-left'] = '10%';
+            imagePopup.style['margin-top'] = '50%';
         }
         if (!isVideo) {
             imagePopup.style.width = '32px'
