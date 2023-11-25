@@ -213,10 +213,14 @@ function addClipboardListItem(text) {
         if(imageUrl.includes("youtube.com"))
         {
             imagePopup.src = './images/youtube_icon.png';
+            imagePopup.style['margin-left'] = '10%';
+            imagePopup.style['margin-top'] = '50%';
         }
         else
         {
             imagePopup.src = './images/url_icon.png';
+            imagePopup.style['margin-left'] = '10%';
+            imagePopup.style['margin-top'] = '50%';
         }
         if (!isVideo) {
             imagePopup.style.width = '32px'
@@ -224,9 +228,10 @@ function addClipboardListItem(text) {
 
         }
         else {
-            imagePopup.style['margin-left'] = '0px';
-            imagePopup.style['margin-top'] = '0px';
-            listPara.style['max-width'] = '12rem'
+            listPara.style['max-width'] = '12rem';
+            imagePopup.style.width = '32px';
+            imagePopup.style.height = '32px';
+
         }
         popupLink.href = sourceUrl;
         popupLink.target = '_blank';
