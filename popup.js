@@ -167,6 +167,7 @@ function addClipboardListItem(text) {
         listDiv = document.createElement("div"),
         deleteDiv = document.createElement("div"),
         editDiv = document.createElement("div"),
+        colorTabsDiv = document.createElement("div"),
         contentDiv = document.createElement("div"),
         editImage = document.createElement("img"),
         upArrowImage = document.createElement("img"),
@@ -280,6 +281,41 @@ function addClipboardListItem(text) {
     contentDiv.appendChild(editDiv);
     deleteDiv.appendChild(deleteImage);
     contentDiv.appendChild(deleteDiv);
+
+    var listOfTabColors = document.createElement('select');
+    listOfTabColors.classList.add('dropdown');
+    listOfTabColors.setAttribute("name", "color");
+    listOfTabColors.setAttribute("id", "color");
+    listOfTabColors.classList.add("color");
+    listOfTabColors.classList.add("dropdown");
+    listOfTabColors.style.width = "100px";
+    listOfTabColors.style.height = "32px";
+    colorTabsDiv.appendChild(listOfTabColors);
+    contentDiv.appendChild(colorTabsDiv);
+
+    // Create choices
+    var choice1 = document.createElement("option");
+    choice1.value = "black";
+    choice1.text = "Black(default)";
+
+    var choice2 = document.createElement("option");
+    choice2.value = "blue";
+    choice2.text = "Blue";
+
+    var choice3 = document.createElement("option");
+    choice3.value = "red";
+    choice3.text = "Red";
+
+    var choice4 = document.createElement("option");
+    choice4.value = "green";    
+    choice4.text = "Green";
+
+    // Append choices to listOfTabColors
+    listOfTabColors.appendChild(choice1);
+    listOfTabColors.appendChild(choice2);
+    listOfTabColors.appendChild(choice3);
+    listOfTabColors.appendChild(choice4);
+
 
     upArrowDiv.appendChild(upArrowImage);
     contentDiv.appendChild(upArrowDiv);
