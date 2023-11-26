@@ -316,6 +316,30 @@ function addClipboardListItem(text) {
     listOfTabColors.appendChild(choice3);
     listOfTabColors.appendChild(choice4);
 
+    listOfTabColors.addEventListener('change', (event) => {
+        console.log("Color changed");
+
+        console.log(event.target.value);
+        selected_color = event.target.value;
+
+        console.log(event);
+        //Change text color based on selected option
+        listPara.style.color = selected_color;
+
+        listPara.style.height = 'auto';
+        listPara.style.whiteSpace = 'break-spaces';
+        listPara.focus();
+        chrome.storage.sync.get(['list'], clipboard => {
+            let list = clipboard.list;
+            let index = list.indexOf(listPara.textContent);
+            list[index][1] = selected_color;
+            console.log(list[index][1]);
+            console.log(selected_color);
+            console.log(list);
+            chrome.storage.sync.set({ 'list': list });
+        })
+    });
+
 
     upArrowDiv.appendChild(upArrowImage);
     contentDiv.appendChild(upArrowDiv);
