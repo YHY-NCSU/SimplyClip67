@@ -45,11 +45,13 @@ addButton.addEventListener('click', (event) => {
         searchInput.addEventListener('keyup', () => {
             searchClipboardText();
         })
-        chrome.storage.sync.get(['list'], text => {
+        chrome.storage.sync.get(['list','colorlist'], text => {
             let list = text.list;
+            let colorlist = text.colorlist;
             list == undefined && (list = []);
             list.unshift("");
-            chrome.storage.sync.set({ 'list': list })
+            colorlist.unshift("black");
+            chrome.storage.sync.set({ 'list': list, 'colorlist': colorlist  })
         })
         chrome.storage.sync.get(['listURL'], url => {
             let urlList = url.listURL;
@@ -75,8 +77,9 @@ addButton.addEventListener('click', (event) => {
 
 function getClipboardText() {
 
-    chrome.storage.sync.get(['list'], clipboard => {
+    chrome.storage.sync.get(['list','colorlist'], clipboard => {
         let list = clipboard.list;
+        let colorlist = clipboard.colorlist;
         let emptyDiv = document.getElementById('empty-div');
         let downloadDiv1 = document.getElementById('download-btn1');
         let downloadDiv2 = document.getElementById('download-btn2');
@@ -109,7 +112,13 @@ function getClipboardText() {
             })
             if (typeof list !== undefined)
                 list.forEach(item => {
-                    addClipboardListItem(item)
+                    indexOfItem = list.indexOf(item);
+                    if (typeof colorlist !== 'undefined' && typeof colorlist[indexOfItem] !== 'undefined') {
+                        color = colorlist[indexOfItem];
+                      } else {
+                        color = 'black';
+                      }
+                    addClipboardListItem(item,color);
                 });
         }
     });
@@ -161,7 +170,7 @@ function getThumbnail(textContent) {
  * @example
  * addClipboardListItem("123")
  */
-function addClipboardListItem(text) {
+function addClipboardListItem(text,item_color) {
     let { sourceUrl, imageUrl, isVideo } = getThumbnail(text);
     let listItem = document.createElement("li"),
         listDiv = document.createElement("div"),
@@ -200,6 +209,7 @@ function addClipboardListItem(text) {
 
     let listPara = document.createElement("p");
     let listText = document.createTextNode(text);
+    listPara.style.color = item_color;
     listPara.setAttribute("data-toggle", "tooltip");
     listPara.setAttribute("data-placement", "bottom");
     listPara.setAttribute("title", "Click to copy the below text:\n" + text + "\n" + "Word count:\n"+text.split(' ').length);
@@ -288,33 +298,27 @@ function addClipboardListItem(text) {
     listOfTabColors.setAttribute("id", "color");
     listOfTabColors.classList.add("color");
     listOfTabColors.classList.add("dropdown");
-    listOfTabColors.style.width = "100px";
+    listOfTabColors.style.width = "15px";
     listOfTabColors.style.height = "32px";
+    listOfTabColors.style.margin = "13.5px";
     colorTabsDiv.appendChild(listOfTabColors);
     contentDiv.appendChild(colorTabsDiv);
 
     // Create choices
-    var choice1 = document.createElement("option");
-    choice1.value = "black";
-    choice1.text = "Black(default)";
+    let colorchoices = [];
+    colorchoices = ["Black", "Blue", "Red", "Green"];
+    console.log(colorchoices);
+    colorchoices.forEach((value, key) => {
+        var option = document.createElement("option");
+        option.value = value.toLowerCase();
+        option.text = value;
+        if (option.value === item_color) {
+            option.selected = true;
+        }
+        listOfTabColors.appendChild(option);
+    })
 
-    var choice2 = document.createElement("option");
-    choice2.value = "blue";
-    choice2.text = "Blue";
-
-    var choice3 = document.createElement("option");
-    choice3.value = "red";
-    choice3.text = "Red";
-
-    var choice4 = document.createElement("option");
-    choice4.value = "green";    
-    choice4.text = "Green";
-
-    // Append choices to listOfTabColors
-    listOfTabColors.appendChild(choice1);
-    listOfTabColors.appendChild(choice2);
-    listOfTabColors.appendChild(choice3);
-    listOfTabColors.appendChild(choice4);
+    // Add event listener to listOfTabColors
 
     listOfTabColors.addEventListener('change', (event) => {
         console.log("Color changed");
@@ -332,10 +336,14 @@ function addClipboardListItem(text) {
         chrome.storage.sync.get(['list'], clipboard => {
             let list = clipboard.list;
             let index = list.indexOf(listPara.textContent);
-            list[index][1] = selected_color;
-            console.log(list[index][1]);
-            console.log(selected_color);
-            console.log(list);
+            chrome.storage.sync.get(['colorlist'], colors => {
+                let colorlist = colors.colorlist;
+                if(colorlist === undefined){
+                    colorlist = [];
+                }
+                 colorlist[index] = selected_color;
+                 chrome.storage.sync.set({ 'colorlist': colorlist });
+             })
             chrome.storage.sync.set({ 'list': list });
         })
     });
@@ -397,7 +405,8 @@ function addClipboardListItem(text) {
                 "GET",
                 "http://127.0.0.1:8000/text/summarize/"+inputText+"",
                 function (data) {
-                  summarizedText = data;
+                  var value = JSON.parse(data);
+                  summarizedText = value[0].summary_text;
                   finalText = " Summarized Text :- " + summarizedText;
                   console.log(finalText);
 
@@ -418,13 +427,17 @@ function addClipboardListItem(text) {
 
     upArrowImage.addEventListener('click', (event) => {
     console.log("Up arrow clicked");
-    chrome.storage.sync.get(['list'], clipboard => {
+    chrome.storage.sync.get(['list','colorlist'], clipboard => {
         let list = clipboard.list;
+        let colorlist = clipboard.colorlist;
         let index = list.indexOf(text);
         if(index != 0){
             let temp=list[index];
+            prevcolor=colorlist[index];
             list[index]=list[index-1];
             list[index-1]=temp;
+            colorlist[index]=colorlist[index-1];
+            colorlist[index-1]=prevcolor;
             _clipboardList.innerHTML = "";
         }
 
@@ -449,18 +462,22 @@ function addClipboardListItem(text) {
         })
 
         if(index!=0)
-            chrome.storage.sync.set({ 'list': list }, () => getClipboardText());});
+            chrome.storage.sync.set({ 'list': list, 'colorlist': colorlist }, () => getClipboardText());});
     })
 
     downArrowImage.addEventListener('click', (event) => {
-        console.log("Up arrow clicked");
-        chrome.storage.sync.get(['list'], clipboard => {
+        console.log("Down arrow clicked");
+        chrome.storage.sync.get(['list','colorlist'], clipboard => {
             let list = clipboard.list;
+            let colordata = clipboard.colorlist;
             let index = list.indexOf(text);
             if(index != list.length-1){
                 let temp=list[index];
+                let prevcolor=colordata[index];
                 list[index]=list[index+1];
                 list[index+1]=temp;
+                colordata[index]=colordata[index+1];
+                colordata[index+1]=prevcolor;
                 _clipboardList.innerHTML = "";
             }
 
@@ -484,7 +501,7 @@ function addClipboardListItem(text) {
                 }
             })
             if(index != list.length-1)
-                chrome.storage.sync.set({ 'list': list }, (parameter) => {getClipboardText()});
+                chrome.storage.sync.set({ 'list': list, 'colorlist': colordata }, (parameter) => {getClipboardText()});
         })
     });
 
@@ -493,15 +510,17 @@ function addClipboardListItem(text) {
         navigator.clipboard.writeText(textContent)
             .then(() => {
                 console.log(`Text saved to clipboard`);
-                chrome.storage.sync.get(['list'], clipboard => {
+                chrome.storage.sync.get(['list','colorlist'], clipboard => {
                     let list = clipboard.list;
+                    let colordata = clipboard.colorlist;
                     let index = list.indexOf(textContent);
                     if (index !== -1)
                         list.splice(index, 1);
-
+                        colordata.splice(index, 1);
                     list.unshift(textContent);
+                    colordata.unshift("black");
                     _clipboardList.innerHTML = "";
-                    chrome.storage.sync.set({ 'list': list }, () => getClipboardText());
+                    chrome.storage.sync.set({ 'list': list, 'colorlist': colordata}, () => getClipboardText());
                 });
             });
         let x = document.getElementById("snackbar");
@@ -512,10 +531,12 @@ function addClipboardListItem(text) {
 
 
 function deleteElem(text){
-    chrome.storage.sync.get(['list'], clipboard => {
+    chrome.storage.sync.get(['list','colorlist'], clipboard => {
         let list = clipboard.list;
+        let colordata = clipboard.colorlist;
         let index = list.indexOf(text);
         list.splice(index, 1);
+        colordata.splice(index, 1);
         _clipboardList.innerHTML = "";
         chrome.storage.sync.get(['listURL'], url => {
             let urlList = url.listURL;
@@ -527,7 +548,7 @@ function deleteElem(text){
             originalList.splice(index, 1);
             chrome.storage.sync.set({ 'originalList': originalList })
         })
-        chrome.storage.sync.set({ 'list': list }, () => getClipboardText());
+        chrome.storage.sync.set({ 'list': list , 'colorlist': colordata}, () => getClipboardText());
     })
 }
 let merging = document.getElementById("merge-btn");
