@@ -143,6 +143,16 @@ ul li{
     outline: none;
 }
 
+.citation{
+    width: 25px;
+    height: 25px;
+    /* margin-top: 1.4em; */
+    margin-top: 1em;
+    margin-right:0.5em;
+    border: none;
+    outline: none;
+}
+
 .edit:hover{
     transform: translateY(1px);
 }
