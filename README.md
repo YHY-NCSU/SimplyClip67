@@ -13,6 +13,28 @@
 [![GitHub-size](https://img.shields.io/github/languages/code-size/MeryHarikaG/SimplyClip-proj2)](https://github.com/MeryHarikaG/SimplyClip-proj2)
 [![Coverage Status](https://img.shields.io/badge/code%20coverage-88%25-brightgreen)](https://github.com/MeryHarikaG/SimplyClip-proj2#-testcase-coverage)
 
+<a href="https://github.com/EZ7051/SimplyClip/forks" target="blank">
+<img src="https://img.shields.io/github/forks/EZ7051/SimplyClip?style=flat-square" alt="SimplyClip forks"/>
+</a>
+<a href="https://github.com/EZ7051/cheapBuy/stargazers" target="blank">
+<img src="https://img.shields.io/github/stars/EZ7051/cheapBuy?style=flat-square" alt="gcheapBuy stars"/>
+</a>
+<a href="https://github.com/EZ7051/cheapBuy/issues" target="blank">
+<img src="https://img.shields.io/github/issues/EZ7051/cheapBuy?style=flat-square" alt="cheapBuy issues"/>
+</a>
+<a href="https://github.com/EZ7051/cheapBuy/issues?q=is%3Aissue+is%3Aclosed" target="blank">
+<img src="https://img.shields.io/github/issues-closed/EZ7051/cheapBuy" alt="cheapBuy issues closed"/>
+</a>
+<a href="https://github.com/EZ7051/cheapBuy/pulls" target="blank">
+<img src="https://img.shields.io/github/issues-pr/EZ7051/cheapBuy?style=flat-square" alt="cheapBuy pull-requests"/>
+</a>
+<a href="https://github.com/EZ7051/cheapBuy/milestones" alt="milestones">
+<img src="https://img.shields.io/github/milestones/all/EZ7051/cheapBuy" /></a> 
+<a href="https://github.com/EZ7051/cheapBuy/graphs/commit-activity" alt="commit activity">
+<img src="https://img.shields.io/github/commit-activity/w/EZ7051/cheapBuy" /></a> 
+<a href="https://img.shields.io/github/repo-size/EZ7051/cheapBuy" alt="repo size">
+<img src="https://img.shields.io/github/repo-size/EZ7051/cheapBuy" /></a>
+
 ### &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;:paperclips: &emsp;  Clipboard Made Easy For Research &emsp; :paperclips:
 
 <placeholder builds>
