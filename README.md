@@ -231,7 +231,7 @@ Users can download the list of  copied items as a document file or CSV file. The
 - [x] Add new item to the list
 - [x] Expand text area in edit mode
 
-### Phase 3 : Successful Functional Improvements in SimplyClip3.0:
+### Phase 3 : Successful Functional Improvements in SimplyClip4.0:
 
 - [x] Summarise text items from the list 
 - [x] Sorting text items based on priority
@@ -245,12 +245,19 @@ Users can download the list of  copied items as a document file or CSV file. The
 - [x] Give the word count of copied text in the text box.
 
 
+### Phase 4 : Successful Functional Improvements in Simplyclip5.0:
+
+- [x] Successful implementation of summarization feature
+- [x] Domain Entity for similar content by colour coding them
+- [x] Successful implementation of Citation fetching
+- [x] Fixed youtube icon issue in previous version
+- [x] Fixed url issues from previous versions
+- [x] Improved test cases
+
 ### Future Enhancements:
 
 - [ ] Highlight important text box in the clipboard
-- [ ] Domain Entity for similar content
-- [ ] Citation fetching
-- [ ] Better training  data for Summariser 
+- [ ] Better training  data for Summarizer 
 - [ ] Copy image to clipboard
  
 ---
