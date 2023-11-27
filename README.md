@@ -6,8 +6,8 @@
 [![GitHub Release](https://img.shields.io/badge/release-v4.0.0-blue)](https://github.com/EZ7051/SimplyClip)
 ![GitHub language count](https://img.shields.io/github/languages/count/EZ7051/SimplyClip)
 ![Test Cases](https://img.shields.io/badge/tests-passing-green)
-![GitHub contributors](https://img.shields.io/github/contributors/MeryHarikaG/SimplyClip-proj2)
-[![GitHub-size](https://img.shields.io/github/languages/code-size/MeryHarikaG/SimplyClip-proj2)](https://github.com/MeryHarikaG/SimplyClip-proj2)
+![GitHub contributors](https://img.shields.io/github/contributors/EZ7051/SimplyClip)
+[![GitHub-size](https://img.shields.io/github/languages/code-size/EZ7051/SimplyClip)](https://github.com/EZ7051/SimplyClip)
 [![Coverage Status](https://img.shields.io/badge/code%20coverage-88%25-brightgreen)](https://github.com/MeryHarikaG/SimplyClip-proj2#-testcase-coverage)
 <a href="https://github.com/EZ7051/SimplyClip/forks" target="blank">
 <img src="https://img.shields.io/github/forks/EZ7051/SimplyClip?style=flat-square" alt="SimplyClip forks"/>
