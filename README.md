@@ -2,13 +2,14 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10211680.svg)](https://zenodo.org/records/10211680)
 
 ![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m789313708-ea25af592e8a7a84c009055e)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<a href="https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/LICENSE" target="blank">
+<img src="https://img.shields.io/github/license/EZ7051/SimplyClip?style=flat-square" alt="SimplyClip license" />
 [![GitHub Release](https://img.shields.io/badge/release-v4.0.0-blue)](https://github.com/EZ7051/SimplyClip)
 ![GitHub language count](https://img.shields.io/github/languages/count/EZ7051/SimplyClip)
 ![Test Cases](https://img.shields.io/badge/tests-passing-green)
 ![GitHub contributors](https://img.shields.io/github/contributors/EZ7051/SimplyClip)
 [![GitHub-size](https://img.shields.io/github/languages/code-size/EZ7051/SimplyClip)](https://github.com/EZ7051/SimplyClip)
-[![Coverage Status](https://img.shields.io/badge/code%20coverage-88%25-brightgreen)](https://github.com/MeryHarikaG/SimplyClip-proj2#-testcase-coverage)
+[![Coverage Status](https://img.shields.io/badge/code%20coverage-88%25-brightgreen)](https://github.com/EZ7051/SimplyClip#-testcase-coverage)
 <a href="https://github.com/EZ7051/SimplyClip/forks" target="blank">
 <img src="https://img.shields.io/github/forks/EZ7051/SimplyClip?style=flat-square" alt="SimplyClip forks"/>
 </a>
