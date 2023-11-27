@@ -1,5 +1,5 @@
-[![DOI](https://zenodo.org/records/10211680.svg)](https://zenodo.org/records/10211680)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10211680.svg)](https://zenodo.org/records/10211680)
 
 ![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m789313708-ea25af592e8a7a84c009055e)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
