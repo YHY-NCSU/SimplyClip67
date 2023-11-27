@@ -5,14 +5,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub Release](https://img.shields.io/badge/release-v4.0.0-blue)](https://github.com/EZ7051/SimplyClip)
 ![GitHub language count](https://img.shields.io/github/languages/count/EZ7051/SimplyClip)
-[![GitHub issues](https://img.shields.io/github/issues/EZ7051/SimplyClip/issues)](https://github.com/EZ7051/SimplyClip/issues)
-[![GitHub-closed-issues](https://img.shields.io/github/issues-closed-raw/MeryHarikaG/SimplyClip-proj2)](https://github.com/MeryHarikaG/SimplyClip-proj2)
 ![Test Cases](https://img.shields.io/badge/tests-passing-green)
 ![GitHub contributors](https://img.shields.io/github/contributors/MeryHarikaG/SimplyClip-proj2)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/MeryHarikaG/SimplyClip-proj2)
 [![GitHub-size](https://img.shields.io/github/languages/code-size/MeryHarikaG/SimplyClip-proj2)](https://github.com/MeryHarikaG/SimplyClip-proj2)
 [![Coverage Status](https://img.shields.io/badge/code%20coverage-88%25-brightgreen)](https://github.com/MeryHarikaG/SimplyClip-proj2#-testcase-coverage)
-
 <a href="https://github.com/EZ7051/SimplyClip/forks" target="blank">
 <img src="https://img.shields.io/github/forks/EZ7051/SimplyClip?style=flat-square" alt="SimplyClip forks"/>
 </a>
@@ -46,7 +42,7 @@
 ---
 
  
-&emsp; &emsp; &emsp; &emsp; &emsp;  ![](https://github.com/MeryHarikaG/SimplyClip-proj2/blob/Group10DeveloperBranch/images/SimplyClip_title.jpeg)
+&emsp; &emsp; &emsp; &emsp; &emsp;  ![](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/images/SimplyClip_title.jpeg)
 
 ---
 # Description
@@ -138,10 +134,10 @@ https://user-images.githubusercontent.com/66715000/139998327-13eff7db-3375-4a1b-
  
 ## :shipit: Developers Note
 Basic knowledge of **JavaScript**, **HTML** ,**CSS** should be good enough to contribute to the project
-- [**popup.js**](https://github.com/MeryHarikaG/SimplyClip-proj2/blob/Group10DeveloperBranch/popup.js)
-- [**popup.html**](https://github.com/MeryHarikaG/SimplyClip-proj2/blob/Group10DeveloperBranch/popup.html)
-- [**popup.css**](https://github.com/MeryHarikaG/SimplyClip-proj2/blob/Group10DeveloperBranch/popup.css)
-- [**content.js**](https://github.com/MeryHarikaG/SimplyClip-proj2/blob/Group10DeveloperBranch/content.js)
+- [**popup.js**](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/popup.js)
+- [**popup.html**](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/popup.html)
+- [**popup.css**](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/popup.css)
+- [**content.js**](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/content.js)
 
 These are the only 4 files you will be working on and rest all are just configuration and documentation files. <br><br>
 We will be more than happy to help you extend the functionality of this extension. <br>
@@ -159,9 +155,9 @@ All you need is Google Chrome! 🕺
 1. Manually install Entension using below steps.
     - Enable the developer mode from Chrome > Settings > extension.
     - Click on ***load Unpacked*** button and select the root folder of this repository.
-![Extension](https://github.com/MeryHarikaG/SimplyClip-proj2/blob/Group10DeveloperBranch/Docs/images/Extensions.png)
+![Extension](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/Docs/images/Extensions.png)
     - Enable the chrome extension. <br/>
-![Extension](https://github.com/MeryHarikaG/SimplyClip-proj2/blob/Group10DeveloperBranch/images/SimplyClip_title.jpeg)
+![Extension](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/images/SimplyClip_title.jpeg)
 
 ---
 ## 📦 IDE and Packages
