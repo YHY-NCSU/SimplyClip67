@@ -131,10 +131,10 @@ We will be more than happy to help you extend the functionality of this extensio
 All you need is Google Chrome! 🕺
 
 1.  Get the repsitory using any of the below two methords :
-    - Download :arrow_down: the ***[repository](https://github.com/MeryHarikaG/SimplyClip-proj2)*** using Code > Download Zip on our project github page.
+    - Download :arrow_down: the ***[repository](https://github.com/EZ7051/SimplyClip)*** using Code > Download Zip on our project github page.
     - Clone the reporitory using  ***[GIT](https://git-scm.com)*** 
     ```
-    https://github.com/MeryHarikaG/SimplyClip-proj2/
+    https://github.com/EZ7051/SimplyClip
     ```
 1. Manually install Entension using below steps.
     - Enable the developer mode from Chrome > Settings > extension.
@@ -254,13 +254,25 @@ Users can download the list of  copied items as a document file or CSV file. The
 - [ ] Copy image to clipboard
  
 ---
-## :handshake: Contributors
+## 👥 Team Members <a name="TeamMember"></a>
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/EZ7051"><img src="https://avatars.githubusercontent.com/u/35006207?v=4" width="75px;" alt=""/><br /><sub><b>Ejaz</b></sub></a></td>
+    <td align="center"><a href="https://github.com/shyni0201"><img src="https://avatars.githubusercontent.com/u/72161297?v=4" width="75px;" alt=""/><br /><sub><b>Shynitha</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/sumalatha-99"><img src="https://avatars.githubusercontent.com/u/26276595?v=4" width="75px;" alt=""/><br /><sub><b>Sumalatha</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/soubhagya31"><img src="https://avatars.githubusercontent.com/u/143368827?v=4" width="75px;" alt=""/><br /><sub><b>Soubhagya</b></sub></a><br /></td>
+  </tr>
+</table>
 
+| Name                   | Unity ID                           |
+|------------------------|------------------------------------|
+| Ejaz Ahamed Shaik      | eshaik                             |
+| Shynitha Muthyam       | smuthya                            |
+| Soubhagya Akkena       | sakkena                            |
+| Sumalatha Mashetty     | smashet                            |
 
-1. Mery Harika Gaddam (mgaddam@ncsu.edu)
-2. Sri Lakshmi Kotha (skotha2@ncsu.edu)
-3. Tanmaiyee Battula (tbattul@ncsu.edu)
-4. Kavya Lalbahadur Joshi (kjoshi4@ncsu.edu)
+## 🙏 Acknowledgements <a name="Acknowledgement"></a>
+We would like to thank Professor Dr Timothy Menzies for helping us understand the process of building a good Software Engineering project. We would also like to thank the teaching assistants San Gilson, Andre Lustosa, Xueqi (Sherry) Yang, Yasitha Rajapaksha, and Rahul Yedida for their support throughout the project.
 
 *** If you have any further queries, contact us on the above emails. Enjoy using SimplyClip! ***
 
