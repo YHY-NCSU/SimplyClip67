@@ -4,7 +4,7 @@
 ![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m789313708-ea25af592e8a7a84c009055e)
 <a href="https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/LICENSE" target="blank">
 <img src="https://img.shields.io/github/license/EZ7051/SimplyClip?style=flat-square" alt="SimplyClip license" />
-[![GitHub Release](https://img.shields.io/badge/release-v4.0.0-blue)](https://github.com/EZ7051/SimplyClip)
+[![GitHub Release](https://img.shields.io/badge/release-v5.0.0-blue)](https://github.com/EZ7051/SimplyClip)
 ![GitHub language count](https://img.shields.io/github/languages/count/EZ7051/SimplyClip)
 ![Test Cases](https://img.shields.io/badge/tests-passing-green)
 ![GitHub contributors](https://img.shields.io/github/contributors/EZ7051/SimplyClip)
