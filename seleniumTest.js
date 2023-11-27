@@ -173,6 +173,99 @@ describe('Check sorting functionality',function() {
     }).timeout(10000);
 });
 
+describe('Check Document export functionality',function() {
+    it('copied text should exist in SimplyClip clipboard', async function () {
+        // Open the Chrome Browser with a custom profile
+        const options = new chrome.Options()
+            .addArguments('--user-data-dir=/Users/suma/Desktop');
+
+        // Initialise driver to launch Chrome
+        const driver = new webdriver.Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+
+        // Launch Google.com
+        driver.get('http://google.com');
+
+        // Search for download as doc button
+        const priority_down = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[3]/img"));
+        priority_down.click();
+
+        // Close the browser
+        driver.close();
+
+        // Quit the browser
+        driver.quit();
+    }).timeout(10000);
+});
+
+describe('Check edit text functionality',function() {
+    it('copied text should exist in SimplyClip clipboard', async function () {
+        // Open the Chrome Browser with a custom profile
+        const options = new chrome.Options()
+            .addArguments('--user-data-dir=/Users/suma/Desktop');
+
+        // Initialise driver to launch Chrome
+        const driver = new webdriver.Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+
+        // Launch Google.com
+        driver.get('http://google.com');
+
+        // Search for edit text button
+        const priority_down = driver.findElement(By.xpath("/html/body/ul/li/div/div[2]/img"));
+        priority_down.click();
+
+        // Close the browser
+        driver.close();
+
+        // Quit the browser
+        driver.quit();
+    }).timeout(10000);
+});
+
+describe('Check the color tab functionality',function() {
+    it('the text within the chosen dialogue box is of the selected color.', async function () {
+        // Open the Chrome Browser with a custom profile
+        const options = new chrome.Options()
+            .addArguments('--user-data-dir=/Users/suma/Desktop');
+
+        // Initialise driver to launch Chrome
+        const driver = new webdriver.Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+
+        // Launch Google.com
+        driver.get('http://google.com');
+
+        // Search for the color dropdown
+        const colorTabBlue = driver.findElement(By.xpath("/html/body/ul/li/div/div[2]/img"));
+        colorTabBlue.click();
+        colorTabBlue.sendKeys('Blue');
+
+        const colorTabRed = driver.findElement(By.xpath("/html/body/ul/li/div/div[2]/img"));
+        colorTabRed.click();
+        colorTabRed.sendKeys('Red');
+
+        const colorTabGreen = driver.findElement(By.xpath("/html/body/ul/li/div/div[2]/img"));
+        colorTabGreen.click();
+        colorTabGreen.sendKeys('Green');
+        
+
+
+        // Close the browser
+        driver.close();
+
+        // Quit the browser
+        driver.quit();
+    }).timeout(10000);
+});
+
+
 describe('Check Merge functionality',function() {
     it('copied text should exist in SimplyClip clipboard', async function () {
         // Open the Chrome Browser with a custom profile

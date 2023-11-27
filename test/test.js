@@ -54,24 +54,31 @@ function mockDeleteListEntry(text){
     })
 }
 
-let button1 = document.getElementById("storageTest");
-button1.addEventListener("click",()=>{
-    mockCopyToChromeStorage();
-})
+window.addEventListener("DOMContentLoaded", (event) => {
+    let button1 = document.getElementById("storageTest");
+    button1.addEventListener("click",()=>{
+        mockCopyToChromeStorage();
+    })
+});
 
-let button2 = document.getElementById("deleteTest");
-button2.addEventListener("click",()=>{
-    mockDeleteListEntry(sampleText);
-})
 
-let button3 = document.getElementById("copyFirstEntry");
-button3.addEventListener("click",()=>{
-    console.log("Button 3 clicked");
-    mockCopyToClipboard(sampleText);
-})
+window.addEventListener("DOMContentLoaded", (event) => {
+    let button2 = document.getElementById("deleteTest");
+    button2.addEventListener("click",()=>{
+        mockDeleteListEntry(sampleText);
+    })
+});
 
-button3.focus();
-button3.click();
+
+window.addEventListener("DOMContentLoaded", (event) => {
+    let button3 = document.getElementById("copyFirstEntry");
+    button3.addEventListener("click",()=>{
+        console.log("Button 3 clicked");
+        mockCopyToClipboard(sampleText);
+    })
+    button3.focus();
+    button3.click();
+});
 
 /*
  * Test to delete the added entry
