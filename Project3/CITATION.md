@@ -7,7 +7,7 @@
     - Shynitha Muthyam
     - Sumalatha Mashetty
   license: MIT License
-  repository-code: https://github.com/MeryHarikaG/SimplyClip-proj2
+  repository-code: https://github.com/EZ7051/SimplyClip
   identifiers:
   - description: This is the collection of archived snapshots of version 5.0.0 of ReadME
     type: doi
