@@ -12,7 +12,7 @@
 
 
 ## Youtube Video : 
-[![SimplyClip Project 3 DEMO](https://github.com/freakleesin/cheapBuy/blob/main/media/cheapbuy.png)](https://www.youtube.com/watch?v=CBo6NUFXeF0) <br>
+[![SimplyClip Project 3 DEMO](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/images/SimplyClip_title.jpeg)](https://www.youtube.com/watch?v=CBo6NUFXeF0) <br>
 ![YouTube Video Views](https://img.shields.io/youtube/views/CBo6NUFXeF0)
 
 ## GitHub Link : 
