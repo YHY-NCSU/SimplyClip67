@@ -261,7 +261,7 @@ Users can download the list of  copied items as a document file or CSV file. The
 - [ ] Copy image to clipboard
  
 ---
-## :handshake: contributors
+## :handshake: Contributors
 <table>
   <tr>
     <td align="center"><a href="https://github.com/EZ7051"><img src="https://avatars.githubusercontent.com/u/35006207?v=4" width="75px;" alt=""/><br /><sub><b>Ejaz</b></sub></a></td>
