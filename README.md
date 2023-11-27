@@ -261,7 +261,7 @@ Users can download the list of  copied items as a document file or CSV file. The
 - [ ] Copy image to clipboard
  
 ---
-## 👥 Team Members <a name="TeamMember"></a>
+## :handshake: contributors
 <table>
   <tr>
     <td align="center"><a href="https://github.com/EZ7051"><img src="https://avatars.githubusercontent.com/u/35006207?v=4" width="75px;" alt=""/><br /><sub><b>Ejaz</b></sub></a></td>
@@ -275,8 +275,8 @@ Users can download the list of  copied items as a document file or CSV file. The
 |------------------------|------------------------------------|
 | Ejaz Ahamed Shaik      | eshaik                             |
 | Shynitha Muthyam       | smuthya                            |
-| Soubhagya Akkena       | sakkena                            |
 | Sumalatha Mashetty     | smashet                            |
+| Soubhagya Akkena       | sakkena                            |
 
 ## 🙏 Acknowledgements <a name="Acknowledgement"></a>
 We would like to thank Professor Dr Timothy Menzies for helping us understand the process of building a good Software Engineering project. We would also like to thank the teaching assistants San Gilson, Andre Lustosa, Xueqi (Sherry) Yang, Yasitha Rajapaksha, and Rahul Yedida for their support throughout the project.
