@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/records/10211680)](https://zenodo.org/records/10211680)
+[![DOI](https://zenodo.org/records/10211680.svg)](https://zenodo.org/records/10211680)
 
 
 ![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m789313708-ea25af592e8a7a84c009055e)
