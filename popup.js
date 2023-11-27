@@ -405,8 +405,7 @@ function addClipboardListItem(text,item_color) {
                 "GET",
                 "http://127.0.0.1:8000/text/summarize/"+inputText+"",
                 function (data) {
-                  var value = JSON.parse(data);
-                  summarizedText = value[0].summary_text;
+                  summarizedText = data;
                   finalText = " Summarized Text :- " + summarizedText;
                   console.log(finalText);
 
