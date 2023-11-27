@@ -3,9 +3,9 @@
 
 ![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m789313708-ea25af592e8a7a84c009055e)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub Release](https://img.shields.io/badge/release-v4.0.0-blue)](https://github.com/MeryHarikaG/SimplyClip-proj2)
-![GitHub language count](https://img.shields.io/github/languages/count/MeryHarikaG/SimplyClip-proj2)
-[![GitHub issues](https://img.shields.io/github/issues/MeryHarikaG/SimplyClip-proj2)](https://github.com/MeryHarikaG/SimplyClip-proj2)
+[![GitHub Release](https://img.shields.io/badge/release-v4.0.0-blue)](https://github.com/EZ7051/SimplyClip)
+![GitHub language count](https://img.shields.io/github/languages/count/EZ7051/SimplyClip)
+[![GitHub issues](https://img.shields.io/github/issues/EZ7051/SimplyClip/issues)](https://github.com/EZ7051/SimplyClip/issues)
 [![GitHub-closed-issues](https://img.shields.io/github/issues-closed-raw/MeryHarikaG/SimplyClip-proj2)](https://github.com/MeryHarikaG/SimplyClip-proj2)
 ![Test Cases](https://img.shields.io/badge/tests-passing-green)
 ![GitHub contributors](https://img.shields.io/github/contributors/MeryHarikaG/SimplyClip-proj2)
