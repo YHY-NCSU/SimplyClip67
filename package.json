@@ -32,11 +32,11 @@
     ]
   },
   "scripts": {
-    "lint": "eslint .",
+    "lint": "./node_modules/.bin/eslint .",
     "build": "npm build",
     "test": "npm run single",
     "istanbul-coverage": "nyc --reporter=html mocha seleniumTest.js",
-    "single": "mocha seleniumTest.js"
+    "single": "./node_modules/.bin/mocha seleniumTest.js"
   },
   "dependencies": {
     "save": "^2.4.0",
