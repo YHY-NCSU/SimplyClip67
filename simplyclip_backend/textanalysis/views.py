@@ -9,6 +9,7 @@ from django.http.response import FileResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from . import summarizer
+from . import citation
 
 
 @csrf_exempt
@@ -17,6 +18,13 @@ def summarize(request, summ_input):
         body_data = summ_input
         summarized_output = summarizer.generate_summary(body_data)
         return HttpResponse(summarized_output, content_type='text/plain')
+
+
+@csrf_exempt
+def getcitation(request, citation_input):
+    if request.method == 'GET':
+        citation_output = citation.generate_citation(citation_input)
+        return HttpResponse(citation_output, content_type='text/plain')
 
 @csrf_exempt
 def upload(request):
