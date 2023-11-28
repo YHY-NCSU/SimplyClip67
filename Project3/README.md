@@ -12,8 +12,8 @@
 
 
 ## Youtube Video : 
-[![SimplyClip Project 3 DEMO](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/images/SimplyClip_title.jpeg)](https://www.youtube.com/watch?v=CBo6NUFXeF0) <br>
-![YouTube Video Views](https://img.shields.io/youtube/views/CBo6NUFXeF0)
+[![SimplyClip Project 3 DEMO](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/images/SimplyClip_title.jpeg)](https://www.youtube.com/watch?v=sR3Q3ZVW0vo) <br>
+![YouTube Video Views](https://img.shields.io/youtube/views/sR3Q3ZVW0vo)
 
 ## GitHub Link : 
 [https://github.com/EZ7051/SimplyClip](https://github.com/EZ7051/SimplyClip)
@@ -26,7 +26,7 @@
 | Rubric                                                                                                                                                                                  | Assessment | Evidence                                                                                                                                                                                   |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 |                                                                                                                                                                                         | 87         |                                                                                                                                                                                            |
-| Video                                                                                                                                                                                   | 3          |                             |
+| Video                                                                                                                                                                                   | 3          |    https://www.youtube.com/watch?v=sR3Q3ZVW0vo                         |
 | Workload is spread over the whole team (one team member is often Xtimes more productive than the others...but nevertheless, here is a track record that everyone is contributing a lot) |       3     |  [https://github.com/EZ7051/SimplyClip/pulse](https://github.com/EZ7051/SimplyClip/pulse)|
 | Number of commits                                                                                                                                                                       | 3          | [https://github.com/EZ7051/SimplyClip/commits/Group3DeveloperBranch](https://github.com/EZ7051/SimplyClip/commits/Group3DeveloperBranch)                                                                                         |
 | Number of commits: by different people                                                                                                                                                  | 3          | [https://github.com/EZ7051/SimplyClip/pulse](https://github.com/EZ7051/SimplyClip/pulse) |

@@ -4,7 +4,7 @@
 ![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m789313708-ea25af592e8a7a84c009055e)
 <a href="https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/LICENSE" target="blank">
 <img src="https://img.shields.io/github/license/EZ7051/SimplyClip?style=flat-square" alt="SimplyClip license" />
-[![GitHub Release](https://img.shields.io/badge/release-v5.0.0-blue)](https://github.com/EZ7051/SimplyClip)
+[![GitHub Release](https://img.shields.io/badge/release-v5.1-blue)](https://github.com/EZ7051/SimplyClip)
 ![GitHub language count](https://img.shields.io/github/languages/count/EZ7051/SimplyClip)
 ![Test Cases](https://img.shields.io/badge/tests-passing-green)
 ![GitHub contributors](https://img.shields.io/github/contributors/EZ7051/SimplyClip)
@@ -109,7 +109,7 @@ https://user-images.githubusercontent.com/66715000/139998327-13eff7db-3375-4a1b-
 
 ## Demo
 
-[https://www.youtube.com/watch?v=ETtvNNvfhzU](https://youtu.be/773QRXIHMLM)
+[https://youtu.be/sR3Q3ZVW0vo](https://www.youtube.com/watch?v=sR3Q3ZVW0vo)
 
 ---
 
@@ -200,10 +200,10 @@ prettier --write and prettier --check are the most common ways to run Prettier
   4. Then there is a check to make sure that the copied text exists in the SimplyClip extension.
 - Run `npm run test` to run the selenium automated tests.<br>
 
-![Extension](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/Project3/Docs/images/V5_testcoverage.png)
+![Extension](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/Project3/Docs/images/Checks1.png)
 - Run `npm run instanbul-coverage` to check the code coverage.<br>
 
-![Extension](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/Project3/Docs/images/V5_codecoverage.png)
+![Extension](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/Project3/Docs/images/TestReport.png)
 
 
 ## :desktop_computer: Functional Descriptions
