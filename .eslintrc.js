@@ -9,7 +9,10 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
-        "accessor-pairs": "error",
+        "accessor-pairs": [
+            "error",
+            "never"
+        ],
         "array-bracket-newline": "error",
         "array-bracket-spacing": [
             "error",
@@ -71,7 +74,10 @@ module.exports = {
         "function-paren-newline": "error",
         "generator-star-spacing": "error",
         "grouped-accessor-pairs": "error",
-        "guard-for-in": "error",
+        "guard-for-in": [
+            "error",
+            "never"
+        ],
         "id-denylist": "error",
         "id-length": "off",
         "id-match": "error",

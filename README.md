@@ -9,7 +9,7 @@
 ![Test Cases](https://img.shields.io/badge/tests-passing-green)
 ![GitHub contributors](https://img.shields.io/github/contributors/EZ7051/SimplyClip)
 [![GitHub-size](https://img.shields.io/github/languages/code-size/EZ7051/SimplyClip)](https://github.com/EZ7051/SimplyClip)
-[![Coverage Status](https://img.shields.io/badge/code%20coverage-88%25-brightgreen)](https://github.com/EZ7051/SimplyClip#-testcase-coverage)
+[![Coverage Status](https://img.shields.io/badge/code%20coverage-100%25-brightgreen)](https://github.com/EZ7051/SimplyClip#-testcase-coverage)
 <a href="https://github.com/EZ7051/SimplyClip/forks" target="blank">
 <img src="https://img.shields.io/github/forks/EZ7051/SimplyClip?style=flat-square" alt="SimplyClip forks"/>
 </a>
@@ -200,10 +200,10 @@ prettier --write and prettier --check are the most common ways to run Prettier
   4. Then there is a check to make sure that the copied text exists in the SimplyClip extension.
 - Run `npm run test` to run the selenium automated tests.<br>
 
-![Extension](https://github.com/aditya4196/SimplyClip/blob/Group10DeveloperBranch/images/Version3_Testcases.png)
+![Extension](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/Project3/Docs/images/V5_testcoverage.png)
 - Run `npm run instanbul-coverage` to check the code coverage.<br>
 
-![Extension](https://github.com/aditya4196/SimplyClip/blob/Group10DeveloperBranch/images/Version3_Code_coverage.png)
+![Extension](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/Project3/Docs/images/V5_codecoverage.png)
 
 
 ## :desktop_computer: Functional Descriptions
@@ -221,7 +221,7 @@ Users can download the list of  copied items as a document file or CSV file. The
 2) When loading the extension for the first time, reload the pages in order to allow the URLs to prompt for permissions to access the system clipboard.
 3) If none of the above steps work, consider reloading the extension and all the browser pages.
 4) If the issue still persists, please consider writing us at simlyclipse43@gmail.com and we will get back to you as soon as possible.
-5) You're also free to report a bug in our repository and clearly stating the issue that you're facing. Please make sure to follow the guidelines mentioned in [CONTRIBUTING.md](https://github.com/MeryHarikaG/SimplyClip-proj2/blob/Group10DeveloperBranch/Project2/Contributing.md)
+5) You're also free to report a bug in our repository and clearly stating the issue that you're facing. Please make sure to follow the guidelines mentioned in [CONTRIBUTING.md](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/Project3/Contributing.md)
 
 ---
  

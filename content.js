@@ -43,33 +43,40 @@ const setClipboardText = async (clipText) => {
         chrome.storage.sync.get("listURL", function (clipboardURL) {
             chrome.storage.sync.get("originalList", function (clipboardOriginalList) {
                 chrome.storage.sync.get("summarizedList", function (clipboardSummarizedList) {
-                let { list } = clipboard;
-                let { listURL } = clipboardURL;
-                let { originalList } = clipboardOriginalList;
-                let { summarizedList } = clipboardSummarizedList;
-                console.log("List is:-", list);
-                if (typeof list === "undefined" || list.length == 0) {
-                    list = [];
-                    listURL = [];
-                    originalList = [];
-                    summarizedList = [];
-                }
-                if (list.length === _maxListSize) {
-                    list.pop();
-                    listURL.pop();
-                    originalList = [];
-                    summarizedList = [];
-                }
-                if (list.indexOf(clipText) == -1) {
-                    list.unshift(clipText);
-                    listURL.unshift(window.location.href);
-                    originalList.unshift(clipText);
-                    summarizedList.unshift(clipText);
-                }
-                chrome.storage.sync.set({ 'list': list }, status => console.log("Debug : Clipboard Text pushed to list"));
-                chrome.storage.sync.set({ 'listURL': listURL }, status => { console.log("Debug : URL pushed to list") })
-                chrome.storage.sync.set({ 'originalList': originalList }, status => console.log("Debug : Original Clipboard Text pushed to list"));
-                chrome.storage.sync.set({ 'summarizedList': summarizedList }, status => { console.log("Debug : summarizedText pushed to the summList") })
+                chrome.storage.sync.get("citationList", function (clipboardCitationList) {
+                                    let { list } = clipboard;
+                                    let { listURL } = clipboardURL;
+                                    let { originalList } = clipboardOriginalList;
+                                    let { summarizedList } = clipboardSummarizedList;
+                                    let { citationList } = clipboardCitationList;
+                                    console.log("List is:-", list);
+                                    if (typeof list === "undefined" || list.length == 0) {
+                                        list = [];
+                                        listURL = [];
+                                        originalList = [];
+                                        summarizedList = [];
+                                        citationList = [];
+                                    }
+                                    if (list.length === _maxListSize) {
+                                        list.pop();
+                                        listURL.pop();
+                                        originalList = [];
+                                        summarizedList = [];
+                                        citationList = [];
+                                    }
+                                    if (list.indexOf(clipText) == -1) {
+                                        list.unshift(clipText);
+                                        listURL.unshift(window.location.href);
+                                        originalList.unshift(clipText);
+                                        summarizedList.unshift(clipText);
+                                        citationList.unshift(clipText);
+                                    }
+                                    chrome.storage.sync.set({ 'list': list }, status => console.log("Debug : Clipboard Text pushed to list"));
+                                    chrome.storage.sync.set({ 'listURL': listURL }, status => { console.log("Debug : URL pushed to list") })
+                                    chrome.storage.sync.set({ 'originalList': originalList }, status => console.log("Debug : Original Clipboard Text pushed to list"));
+                                    chrome.storage.sync.set({ 'summarizedList': summarizedList }, status => { console.log("Debug : summarizedText pushed to the summList") })
+                                    chrome.storage.sync.set({ 'citationList': citationList}, status => { console.log("Debug : citationText pushed to the citList") })
+                                })
             })
         })
     })

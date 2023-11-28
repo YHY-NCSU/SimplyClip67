@@ -184,6 +184,7 @@ function addClipboardListItem(text,item_color) {
         upArrowDiv = document.createElement("div"),
         downArrowDiv = document.createElement("div");
         summDiv = document.createElement("div")
+        citDiv = document.createElement("div")
 
     editImage.setAttribute("data-toggle", "tooltip");
     editImage.setAttribute("data-placement", "bottom");
@@ -206,6 +207,12 @@ function addClipboardListItem(text,item_color) {
     summImage.setAttribute("data-toggle", "tooltip");
     summImage.setAttribute("data-placement", "bottom");
     summImage.setAttribute("title", "Click to summarize the text entry!");
+
+
+    citImage = document.createElement("img");
+    citImage.setAttribute("data-toggle", "tooltip");
+    citImage.setAttribute("data-placement", "bottom");
+    citImage.setAttribute("title", "Click to generate Citations!");
 
     let listPara = document.createElement("p");
     let listText = document.createTextNode(text);
@@ -282,6 +289,9 @@ function addClipboardListItem(text,item_color) {
     summImage.src = './images/summarizer.png';
     summImage.classList.add("summarize");
 
+    citImage.src = './images/cite2.png';
+    citImage.classList.add("citation");
+
     var checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.classList.add('checkbox');
@@ -303,6 +313,9 @@ function addClipboardListItem(text,item_color) {
     listOfTabColors.style.margin = "13.5px";
     colorTabsDiv.appendChild(listOfTabColors);
     contentDiv.appendChild(colorTabsDiv);
+
+    citDiv.appendChild(citImage);
+    contentDiv.appendChild(citDiv);
 
     // Create choices
     let colorchoices = [];
@@ -422,6 +435,32 @@ function addClipboardListItem(text,item_color) {
 
 
             })
+
+
+    citImage.addEventListener('click', (event) => {
+        console.log("Citation button clicked");
+        let finalText = "";
+            let inputText = listPara.textContent;
+            doDjangoCall(
+                "GET",
+                "http://127.0.0.1:8000/text/getcitation/"+inputText+"",
+                function (data) {
+                  // Earlier we used to get it in the JSON format and it had problems.
+                  citationText = data;
+                  finalText = " Citations for: " + inputText + "\n\n" + citationText;
+                  console.log(finalText);
+
+                  chrome.storage.sync.get(['citationList'], citclipboard => {
+                    let citationList = citclipboard.citationList;
+                    console.log("type of list is "+typeof citationList);
+                    citationList.push(finalText);
+                    chrome.storage.sync.set({ 'citationList': citationList}, function() {console.log('Citation Saved');});
+                        console.log("Citation appended");
+                    });
+                }
+              );
+            })
+
 
 
     upArrowImage.addEventListener('click', (event) => {
@@ -547,6 +586,12 @@ function deleteElem(text){
             originalList.splice(index, 1);
             chrome.storage.sync.set({ 'originalList': originalList })
         })
+        chrome.storage.sync.get(['citationList'], citList=> {
+            let citationList = citList.citationList;
+            citationList == undefined && (citationList = []);
+            citationList.splice(indexes[i], 1);
+            chrome.storage.sync.set({ 'citationList': citationList})
+        })
         chrome.storage.sync.set({ 'list': list , 'listcolor': colordata}, () => getClipboardText());
     })
 }
@@ -625,45 +670,54 @@ merging.addEventListener('click', () => {
  */
 function downloadClipboardTextAsDoc(){
     chrome.storage.sync.get(['list'], clipboard => {
-        chrome.storage.sync.get(['summarizedList'], summclipboard => {
-        let list = clipboard.list;
-        let summList = summclipboard.summarizedList;
-        let emptyDiv = document.getElementById('empty-div');
-        if (list === undefined || list.length === 0) {
-            emptyDiv.classList.remove('hide-div');
-            console.log("Nothing to download")
-        }
-        else {
-            var list_of_items = []
-            //var list_of_summ_items = []
-            emptyDiv.classList.add('hide-div');
-            if (typeof list !== undefined){
-                list.forEach(item => {
-                    list_of_items = list_of_items + item + "\n\n"
-                });
-            if (typeof summList !== undefined){
-                summList.forEach(item => {
-                    console.log(item);
-                    list_of_items = list_of_items + item + "\n\n"
-                });
-            var link, blob, url;
-            blob = new Blob(['\ufeff', list_of_items], {
-                type: 'application/msword'
-            });
-
-                url = URL.createObjectURL(blob);
-                link = document.createElement('A');
-                link.href = url;
-                link.download = 'SimplyClip';
-                document.body.appendChild(link);
-                if (navigator.msSaveOrOpenBlob )
-                    navigator.msSaveOrOpenBlob( blob, 'SimplyClip.doc');
-                else link.click();  // other browsers
-                document.body.removeChild(link);
+        chrome.storage.sync.get(['citationList'], citclipboard => {
+            chrome.storage.sync.get(['summarizedList'], summclipboard => {
+            let list = clipboard.list;
+            let summList = summclipboard.summarizedList;
+            let citList = citclipboard.citationList;
+            let emptyDiv = document.getElementById('empty-div');
+            if (list === undefined || list.length === 0) {
+                emptyDiv.classList.remove('hide-div');
+                console.log("Nothing to download")
             }
+            else {
+                var list_of_items = []
+                //var list_of_summ_items = []
+                emptyDiv.classList.add('hide-div');
+                if (typeof list !== undefined){
+                    list.forEach(item => {
+                        list_of_items = list_of_items + item + "\n\n"
+                    });
+                if (typeof summList !== undefined){
+                    summList.forEach(item => {
+                        console.log(item);
+                        list_of_items = list_of_items + item + "\n\n"
+                    });
+                if (typeof citList !== undefined){
+                    citList.forEach(item => {
+                        console.log(item);
+                        list_of_items = list_of_items + item + "\n\n"
+                    });
 
-        }
-    }
+                var link, blob, url;
+                blob = new Blob(['\ufeff', list_of_items], {
+                    type: 'application/msword'
+                });
+
+                    url = URL.createObjectURL(blob);
+                    link = document.createElement('A');
+                    link.href = url;
+                    link.download = 'SimplyClip';
+                    document.body.appendChild(link);
+                    if (navigator.msSaveOrOpenBlob )
+                        navigator.msSaveOrOpenBlob( blob, 'SimplyClip.doc');
+                    else link.click();  // other browsers
+                    document.body.removeChild(link);
+                }
+                }
+                }
+            }
+        });
     });
    });
 }
