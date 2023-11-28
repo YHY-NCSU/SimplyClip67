@@ -205,7 +205,7 @@ prettier --write and prettier --check are the most common ways to run Prettier
 
 ![Extension](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/Project3/Docs/images/TestReport.png)
 
-- Run citationTest1.py for Citattion Unit Test.<br>
+- Run citationTest1.py for Citation Unit Test.<br>
 ![Extension](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/Project3/Docs/images/CitationUnitTest.png)
 
 
