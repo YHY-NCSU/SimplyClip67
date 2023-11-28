@@ -2,13 +2,13 @@
   "name": "SimplyClip",
   "version": "1.0.0",
   "description": "A chrome extension that allows copying of items to and from clipboard.",
-  "repository": "https://github.com/lalit10/SimplyClip",
-  "homepage": "https://github.com/lalit10/SimplyClip#readme",
+  "repository": "https://github.com/EZ7051/SimplyClip",
+  "homepage": "https://github.com/EZ7051/SimplyClip#readme",
   "license": "MIT",
   "main": "popup.html",
-  "author": "Lalit Bangad, Anirudh Pande, Pratyush Vaidya",
+  "author": "Ejaz Ahamed Shaik, Shynitha Muthyam, Sumalatha Mashetty, Soubhagya Akkena",
   "bugs": {
-    "url": "https://github.com/lalit10/SimplyClip/issues"
+    "url": "https://github.com/EZ7051/SimplyClip/issues"
   },
   "keywords": [
     "clipboard",
