@@ -23,7 +23,7 @@ def summarize(request, summ_input):
 @csrf_exempt
 def getcitation(request, citation_input):
     if request.method == 'GET':
-        citation_output = citation.generate_citation(citation_input)
+        citation_output = citation.createCitation(citation_input)
         return HttpResponse(citation_output, content_type='text/plain')
 
 @csrf_exempt

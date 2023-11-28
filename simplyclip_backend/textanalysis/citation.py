@@ -3,31 +3,30 @@ import habanero
 class CitationError(Exception):
     pass
 
-def generate_citation(text):
-    citation_types = ['apa', 'bibtex', 'chicago-author-date', 'modern-language-association', 'vancouver']
-    citation_text = ""
+def createCitation(text):
+    citationTypes = ['apa', 'bibtex', 'chicago-author-date', 'modern-language-association', 'vancouver']
+    citeText = ""
 
     if len(text) > 300:
-        # Mark it as a URL
-        citation_text = "Can't cite: This doesn't look like a DOI. Please check!"
-        print("Citation generation completed")
-        return [citation_text]
+        citeText = "Unable to create the citations. Please check the DOI."
+        print("Generated the citation")
+        return [citeText]
 
     try:
-        for citation in citation_types:
-            citation_text += citation.upper()
-            citation_text += ":\n"
-            citation_text += habanero.cn.content_negotiation(ids=text, format='text', style=citation)
-            citation_text += "\n"
+        for citation in citationTypes:
+            citeText += citation.upper()
+            citeText += ":\n"
+            citeText += habanero.cn.content_negotiation(ids=text, format='text', style=citation)
+            citeText += "\n"
 
         print("Citation generation completed")
     except Exception as e:
         raise CitationError("Error in citation generation: " + str(e))
     except:
-        citation_text = ""
-        citation_text += "URL: \n"
-        citation_text += text
+        citeText = ""
+        citeText += "URL: \n"
+        citeText += text
         print("Citation generation completed")
 
-    output_list = [citation_text]
-    return output_list
+    ansList = [citeText]
+    return ansList
