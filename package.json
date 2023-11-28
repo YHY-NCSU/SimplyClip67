@@ -1,8 +1,11 @@
 {
-  "name": "SimplyClip",
+  "name": "simplyclip",
   "version": "1.0.0",
   "description": "A chrome extension that allows copying of items to and from clipboard.",
-  "repository": "https://github.com/lalit10/SimplyClip",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lalit10/SimplyClip.git"
+  },
   "homepage": "https://github.com/lalit10/SimplyClip#readme",
   "license": "MIT",
   "main": "popup.html",
@@ -18,7 +21,7 @@
   "devDependencies": {
     "eslint": "^7.32.0",
     "istanbul": "^0.4.5",
-    "mocha": "^9.1.3",
+    "mocha": "^9.2.2",
     "nyc": "^15.1.0",
     "prettier": "^2.2.0"
   },
@@ -29,14 +32,17 @@
     ]
   },
   "scripts": {
-    "lint": "./node_modules/.bin/eslint .",
+    "lint": "eslint .",
     "build": "npm build",
     "test": "npm run single",
     "istanbul-coverage": "nyc --reporter=html mocha seleniumTest.js",
-    "single": "./node_modules/.bin/mocha seleniumTest.js"
+    "single": "mocha seleniumTest.js"
   },
   "dependencies": {
     "save": "^2.4.0",
-    "selenium-webdriver": "^4.0.0"
+    "selenium-webdriver": "^4.15.0"
+  },
+  "directories": {
+    "test": "test"
   }
 }

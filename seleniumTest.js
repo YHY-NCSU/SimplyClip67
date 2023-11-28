@@ -11,7 +11,7 @@ describe('Verify setup with Google Search',function() {
 
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/nehakotcherlakota/Desktop');
+            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -44,7 +44,7 @@ describe('Check browser copy functionality',function() {
 
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/nehakotcherlakota/Desktop');
+            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -79,7 +79,7 @@ describe('Check simply clip functionality',function() {
     it('copied text should exist in SimplyClip clipboard', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/nehakotcherlakota/Desktop');
+            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -121,7 +121,7 @@ describe('Check dark mode functionality',function() {
     it('copied text should exist in SimplyClip clipboard', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/nehakotcherlakota/Desktop');
+            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -150,7 +150,7 @@ describe('Check sorting functionality',function() {
     it('copied text should exist in SimplyClip clipboard', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/nehakotcherlakota/Desktop');
+            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -177,7 +177,7 @@ describe('Check Document export functionality',function() {
     it('copied text should exist in SimplyClip clipboard', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/suma/Desktop');
+            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -204,7 +204,7 @@ describe('Check edit text functionality',function() {
     it('copied text should exist in SimplyClip clipboard', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/suma/Desktop');
+            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -231,7 +231,7 @@ describe('Check the color tab functionality',function() {
     it('the text within the chosen dialogue box is of the selected color.', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/suma/Desktop');
+            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -270,7 +270,7 @@ describe('Check Merge functionality',function() {
     it('copied text should exist in SimplyClip clipboard', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/nehakotcherlakota/Desktop');
+            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
