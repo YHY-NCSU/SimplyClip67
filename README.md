@@ -200,10 +200,10 @@ prettier --write and prettier --check are the most common ways to run Prettier
   4. Then there is a check to make sure that the copied text exists in the SimplyClip extension.
 - Run `npm run test` to run the selenium automated tests.<br>
 
-![Extension](https://github.com/aditya4196/SimplyClip/blob/Group10DeveloperBranch/images/Version3_Testcases.png)
+![Extension](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/Project3/Docs/images/V5_testcoverage.png)
 - Run `npm run instanbul-coverage` to check the code coverage.<br>
 
-![Extension](https://github.com/aditya4196/SimplyClip/blob/Group10DeveloperBranch/images/Version3_Code_coverage.png)
+![Extension](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/Project3/Docs/images/V5_codecoverage.png)
 
 
 ## :desktop_computer: Functional Descriptions
