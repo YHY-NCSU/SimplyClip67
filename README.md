@@ -221,7 +221,7 @@ Users can download the list of  copied items as a document file or CSV file. The
 2) When loading the extension for the first time, reload the pages in order to allow the URLs to prompt for permissions to access the system clipboard.
 3) If none of the above steps work, consider reloading the extension and all the browser pages.
 4) If the issue still persists, please consider writing us at simlyclipse43@gmail.com and we will get back to you as soon as possible.
-5) You're also free to report a bug in our repository and clearly stating the issue that you're facing. Please make sure to follow the guidelines mentioned in [CONTRIBUTING.md](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/README.md)
+5) You're also free to report a bug in our repository and clearly stating the issue that you're facing. Please make sure to follow the guidelines mentioned in [CONTRIBUTING.md](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/Project3/Contributing.md)
 
 ---
  
