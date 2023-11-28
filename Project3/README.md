@@ -18,6 +18,9 @@
 ## GitHub Link : 
 [https://github.com/EZ7051/SimplyClip](https://github.com/EZ7051/SimplyClip)
 
+## Readme file : 
+[https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/README.md](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/README.md)
+
 ## Score Card : 
 
 | Rubric                                                                                                                                                                                  | Assessment | Evidence                                                                                                                                                                                   |
