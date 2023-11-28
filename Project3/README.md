@@ -12,8 +12,8 @@
 
 
 ## Youtube Video : 
-[![SimplyClip Project 3 DEMO](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/images/SimplyClip_title.jpeg)](https://www.youtube.com/watch?v=CBo6NUFXeF0) <br>
-![YouTube Video Views](https://img.shields.io/youtube/views/CBo6NUFXeF0)
+[![SimplyClip Project 3 DEMO](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/images/SimplyClip_title.jpeg)](https://www.youtube.com/watch?v=sR3Q3ZVW0vo) <br>
+![YouTube Video Views](https://img.shields.io/youtube/views/sR3Q3ZVW0vo)
 
 ## GitHub Link : 
 [https://github.com/EZ7051/SimplyClip](https://github.com/EZ7051/SimplyClip)
