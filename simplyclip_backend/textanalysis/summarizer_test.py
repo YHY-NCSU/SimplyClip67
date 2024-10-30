@@ -8,12 +8,7 @@ import re
 class SummarizeEndpointTest(unittest.TestCase):
     @patch("habanero.cn.content_negotiation")
     def test_summarize_correct_length(self, mock_generate_summary):
-        # Define the expected summary length
-        expected_summary_length = 50  # Example expected length for the summary
-
-        # Mock the generate_summary function to return a summary of the expected length
-        mock_generate_summary.return_value = "x" * expected_summary_length
-
+        expected_summary_length = 50
         summ_input = """
         In the heart of a bustling city, where the skyline was painted with 
         shimmering glass towers and the streets thrummed with the energy of 
