@@ -16,7 +16,7 @@ from . import citation
 def summarize(request, summ_input):
     if request.method == 'GET':
         body_data = summ_input
-        summarized_output = summarizer.generate_summary(body_data)
+        summarized_output = summarizer.generate_summary_v2(body_data)
         return HttpResponse(summarized_output, content_type='text/plain')
 
 
