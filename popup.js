@@ -767,11 +767,11 @@ chrome.storage.local.get('enabled', data => {
     //'switch' class is used for tooltips
     if(enabled==true){
         myButton.checked = enabled
-        switchButton.title="Click here to disable saving your copied text!!"
+        switchButton.title="Disable - Copied text no will no longer be saved"
     }
     else{
         myButton.checked = enabled
-        switchButton.title="Click here to save your copied text!!"
+        switchButton.title="Enable - Save copied text"
     }
 });
 
@@ -780,11 +780,11 @@ myButton.onchange = () => {
     switchButton = document.getElementsByClassName('switch')[0]
     if(enabled==true){
         myButton.checked = enabled
-        switchButton.title="Click here to disable saving your copied text!!"
+        switchButton.title="Disable - Copied text no will no longer be saved"
     }
     else{
         myButton.checked = enabled
-        switchButton.title="Click here to save your copied text!!"
+        switchButton.title="Enable - Save your copied text!!"
     }
     chrome.storage.local.set({enabled:enabled});
 };
@@ -887,11 +887,11 @@ chrome.storage.local.get('darkmode', data => {
     if(darkmode==true){
         myButton2.checked = darkmode
         darkmodeOn()
-        switchButton.title="Click here to close dark mode!!"
+        switchButton.title="Disable dark mode"
     }
     else{
         myButton2.checked = darkmode
-        switchButton.title="Click here to enable dark mode!!"
+        switchButton.title="Enable dark mode"
     }
 });
 
@@ -901,11 +901,11 @@ myButton2.onchange = () => {
     if(darkmode==true){
         myButton2.checked = darkmode
         darkmodeOn()
-        switchButton.title="Click here to close dark mode!!"
+        switchButton.title="Disable dark mode"
     }
     else{
         myButton2.checked = darkmode
-        switchButton.title="Click here to enable dark mode!!"
+        switchButton.title="Enable dark mode"
     }
     chrome.storage.local.set({darkmode:darkmode});
 };
