@@ -116,7 +116,7 @@ function getClipboardText() {
                     if (typeof listcolor !== 'undefined' && typeof listcolor[indexOfItem] !== 'undefined') {
                         color = listcolor[indexOfItem];
                       } else {
-                        color = 'black';
+                        color = document.body.classList.contains('dark_mode') ? 'red' : 'black';
                       }
                     addClipboardListItem(item,color);
                 });
