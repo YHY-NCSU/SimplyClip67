@@ -77,15 +77,19 @@ addButton.addEventListener('click', (event) => {
 
 function getClipboardText() {
 
-    chrome.storage.sync.get(['list','listcolor'], clipboard => {
-        let list = clipboard.list;
-        let listcolor = clipboard.listcolor;
+    chrome.storage.sync.get(['list','listcolor','imageList'], clipboard => {
+        let { list, listcolor, imageList } = clipboard;
+
+        // Fallbacks for undefined lists
+        list = list || [];
+        listcolor = listcolor || [];
+        imageList = imageList || [];
         let emptyDiv = document.getElementById('empty-div');
         let downloadDiv1 = document.getElementById('download-btn1');
         let downloadDiv2 = document.getElementById('download-btn2');
         let searchInput = document.getElementById('searchText');
         let deleteAll = document.getElementById('delete-btn');
-        if (list === undefined || list.length === 0) {
+        if (list === undefined || list.length === 0 || imageList.length === 0 || imageList.length === undefined) {
             emptyDiv.classList.remove('hide-div');
             downloadDiv1.style.display = 'none';
             downloadDiv2.style.display = 'none';
@@ -119,6 +123,10 @@ function getClipboardText() {
                         color = document.body.classList.contains('dark_mode') ? 'red' : 'black';
                       }
                     addClipboardListItem(item,color);
+                });
+
+                imageList.forEach(imageURL => {
+                    addClipboardListItem(null, null, imageURL);
                 });
         }
     });
