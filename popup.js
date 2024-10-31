@@ -867,10 +867,14 @@ function checkMode(){
 
 function darkmodeOn(){
     document.body.classList.add('dark_mode')
+    let listItems = document.querySelectorAll("#clipboard_list li");
+    listItems.forEach(item => item.classList.add('dark_mode'));
 }
 
 function darkmodeOFF(){
     document.body.classList.remove('dark_mode')
+    let listItems = document.querySelectorAll("#clipboard_list li");
+    listItems.forEach(item => item.classList.remove('dark_mode'));
 }
 
 var darkmode = false;
