@@ -552,9 +552,13 @@ function addClipboardListItem(text,item_color) {
                     let list = clipboard.list;
                     let colordata = clipboard.listcolor;
                     let index = list.indexOf(textContent);
+                    if(list == undefined)
+                        list=[];
                     if (index !== -1)
                         list.splice(index, 1);
-                        colordata.splice(index, 1);
+                    if(colordata == undefined)
+                        colordata=[];
+                    colordata.splice(index, 1);
                     list.unshift(textContent);
                     colordata.unshift("black");
                     _clipboardList.innerHTML = "";
@@ -570,6 +574,7 @@ function addClipboardListItem(text,item_color) {
 
 function deleteElem(text){
     chrome.storage.sync.get(['list','listcolor'], clipboard => {
+        
         let list = clipboard.list;
         let colordata = clipboard.listcolor;
         let index = list.indexOf(text);
@@ -753,9 +758,13 @@ var enabled = true;
 var myButton = document.getElementById('toggle-button');
 
 chrome.storage.local.get('enabled', data => {
-    var myButton = document.getElementById('toggle-button');
+    //var myButton = document.getElementById('toggle-button');
+    //REMOVED AS REDUNDANT CODE
     enabled = !!data.enabled;
+    //forces this into a boolean value
     switchButton = document.getElementsByClassName('switch')[0]
+    //finds first element with className 'switch' and assigns to var switchButton
+    //'switch' class is used for tooltips
     if(enabled==true){
         myButton.checked = enabled
         switchButton.title="Click here to disable saving your copied text!!"
