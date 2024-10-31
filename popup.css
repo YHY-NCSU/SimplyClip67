@@ -407,6 +407,29 @@ ul li{
     border-color: gray !important;
   }
 
+  #highlight-search {
+    margin: 10px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.highlight {
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+}
+
+
+
+
+
+
 
 
   .dark_mode {

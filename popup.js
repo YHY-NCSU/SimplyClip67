@@ -77,19 +77,21 @@ addButton.addEventListener('click', (event) => {
 
 function getClipboardText() {
 
-    chrome.storage.sync.get(['list','listcolor','imageList'], clipboard => {
-        let { list, listcolor, imageList } = clipboard;
+    chrome.storage.sync.get(['list','listcolor'], clipboard => {
+      let list=clipboard.list;
+      let listcolor=clipboard.listcolor;
+
 
         // Fallbacks for undefined lists
-        list = list || [];
-        listcolor = listcolor || [];
-        imageList = imageList || [];
+        
+       
+       
         let emptyDiv = document.getElementById('empty-div');
         let downloadDiv1 = document.getElementById('download-btn1');
         let downloadDiv2 = document.getElementById('download-btn2');
         let searchInput = document.getElementById('searchText');
         let deleteAll = document.getElementById('delete-btn');
-        if (list === undefined || list.length === 0 || imageList.length === 0 || imageList.length === undefined) {
+        if (list === undefined || list.length === 0) {
             emptyDiv.classList.remove('hide-div');
             downloadDiv1.style.display = 'none';
             downloadDiv2.style.display = 'none';
@@ -125,9 +127,7 @@ function getClipboardText() {
                     addClipboardListItem(item,color);
                 });
 
-                imageList.forEach(imageURL => {
-                    addClipboardListItem(null, null, imageURL);
-                });
+               
         }
     });
 }
@@ -576,6 +576,28 @@ function addClipboardListItem(text,item_color) {
         let x = document.getElementById("snackbar");
         x.className = "show";
         setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+    });
+}
+
+document.getElementById('searchInput').addEventListener('input', function (event) {
+    const searchTerm = event.target.value.toLowerCase();
+    highlightMatches(searchTerm);
+});
+
+function highlightMatches(searchTerm) {
+    const listItems = document.querySelectorAll('#clipboard_list li p');
+    listItems.forEach(item => {
+        const text = item.textContent;
+        if (searchTerm && text.toLowerCase().includes(searchTerm)) {
+            // Highlight matching text
+            const highlightedText = text.replace(new RegExp(searchTerm, 'gi'), match => {
+                return `<span class="highlight">${match}</span>`;
+            });
+            item.innerHTML = highlightedText; // Set highlighted HTML
+        } else {
+            // Remove highlight if searchTerm is empty or no match
+            item.innerHTML = text;
+        }
     });
 }
 
