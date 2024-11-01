@@ -1,6 +1,7 @@
 
 const assert = require('assert');
 let webdriver = require("selenium-webdriver");
+let chromedriver = require('chromedriver');
 let chrome = require("selenium-webdriver/chrome");
 const {Key,
     By} = require("selenium-webdriver");
@@ -325,3 +326,40 @@ describe('Check Merge functionality',function() {
         driver.quit();
     }).timeout(10000);
 });
+
+//Search highlight feature
+
+describe('Check Search Highlight functionality',function() {
+    it('copied text should exist in SimplyClip clipboard', async function () {
+        // Open the Chrome Browser with a custom profile
+        const options = new chrome.Options()
+            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+
+        // Initialise driver to launch Chrome
+        const driver = new webdriver.Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+
+        // Launch Google.com
+        driver.get('http://google.com');
+
+        const checkbx1 = driver.findElement(By.xpath("/html/body/ul/li[1]/div/input"));
+        checkbx1.click();
+
+        const checkbx2 = driver.findElement(By.xpath("/html/body/ul/li[2]/div/input"));
+        checkbx2.click();
+
+        // Search for merge button
+        const merge = driver.findElement(By.xpath("/html/body/div[1]/div[2]/img"));
+        merge.click();
+
+        // Close the browser
+        driver.close();
+
+        // Quit the browser
+        driver.quit();
+    }).timeout(10000);
+});
+
+
