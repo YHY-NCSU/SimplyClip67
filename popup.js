@@ -155,24 +155,23 @@ function getThumbnail(textContent) {
             isVideo: true,
         };
     }
-    else {
-        let ind = textContent.indexOf('http');
-        if (ind === 0) {
-            let url = new URL(textContent);
-            let ans = "https://favicons.githubusercontent.com/" + url.hostname;
-            return {
-                sourceUrl: textContent,
-                imageUrl: ans,
-                isVideo: false
-            }
-        }
+    else if (textContent.startsWith('http://') || textContent.startsWith('https://')) {
+        let url = new URL(textContent);
+        return {
+            sourceUrl: textContent,
+            imageUrl: "https://favicons.githubusercontent.com/" + url.hostname,
+            isVideo: false,
+            type: 'url'
+        };
     }
     return {
         sourceUrl: "",
-        imageUrl: ""
+        imageUrl: "",
+        isVideo: false,
+        type: 'text'
     }
         ;
-}
+} 
 /**
  * Creates an HTML li element and adds the input text, icon to edit, icon to delete
  * Contains click event listeners for edit and delete icon
@@ -182,6 +181,7 @@ function getThumbnail(textContent) {
  */
 function addClipboardListItem(text,item_color) {
     let { sourceUrl, imageUrl, isVideo, type } = getThumbnail(text);
+    console.log("Thumbnail details:", { sourceUrl, imageUrl, isVideo, type });
     let listItem = document.createElement("li");
     let iconImage = document.createElement("img");
     if (type === 'youtube') {
