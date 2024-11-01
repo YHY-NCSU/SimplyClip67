@@ -78,18 +78,26 @@ addButton.addEventListener('click', (event) => {
 function getClipboardText() {
 
     chrome.storage.sync.get(['list','listcolor'], clipboard => {
-        let list = clipboard.list;
-        let listcolor = clipboard.listcolor;
+      let list=clipboard.list;
+      let listcolor=clipboard.listcolor;
+
+
+        // Fallbacks for undefined lists
+        
+       
+       
         let emptyDiv = document.getElementById('empty-div');
         let downloadDiv1 = document.getElementById('download-btn1');
         let downloadDiv2 = document.getElementById('download-btn2');
         let searchInput = document.getElementById('searchText');
+        let highlightInput = document.getElementById('highlight-search');
         let deleteAll = document.getElementById('delete-btn');
         if (list === undefined || list.length === 0) {
             emptyDiv.classList.remove('hide-div');
             downloadDiv1.style.display = 'none';
             downloadDiv2.style.display = 'none';
             searchInput.style.display = 'none';
+            highlightInput.style.display = 'none';
             deleteAll.style.display = 'none';
         }
         else {
@@ -116,10 +124,12 @@ function getClipboardText() {
                     if (typeof listcolor !== 'undefined' && typeof listcolor[indexOfItem] !== 'undefined') {
                         color = listcolor[indexOfItem];
                       } else {
-                        color = 'black';
+                        color = document.body.classList.contains('dark_mode') ? 'red' : 'black';
                       }
                     addClipboardListItem(item,color);
                 });
+
+               
         }
     });
     getClipboardImages();
@@ -266,24 +276,23 @@ function getThumbnail(textContent) {
             isVideo: true,
         };
     }
-    else {
-        let ind = textContent.indexOf('http');
-        if (ind === 0) {
-            let url = new URL(textContent);
-            let ans = "https://favicons.githubusercontent.com/" + url.hostname;
-            return {
-                sourceUrl: textContent,
-                imageUrl: ans,
-                isVideo: false
-            }
-        }
+    else if (textContent.startsWith('http://') || textContent.startsWith('https://')) {
+        let url = new URL(textContent);
+        return {
+            sourceUrl: textContent,
+            imageUrl: "https://favicons.githubusercontent.com/" + url.hostname,
+            isVideo: false,
+            type: 'url'
+        };
     }
     return {
         sourceUrl: "",
-        imageUrl: ""
+        imageUrl: "",
+        isVideo: false,
+        type: 'text'
     }
         ;
-}
+} 
 /**
  * Creates an HTML li element and adds the input text, icon to edit, icon to delete
  * Contains click event listeners for edit and delete icon
@@ -291,10 +300,71 @@ function getThumbnail(textContent) {
  * @example
  * addClipboardListItem("123")
  */
+// Function to enable highlighting mode
+function enableHighlightMode(element) {
+    let selectedText = "";
+
+    // Listen for selection
+    element.addEventListener("mouseup", function onMouseUp() {
+        const selection = window.getSelection();
+        selectedText = selection.toString();
+        
+        if (selectedText) {
+            const range = selection.getRangeAt(0);
+            const highlightSpan = document.createElement("span");
+            highlightSpan.classList.add("highlighted-text");
+            highlightSpan.style.backgroundColor = "yellow";
+            highlightSpan.textContent = selectedText;
+            
+            range.deleteContents();
+            range.insertNode(highlightSpan);
+            
+            saveHighlight(element.getAttribute("data-text"), element.innerHTML);
+            
+            // Remove selection after highlighting
+            window.getSelection().removeAllRanges();
+            element.removeEventListener("mouseup", onMouseUp);  // Remove listener after highlight
+        }
+    });
+}
+
+// Save highlighted text to Chrome storage
+function saveHighlight(originalText, highlightedHTML) {
+    chrome.storage.sync.get(['highlights'], data => {
+        const highlights = data.highlights || {};
+        highlights[originalText] = highlightedHTML;  // Store highlighted HTML by original text
+        chrome.storage.sync.set({ highlights });
+    });
+}
+
+// Apply saved highlights when loading clipboard items
+function applySavedHighlights(element, originalText) {
+    chrome.storage.sync.get(['highlights'], data => {
+        const highlights = data.highlights || {};
+        if (highlights[originalText]) {
+            element.innerHTML = highlights[originalText];  // Set highlighted HTML
+        }
+    });
+}
+
+
 function addClipboardListItem(text,item_color) {
-    let { sourceUrl, imageUrl, isVideo } = getThumbnail(text);
-    let listItem = document.createElement("li"),
-        listDiv = document.createElement("div"),
+    let { sourceUrl, imageUrl, isVideo, type } = getThumbnail(text);
+    console.log("Thumbnail details:", { sourceUrl, imageUrl, isVideo, type });
+    let listItem = document.createElement("li");
+    let iconImage = document.createElement("img");
+    if (type === 'youtube') {
+        iconImage.src = './images/youtube_icon.png';
+    } else if (type === 'url') {
+        iconImage.src = './images/url_icon.png';
+    } else {
+        iconImage.src = './images/default_icon.png';  // Default icon for text or unknown types
+    }
+    if (type === 'youtube') listItem.classList.add("youtube-link");
+    else if (type === 'url') listItem.classList.add("general-link");
+    else listItem.classList.add("text-entry");
+       let listDiv = document.createElement("div"),
+       highlightButton = document.createElement("button"),
         deleteDiv = document.createElement("div"),
         editDiv = document.createElement("div"),
         colorTabsDiv = document.createElement("div"),
@@ -306,6 +376,15 @@ function addClipboardListItem(text,item_color) {
         downArrowDiv = document.createElement("div");
         summDiv = document.createElement("div")
         citDiv = document.createElement("div")
+
+        // Set up highlight button
+    //highlightButton.textContent = "Highlight";
+    //highlightButton.classList.add("highlight-button");
+    //highlightButton.setAttribute("title", "Select text to highlight");
+    //highlightButton.addEventListener('click', () => enableHighlightMode(listPara));
+
+    // Apply existing highlights from storage if any
+    //applySavedHighlights(listPara, text);
 
     editImage.setAttribute("data-toggle", "tooltip");
     editImage.setAttribute("data-placement", "bottom");
@@ -338,6 +417,8 @@ function addClipboardListItem(text,item_color) {
     let listPara = document.createElement("p");
     let listText = document.createTextNode(text);
     listPara.style.color = item_color;
+    listPara.style.height = 'auto';
+    listPara.style.whiteSpace = 'pre-wrap'; // Enables text wrapping
     listPara.setAttribute("data-toggle", "tooltip");
     listPara.setAttribute("data-placement", "bottom");
     listPara.setAttribute("title", "Click to copy the below text:\n" + text + "\n" + "Word count:\n"+text.split(' ').length);
@@ -690,9 +771,13 @@ function addClipboardListItem(text,item_color) {
                     let list = clipboard.list;
                     let colordata = clipboard.listcolor;
                     let index = list.indexOf(textContent);
+                    if(list == undefined)
+                        list=[];
                     if (index !== -1)
                         list.splice(index, 1);
-                        colordata.splice(index, 1);
+                    if(colordata == undefined)
+                        colordata=[];
+                    colordata.splice(index, 1);
                     list.unshift(textContent);
                     colordata.unshift("black");
                     _clipboardList.innerHTML = "";
@@ -713,14 +798,44 @@ function showSnackbar(message) {
   }
 
   
+document.getElementById('searchInputForHighlight').addEventListener('input', function (event) {
+    const searchTerm = event.target.value.toLowerCase();
+    highlightMatches(searchTerm);
+});
+
+function highlightMatches(searchTerm) {
+    const listItems = document.querySelectorAll('#clipboard_list li p');
+    listItems.forEach(item => {
+        const text = item.textContent;
+        if (searchTerm && text.toLowerCase().includes(searchTerm)) {
+            // Highlight matching text
+            const highlightedText = text.replace(new RegExp(searchTerm, 'gi'), match => {
+                return `<span class="highlight">${match}</span>`;
+            });
+            item.innerHTML = highlightedText; // Set highlighted HTML
+            //scroll item into view
+            const highlightSpan = item.querySelector(".highlight");
+            if (highlightSpan) {
+                highlightSpan.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+            }
+        } else {
+            // Remove highlight if searchTerm is empty or no match
+            item.innerHTML = text;
+        }
+    });
+}
+
 
 function deleteElem(text){
     chrome.storage.sync.get(['list','listcolor'], clipboard => {
+        
         let list = clipboard.list;
         let colordata = clipboard.listcolor;
+        let highlights = clipboard.highlights;
         let index = list.indexOf(text);
         list.splice(index, 1);
         colordata.splice(index, 1);
+        //delete highlights[text]; 
         _clipboardList.innerHTML = "";
         chrome.storage.sync.get(['listURL'], url => {
             let urlList = url.listURL;
@@ -899,16 +1014,20 @@ var enabled = true;
 var myButton = document.getElementById('toggle-button');
 
 chrome.storage.local.get('enabled', data => {
-    var myButton = document.getElementById('toggle-button');
+    //var myButton = document.getElementById('toggle-button');
+    //REMOVED AS REDUNDANT CODE
     enabled = !!data.enabled;
+    //forces this into a boolean value
     switchButton = document.getElementsByClassName('switch')[0]
+    //finds first element with className 'switch' and assigns to var switchButton
+    //'switch' class is used for tooltips
     if(enabled==true){
         myButton.checked = enabled
-        switchButton.title="Click here to disable saving your copied text!!"
+        switchButton.title="Disable - Copied text no will no longer be saved"
     }
     else{
         myButton.checked = enabled
-        switchButton.title="Click here to save your copied text!!"
+        switchButton.title="Enable - Save copied text"
     }
 });
 
@@ -917,11 +1036,11 @@ myButton.onchange = () => {
     switchButton = document.getElementsByClassName('switch')[0]
     if(enabled==true){
         myButton.checked = enabled
-        switchButton.title="Click here to disable saving your copied text!!"
+        switchButton.title="Disable - Copied text no will no longer be saved"
     }
     else{
         myButton.checked = enabled
-        switchButton.title="Click here to save your copied text!!"
+        switchButton.title="Enable - Save your copied text!!"
     }
     chrome.storage.local.set({enabled:enabled});
 };
@@ -1004,14 +1123,53 @@ function checkMode(){
 
 function darkmodeOn(){
     document.body.classList.add('dark_mode')
+    let listItems = document.querySelectorAll("#clipboard_list li");
+    listItems.forEach(item => item.classList.add('dark_mode'));
 }
 
 function darkmodeOFF(){
     document.body.classList.remove('dark_mode')
+    let listItems = document.querySelectorAll("#clipboard_list li");
+    listItems.forEach(item => item.classList.remove('dark_mode'));
 }
 
 var darkmode = false;
 var myButton2 = document.getElementById('dark_mode');
+
+// function to categorize list based on content
+
+function getThumbnail(textContent) {
+    // Detect if it's a YouTube link
+    if (textContent.startsWith('https://www.youtube.com/') || textContent.includes('youtube.com/watch?v=')) {
+        let videoId = new URLSearchParams(new URL(textContent).search).get('v');
+        let url = `https://img.youtube.com/vi/${videoId}/1.jpg`;
+        return {
+            sourceUrl: textContent,
+            imageUrl: url,
+            isVideo: true,
+            type: 'youtube'
+        };
+    } else if (textContent.startsWith('http://') || textContent.startsWith('https://')) {
+        // General URL detection
+        let url = new URL(textContent);
+        let iconUrl = `https://favicons.githubusercontent.com/${url.hostname}`;
+        return {
+            sourceUrl: textContent,
+            imageUrl: iconUrl,
+            isVideo: false,
+            type: 'url'
+        };
+    } else {
+        // Not a URL
+        return {
+            sourceUrl: "",
+            imageUrl: "",
+            isVideo: false,
+            type: 'text'
+        };
+    }
+}
+
 
 chrome.storage.local.get('darkmode', data => {
     var myButton2 = document.getElementById('dark_mode');
@@ -1020,11 +1178,11 @@ chrome.storage.local.get('darkmode', data => {
     if(darkmode==true){
         myButton2.checked = darkmode
         darkmodeOn()
-        switchButton.title="Click here to close dark mode!!"
+        switchButton.title="Disable dark mode"
     }
     else{
         myButton2.checked = darkmode
-        switchButton.title="Click here to enable dark mode!!"
+        switchButton.title="Enable dark mode"
     }
 });
 
@@ -1034,11 +1192,11 @@ myButton2.onchange = () => {
     if(darkmode==true){
         myButton2.checked = darkmode
         darkmodeOn()
-        switchButton.title="Click here to close dark mode!!"
+        switchButton.title="Disable dark mode"
     }
     else{
         myButton2.checked = darkmode
-        switchButton.title="Click here to enable dark mode!!"
+        switchButton.title="Enable dark mode"
     }
     chrome.storage.local.set({darkmode:darkmode});
 };
