@@ -1,7 +1,9 @@
 const assert = require('assert');
 let webdriver = require("selenium-webdriver");
 let chrome = require("selenium-webdriver/chrome");
-const { Key, By } = require("selenium-webdriver");
+
+const { Builder, By, Key, until } = require('selenium-webdriver');
+
 require('chromedriver');
 
 describe('Check search and highlight input functionality', function () {
