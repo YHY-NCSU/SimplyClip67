@@ -18,24 +18,59 @@
  *SOFTWARE.
  */
 
-let _previousData="";
-let _maxListSize = 100;
-let time_interval_set = undefined;
-const readClipboardText = ()=>{
-    chrome.storage.local.get('enabled', data => {
-        if(data.enabled==true){
-            navigator.clipboard.readText()
-                .then(clipboardText=>{
-                    if(clipboardText.length>0 && clipboardText!==_previousData){
-                        console.log("Herrrrrrrrrrreeeeeeeeee")
-                        setClipboardText(clipboardText);
-                        _previousData = clipboardText
-                    }
-                })
-                .catch(err=>console.log(err))
-        }
-    })
-}
+ let _previousData = "";
+ let _maxListSize = 100;
+ let time_interval_set = undefined;
+ 
+ const readClipboardData = () => {
+   chrome.storage.local.get('enabled', data => {
+     if (data.enabled == true) {
+       navigator.clipboard.read().then(clipboardItems => {
+         for (const clipboardItem of clipboardItems) {
+           for (const type of clipboardItem.types) {
+             if (type.startsWith('image/') || type === 'image/tiff') {
+               clipboardItem.getType(type).then(blob => {
+                 if (_previousData !== blob) {
+                   setClipboardImage(blob);
+                   _previousData = blob;
+                 }
+               });
+             } else if (type === 'text/plain') {
+               clipboardItem.getType('text/plain').then(blob => {
+                 blob.text().then(text => {
+                   if (text.length > 0 && text !== _previousData) {
+                     setClipboardText(text);
+                     _previousData = text;
+                   }
+                 });
+               });
+             }
+           }
+         }
+       }).catch(err => console.log(err));
+     }
+   });
+ };
+ 
+ const setClipboardImage = async (imageBlob) => {
+   chrome.storage.local.get(['imageList'], function (result) {
+     let imageList = result.imageList || [];
+     if (imageList.length === _maxListSize) {
+       imageList.pop();
+     }
+     const reader = new FileReader();
+     reader.onload = function (e) {
+       const imageDataUrl = e.target.result;
+       if (!imageList.includes(imageDataUrl)) {
+         imageList.unshift(imageDataUrl);
+         chrome.storage.local.set({ 'imageList': imageList }, () => {
+           console.log("Debug: Image pushed to imageList");
+         });
+       }
+     };
+     reader.readAsDataURL(imageBlob);
+   });
+ };
 
 
 const setClipboardText = async (clipText) => {
@@ -85,14 +120,14 @@ const setClipboardText = async (clipText) => {
 
 window.addEventListener('mouseout',function(){
     if(time_interval_set===undefined)
-        time_interval_set = setInterval(readClipboardText,2000)
+        time_interval_set = setInterval(readClipboardData,2000)
 })
 window.addEventListener('mouseover',function(){
     clearInterval(time_interval_set);
     time_interval_set=undefined;
 })
 window.addEventListener('copy',function(){
-    readClipboardText();
+    readClipboardData();
 })
 document.addEventListener('visibilitychange',function(){
     if(document.hidden){
@@ -100,6 +135,6 @@ document.addEventListener('visibilitychange',function(){
         time_interval_set=undefined;
     }else{
         if(time_interval_set==undefined)
-            time_interval_set = setInterval(readClipboardText,2000);
+            time_interval_set = setInterval(readClipboardData,2000);
     }
 })

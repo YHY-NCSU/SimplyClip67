@@ -122,7 +122,128 @@ function getClipboardText() {
                 });
         }
     });
+    getClipboardImages();
 }
+
+function getClipboardImages() {
+    chrome.storage.local.get(['imageList'], result => {
+      let imageList = result.imageList || [];
+      if (imageList.length === 0) {
+        // Handle empty image list if necessary
+      } else {
+        imageList.forEach(imageDataUrl => {
+          addClipboardImageItem(imageDataUrl);
+        });
+      }
+    });
+}
+  
+function addClipboardImageItem(imageDataUrl) {
+    let listItem = document.createElement("li"),
+      listDiv = document.createElement("div"),
+      deleteDiv = document.createElement("div"),
+      upArrowDiv = document.createElement("div"),
+      downArrowDiv = document.createElement("div"),
+      contentDiv = document.createElement("div"),
+      imageElement = document.createElement("img"),
+      deleteImage = document.createElement("img"),
+      upArrowImage = document.createElement("img"),
+      downArrowImage = document.createElement("img");
+  
+    imageElement.src = imageDataUrl;
+    imageElement.style.maxWidth = "100%";
+    imageElement.style.maxHeight = "100px";
+    imageElement.addEventListener("click", () => {
+      copyImageToClipboard(imageDataUrl);
+      showSnackbar("Image copied!");
+    });
+  
+    listDiv.appendChild(imageElement);
+    listDiv.classList.add("list-div");
+  
+    deleteImage.src = "./images/delete-note.png";
+    deleteImage.classList.add("delete");
+    deleteImage.setAttribute("data-toggle", "tooltip");
+    deleteImage.setAttribute("title", "Click to delete the image entry!");
+  
+    upArrowImage.src = "./images/upArrow.png";
+    upArrowImage.classList.add("upArrow");
+    upArrowImage.setAttribute("data-toggle", "tooltip");
+    upArrowImage.setAttribute("title", "Click to move up the image entry!");
+  
+    downArrowImage.src = "./images/downArrow.png";
+    downArrowImage.classList.add("downArrow");
+    downArrowImage.setAttribute("data-toggle", "tooltip");
+    downArrowImage.setAttribute("title", "Click to move down the image entry!");
+  
+    deleteDiv.appendChild(deleteImage);
+    upArrowDiv.appendChild(upArrowImage);
+    downArrowDiv.appendChild(downArrowImage);
+  
+    contentDiv.appendChild(listDiv);
+    contentDiv.appendChild(deleteDiv);
+    contentDiv.appendChild(upArrowDiv);
+    contentDiv.appendChild(downArrowDiv);
+    contentDiv.classList.add("content");
+    listItem.appendChild(contentDiv);
+    _clipboardList.appendChild(listItem);
+  
+    deleteImage.addEventListener("click", () => {
+      deleteImageItem(imageDataUrl);
+    });
+  
+    upArrowImage.addEventListener("click", () => {
+      moveImageItemUp(imageDataUrl);
+    });
+  
+    downArrowImage.addEventListener("click", () => {
+      moveImageItemDown(imageDataUrl);
+    });
+  }
+  
+  function deleteImageItem(imageDataUrl) {
+    chrome.storage.local.get(["imageList"], function (result) {
+      let imageList = result.imageList || [];
+      let index = imageList.indexOf(imageDataUrl);
+      if (index !== -1) {
+        imageList.splice(index, 1);
+        chrome.storage.local.set({ imageList: imageList }, () => {
+          _clipboardList.innerHTML = "";
+          getClipboardText();
+        });
+      }
+    });
+  }
+  
+  function moveImageItemUp(imageDataUrl) {
+    chrome.storage.local.get(["imageList"], function (result) {
+      let imageList = result.imageList || [];
+      let index = imageList.indexOf(imageDataUrl);
+      if (index > 0) {
+        [imageList[index - 1], imageList[index]] = [imageList[index], imageList[index - 1]];
+        chrome.storage.local.set({ imageList: imageList }, () => {
+          _clipboardList.innerHTML = "";
+          getClipboardText();
+        });
+      }
+    });
+  }
+  
+  function moveImageItemDown(imageDataUrl) {
+    chrome.storage.local.get(["imageList"], function (result) {
+      let imageList = result.imageList || [];
+      let index = imageList.indexOf(imageDataUrl);
+      if (index < imageList.length - 1) {
+        [imageList[index], imageList[index + 1]] = [imageList[index + 1], imageList[index]];
+        chrome.storage.local.set({ imageList: imageList }, () => {
+          _clipboardList.innerHTML = "";
+          getClipboardText();
+        });
+      }
+    });
+  }
+  
+  
 /**
  * Gets the source URL and the image url for the copied image/text
  * @param {*} textContent
