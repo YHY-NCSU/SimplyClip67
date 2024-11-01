@@ -53,3 +53,40 @@ describe('Check search and highlight input functionality', function () {
         }
     }).timeout(15000); // Increase timeout if necessary
 });
+
+
+describe('Check URL icon display for clipboard items that are URLs', function () {
+    it('should show a URL icon for clipboard items that are URLs in SimplyClip', async function () {
+        // Open the Chrome Browser with a custom profile
+        const options = new chrome.Options()
+            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+
+        // Initialise driver to launch Chrome
+        const driver = new webdriver.Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+
+        try {
+            // Launch SimplyClip page or relevant web app page
+            await driver.get('http://localhost:3000'); // Replace with actual URL if needed
+
+            // Locate a clipboard item that is a URL
+            const clipboardItem = await driver.findElement(By.xpath("//div[contains(@class, 'clipboard-item') and contains(text(), 'http')]"));
+            
+            // Check if the URL icon is displayed next to the clipboard item
+            const urlIcon = await clipboardItem.findElement(By.css(".url-icon"));
+            const isDisplayed = await urlIcon.isDisplayed();
+            
+            // Assert that the URL icon is visible
+            assert(isDisplayed, "URL icon is not displayed for URL clipboard items");
+
+        } finally {
+            // Close the browser
+            await driver.close();
+
+            // Quit the browser
+            await driver.quit();
+        }
+    }).timeout(15000); // Increase timeout if necessary
+});
