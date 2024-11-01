@@ -1,3 +1,4 @@
+import json
 import os
 import pdb
 from os.path import basename
@@ -59,4 +60,31 @@ def fetch(request, summary_in):
             return response
 
 
+@csrf_exempt
+def summarize_all(request):
+    if request.method == 'POST':
+        try:
+            # Extract and parse the list of texts
+            texts_json = request.POST.get('texts', '[]')
+            texts = json.loads(texts_json)
+            
+            if not isinstance(texts, list) or not all(isinstance(text, str) for text in texts):
+                return HttpResponse('Invalid data format.', status=400)
 
+            if not texts:
+                return HttpResponse('No texts provided for summarization.', status=400)
+
+            # Concatenate all texts into a single string
+            combined_text = ' '.join(texts)
+
+            # Generate summary using the existing summarizer
+            summary = summarizer.generate_summary_v2(combined_text, max_words=300)  # Adjust max_words as needed
+
+            return HttpResponse(summary, content_type='text/plain')
+
+        except json.JSONDecodeError:
+            return HttpResponse('Invalid JSON data.', status=400)
+        except Exception as e:
+            return HttpResponse(f'Error during summarization: {str(e)}', status=500)
+    else:
+        return HttpResponse('Invalid request method.', status=400)

@@ -420,3 +420,20 @@ ul li{
     padding-top: 7px;
     cursor: pointer;
 }
+
+#summarize-btn {
+    float: right; /* Position it to the right */
+    margin-top: 20px;
+    padding-top: 7px;
+    cursor: pointer;
+ }
+ 
+ #summarize-btn:hover {
+    transform: translateY(1px);
+ }
+ 
+ /* Optional: Add specific styles for the summarize icon */
+ #summarize-btn img {
+    width: 35px;
+    height: 35px;
+ }

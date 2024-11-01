@@ -9,5 +9,5 @@ urlpatterns = [
     path('summarize/<str:summ_input>/', views.summarize, name="summarize"),
     path('getcitation', views.getcitation, name="getcitation"),
     re_path(r'^getcitation/(?P<citation_input>.+)$', views.getcitation, name="getcitation"),
-
+    path('summarize_all', views.summarize_all, name="summarize_all"),
 ]
