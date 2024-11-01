@@ -179,6 +179,54 @@ function getThumbnail(textContent) {
  * @example
  * addClipboardListItem("123")
  */
+// Function to enable highlighting mode
+function enableHighlightMode(element) {
+    let selectedText = "";
+
+    // Listen for selection
+    element.addEventListener("mouseup", function onMouseUp() {
+        const selection = window.getSelection();
+        selectedText = selection.toString();
+        
+        if (selectedText) {
+            const range = selection.getRangeAt(0);
+            const highlightSpan = document.createElement("span");
+            highlightSpan.classList.add("highlighted-text");
+            highlightSpan.style.backgroundColor = "yellow";
+            highlightSpan.textContent = selectedText;
+            
+            range.deleteContents();
+            range.insertNode(highlightSpan);
+            
+            saveHighlight(element.getAttribute("data-text"), element.innerHTML);
+            
+            // Remove selection after highlighting
+            window.getSelection().removeAllRanges();
+            element.removeEventListener("mouseup", onMouseUp);  // Remove listener after highlight
+        }
+    });
+}
+
+// Save highlighted text to Chrome storage
+function saveHighlight(originalText, highlightedHTML) {
+    chrome.storage.sync.get(['highlights'], data => {
+        const highlights = data.highlights || {};
+        highlights[originalText] = highlightedHTML;  // Store highlighted HTML by original text
+        chrome.storage.sync.set({ highlights });
+    });
+}
+
+// Apply saved highlights when loading clipboard items
+function applySavedHighlights(element, originalText) {
+    chrome.storage.sync.get(['highlights'], data => {
+        const highlights = data.highlights || {};
+        if (highlights[originalText]) {
+            element.innerHTML = highlights[originalText];  // Set highlighted HTML
+        }
+    });
+}
+
+
 function addClipboardListItem(text,item_color) {
     let { sourceUrl, imageUrl, isVideo, type } = getThumbnail(text);
     console.log("Thumbnail details:", { sourceUrl, imageUrl, isVideo, type });
@@ -195,6 +243,7 @@ function addClipboardListItem(text,item_color) {
     else if (type === 'url') listItem.classList.add("general-link");
     else listItem.classList.add("text-entry");
        let listDiv = document.createElement("div"),
+       highlightButton = document.createElement("button"),
         deleteDiv = document.createElement("div"),
         editDiv = document.createElement("div"),
         colorTabsDiv = document.createElement("div"),
@@ -206,6 +255,15 @@ function addClipboardListItem(text,item_color) {
         downArrowDiv = document.createElement("div");
         summDiv = document.createElement("div")
         citDiv = document.createElement("div")
+
+        // Set up highlight button
+    //highlightButton.textContent = "Highlight";
+    //highlightButton.classList.add("highlight-button");
+    //highlightButton.setAttribute("title", "Select text to highlight");
+    //highlightButton.addEventListener('click', () => enableHighlightMode(listPara));
+
+    // Apply existing highlights from storage if any
+    //applySavedHighlights(listPara, text);
 
     editImage.setAttribute("data-toggle", "tooltip");
     editImage.setAttribute("data-placement", "bottom");
@@ -627,9 +685,11 @@ function deleteElem(text){
         
         let list = clipboard.list;
         let colordata = clipboard.listcolor;
+        let highlights = clipboard.highlights;
         let index = list.indexOf(text);
         list.splice(index, 1);
         colordata.splice(index, 1);
+        //delete highlights[text]; 
         _clipboardList.innerHTML = "";
         chrome.storage.sync.get(['listURL'], url => {
             let urlList = url.listURL;

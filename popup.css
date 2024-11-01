@@ -460,6 +460,10 @@ ul li{
     cursor: pointer;
 }
 
+.highlighted-text {
+    background-color: yellow;
+}
+
 /* text wrapping css */
 
 .list-div p {
