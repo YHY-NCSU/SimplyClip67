@@ -411,7 +411,7 @@ ul li{
     margin: 10px;
 }
 
-#searchInput {
+#searchInputForHighlight {
     width: 100%;
     padding: 8px;
     font-size: 14px;
@@ -426,6 +426,11 @@ ul li{
 }
 
 
+
+.text-entry p {
+    /* Styles for non-URL text entries */
+    font-style: italic;
+}
 
 
 

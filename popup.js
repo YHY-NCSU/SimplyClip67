@@ -90,12 +90,14 @@ function getClipboardText() {
         let downloadDiv1 = document.getElementById('download-btn1');
         let downloadDiv2 = document.getElementById('download-btn2');
         let searchInput = document.getElementById('searchText');
+        let highlightInput = document.getElementById('highlight-search');
         let deleteAll = document.getElementById('delete-btn');
         if (list === undefined || list.length === 0) {
             emptyDiv.classList.remove('hide-div');
             downloadDiv1.style.display = 'none';
             downloadDiv2.style.display = 'none';
             searchInput.style.display = 'none';
+            highlightInput.style.display = 'none';
             deleteAll.style.display = 'none';
         }
         else {
@@ -179,9 +181,20 @@ function getThumbnail(textContent) {
  * addClipboardListItem("123")
  */
 function addClipboardListItem(text,item_color) {
-    let { sourceUrl, imageUrl, isVideo } = getThumbnail(text);
-    let listItem = document.createElement("li"),
-        listDiv = document.createElement("div"),
+    let { sourceUrl, imageUrl, isVideo, type } = getThumbnail(text);
+    let listItem = document.createElement("li");
+    let iconImage = document.createElement("img");
+    if (type === 'youtube') {
+        iconImage.src = './images/youtube_icon.png';
+    } else if (type === 'url') {
+        iconImage.src = './images/url_icon.png';
+    } else {
+        iconImage.src = './images/default_icon.png';  // Default icon for text or unknown types
+    }
+    if (type === 'youtube') listItem.classList.add("youtube-link");
+    else if (type === 'url') listItem.classList.add("general-link");
+    else listItem.classList.add("text-entry");
+       let listDiv = document.createElement("div"),
         deleteDiv = document.createElement("div"),
         editDiv = document.createElement("div"),
         colorTabsDiv = document.createElement("div"),
@@ -581,7 +594,7 @@ function addClipboardListItem(text,item_color) {
     });
 }
 
-document.getElementById('searchInput').addEventListener('input', function (event) {
+document.getElementById('searchInputForHighlight').addEventListener('input', function (event) {
     const searchTerm = event.target.value.toLowerCase();
     highlightMatches(searchTerm);
 });
@@ -916,6 +929,41 @@ function darkmodeOFF(){
 
 var darkmode = false;
 var myButton2 = document.getElementById('dark_mode');
+
+// function to categorize list based on content
+
+function getThumbnail(textContent) {
+    // Detect if it's a YouTube link
+    if (textContent.startsWith('https://www.youtube.com/') || textContent.includes('youtube.com/watch?v=')) {
+        let videoId = new URLSearchParams(new URL(textContent).search).get('v');
+        let url = `https://img.youtube.com/vi/${videoId}/1.jpg`;
+        return {
+            sourceUrl: textContent,
+            imageUrl: url,
+            isVideo: true,
+            type: 'youtube'
+        };
+    } else if (textContent.startsWith('http://') || textContent.startsWith('https://')) {
+        // General URL detection
+        let url = new URL(textContent);
+        let iconUrl = `https://favicons.githubusercontent.com/${url.hostname}`;
+        return {
+            sourceUrl: textContent,
+            imageUrl: iconUrl,
+            isVideo: false,
+            type: 'url'
+        };
+    } else {
+        // Not a URL
+        return {
+            sourceUrl: "",
+            imageUrl: "",
+            isVideo: false,
+            type: 'text'
+        };
+    }
+}
+
 
 chrome.storage.local.get('darkmode', data => {
     var myButton2 = document.getElementById('dark_mode');
