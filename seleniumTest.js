@@ -1,6 +1,7 @@
 
 const assert = require('assert');
 let webdriver = require("selenium-webdriver");
+let chromedriver = require('chromedriver');
 let chrome = require("selenium-webdriver/chrome");
 const {Key,
     By} = require("selenium-webdriver");
