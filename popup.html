@@ -15,11 +15,11 @@
 <!--   I-Frame for script injection in order to test the extension using automated script. Uncomment the below line to test the code-->
 <!--   <iframe src="./test/test.html" style="width: 0px;height: 0px;border:0;" title="description"></iframe>-->
   <div class="container-fluid p-5 text-black">
-    <label class="switch" title="Click here to save your copied text!!">
+    <label class="switch" title="Enable to save  copied text">
       <input type="checkbox" id="toggle-button" >
       <span class="slider round"></span>
     </label>
-    <label class="switch" title="Click here to swith to dark mode">
+    <label class="switch" title="Enable dark mode">
       <input type="checkbox" id="dark_mode" >
       <span class="slider round"></span>
     </label>
@@ -34,7 +34,7 @@
         </div>
 
       </div>
-      <p id = "header" class="animated-text">Effortless copy and edit to clipboard!!</p>
+      <p id = "header" class="animated-text">Effortless cut and edit to clipboard!!</p>
       <div id="download-btn1">
         <img class='csv' src="images/csv-note.png" width = "35px" height="35px" alt="download" title="Click here to export to CSV">
         <!-- <img class='doc' src="images/doc-note.png" width = "35px" height="35px" alt="download" title="Click here to export to DOC"> -->
@@ -57,9 +57,13 @@
     </div>
 
   </div>
-  <div class="text-left" id="search">
-    <textarea id="searchText" placeholder="search for text" width = 80% autofocus></textarea>
-  </div>
+   <div class="text-left" id="search">
+    <textarea id="searchText" placeholder="Find copied text!" width = 80% autofocus></textarea>
+  </div> 
+
+  <div class="text-left" id="highlight-search">
+    <input type="text" id="searchInputForHighlight" placeholder="Search and highlight..." />
+</div>
 
   <!--
   <input id="addrow" type="button" value="Add" title="Click to add a new row" /> -->
