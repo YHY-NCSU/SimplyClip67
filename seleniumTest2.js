@@ -7,8 +7,7 @@ require('chromedriver');
 describe('Check search and highlight input functionality', function () {
     it('should input text in the search bar and highlight matching text in SimplyClip clipboard', async function () {
         // Open the Chrome Browser with a custom profile
-        const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+        const options = new chrome.Options();
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -58,8 +57,7 @@ describe('Check search and highlight input functionality', function () {
 describe('Check URL icon display for clipboard items that are URLs', function () {
     it('should show a URL icon for clipboard items that are URLs in SimplyClip', async function () {
         // Open the Chrome Browser with a custom profile
-        const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+        const options = new chrome.Options();
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -94,8 +92,8 @@ describe('Check URL icon display for clipboard items that are URLs', function ()
 describe('Check YouTube icon display for clipboard items that are YouTube links', function () {
     it('should show a YouTube icon for clipboard items that are YouTube links in SimplyClip', async function () {
         // Open the Chrome Browser with a custom profile
-        const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+        const options = new chrome.Options();
+            
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -130,8 +128,8 @@ describe('Check YouTube icon display for clipboard items that are YouTube links'
 describe('Check URL icon absence for clipboard items that are YouTube links', function () {
     it('should not show a URL icon for clipboard items that are YouTube links in SimplyClip', async function () {
         // Open the Chrome Browser with a custom profile
-        const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+        const options = new chrome.Options();
+            
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -168,4 +166,57 @@ describe('Check URL icon absence for clipboard items that are YouTube links', fu
     }).timeout(15000); // Increase timeout if necessary
 });
 
+describe('Clipboard Search Functionality to filter out items with specific text', function () {
+    it('should display only clipboard items matching the search input text in SimplyClip', async function () {
+        // Open the Chrome Browser with a custom profile if needed
+        const options = new chrome.Options();
+       
 
+        // Initialize driver to launch Chrome
+        const driver = new Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+
+        try {
+            // Launch SimplyClip page or relevant web app page
+            await driver.get('http://localhost:3000'); // Replace with actual URL if needed
+
+            // Wait until the page is loaded and the clipboard items are present
+            await driver.wait(until.elementLocated(By.css('.clipboard-item')), 10000);
+
+            // Input text into the search input box
+            const searchInput = await driver.findElement(By.id('search-input')); // Adjust selector if necessary
+            const searchText = 'copy'; // The text to search for
+            await searchInput.sendKeys(searchText);
+
+            // Wait for the search results to update (adjust the wait time as necessary)
+            await driver.sleep(1000);
+
+            // Get all clipboard items
+            const clipboardItems = await driver.findElements(By.css('.clipboard-item'));
+
+            // Collect displayed clipboard items
+            let displayedItems = [];
+            for (let item of clipboardItems) {
+                const isDisplayed = await item.isDisplayed();
+                if (isDisplayed) {
+                    const text = await item.getText();
+                    displayedItems.push(text.trim());
+                }
+            }
+
+            // Expected items that should be displayed (define these based on your app's data)
+            // For example, assume the items containing 'copy' are:
+            const expectedItems = ['Copy this text', 'Text to be copied'];
+
+            // Assert that only the expected items are displayed
+            assert.strictEqual(displayedItems.length, expectedItems.length, 'Number of displayed items does not match expected number');
+            assert.deepStrictEqual(displayedItems.sort(), expectedItems.sort(), 'Displayed items do not match expected items');
+
+        } finally {
+            // Close the browser
+            await driver.quit();
+        }
+    }).timeout(20000); // Increase timeout if necessary
+});
