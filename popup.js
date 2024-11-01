@@ -225,6 +225,8 @@ function addClipboardListItem(text,item_color) {
     let listPara = document.createElement("p");
     let listText = document.createTextNode(text);
     listPara.style.color = item_color;
+    listPara.style.height = 'auto';
+    listPara.style.whiteSpace = 'pre-wrap'; // Enables text wrapping
     listPara.setAttribute("data-toggle", "tooltip");
     listPara.setAttribute("data-placement", "bottom");
     listPara.setAttribute("title", "Click to copy the below text:\n" + text + "\n" + "Word count:\n"+text.split(' ').length);

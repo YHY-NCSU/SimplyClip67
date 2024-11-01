@@ -454,3 +454,24 @@ ul li{
     padding-top: 7px;
     cursor: pointer;
 }
+
+/* text wrapping css */
+
+.list-div p {
+    white-space: pre-wrap; /* Allows text wrapping */
+    border: 1px solid #ddd; /* Adds a border */
+    padding: 8px; /* Adjust padding for readability */
+    border-radius: 4px; /* Rounded border for aesthetic */
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2); /* Optional shadow */
+    height: auto; /* Adjust height based on content */
+    max-height: 100px; /* Set a reasonable max height */
+    overflow-y: auto; /* Adds scroll if text exceeds max height */
+}
+
+/* adjust list item height based on content */
+
+ul li {
+    height: auto;
+}
+
+
