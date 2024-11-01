@@ -596,6 +596,11 @@ function highlightMatches(searchTerm) {
                 return `<span class="highlight">${match}</span>`;
             });
             item.innerHTML = highlightedText; // Set highlighted HTML
+            //scroll item into view
+            const highlightSpan = item.querySelector(".highlight");
+            if (highlightSpan) {
+                highlightSpan.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+            }
         } else {
             // Remove highlight if searchTerm is empty or no match
             item.innerHTML = text;
