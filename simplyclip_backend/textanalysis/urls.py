@@ -7,6 +7,7 @@ from . import views
 urlpatterns = [
     path('upload', views.upload, name="upload"),
     path('summarize/<str:summ_input>/', views.summarize, name="summarize"),
-    re_path(r'^getcitation/(?P<citation_input>.+)/$', views.getcitation, name="getcitation"),
+    path('getcitation', views.getcitation, name="getcitation"),
+    re_path(r'^getcitation/(?P<citation_input>.+)$', views.getcitation, name="getcitation"),
 
 ]

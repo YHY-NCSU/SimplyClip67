@@ -4,7 +4,7 @@ from os.path import basename
 from zipfile import ZipFile
 
 from django.core.files.storage import FileSystemStorage
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from django.http.response import FileResponse
 from django.views.decorators.csrf import csrf_exempt
 
@@ -21,10 +21,15 @@ def summarize(request, summ_input):
 
 
 @csrf_exempt
-def getcitation(request, citation_input):
-    if request.method == 'GET':
-        citation_output = citation.createCitation(citation_input)
+def getcitation(request):
+    if request.method == 'POST':
+        input_text = request.POST.get('citation_input', '')
+        print(input_text)
+        citation_output = citation.createCitation(input_text)
         return HttpResponse(citation_output, content_type='text/plain')
+    else:
+        return HttpResponse('Invalid request method.', status=400)
+
 
 @csrf_exempt
 def upload(request):

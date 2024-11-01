@@ -515,18 +515,31 @@ function addClipboardListItem(text,item_color) {
     })
 
 
-    function doDjangoCall(type, url, callback) {
+    function doDjangoCall(type, url, data, callback) {
         var xmlhttp = new XMLHttpRequest();
-
         xmlhttp.onreadystatechange = function () {
-          if (xmlhttp.readyState == XMLHttpRequest.DONE && xmlhttp.status == 200) {
-            var data = xmlhttp.responseText;
-            if (callback) callback(data);
+          if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+            if (xmlhttp.status == 200) {
+              var data = xmlhttp.responseText;
+              if (callback) callback(data);
+            } else {
+              console.error('Error in AJAX request:', xmlhttp.statusText);
+              showSnackbar('Error in AJAX request.');
+            }
           }
         };
-
+      
         xmlhttp.open(type, url, true);
-        xmlhttp.send();
+        xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      
+        if (type === 'POST') {
+          const encodedData = Object.keys(data).map(key => {
+            return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]);
+          }).join('&');
+          xmlhttp.send(encodedData);
+        } else {
+          xmlhttp.send();
+        }
       }
 
 
@@ -558,29 +571,33 @@ function addClipboardListItem(text,item_color) {
             })
 
 
-    citImage.addEventListener('click', (event) => {
-        console.log("Citation button clicked");
-        let finalText = "";
-            let inputText = listPara.textContent;
-            doDjangoCall(
-                "GET",
-                "http://127.0.0.1:8000/text/getcitation/"+inputText+"",
-                function (data) {
-                  // Earlier we used to get it in the JSON format and it had problems.
-                  citationText = data;
-                  finalText = " Citations for: " + inputText + "\n\n" + citationText;
-                  console.log(finalText);
-
-                  chrome.storage.sync.get(['citationList'], citclipboard => {
-                    let citationList = citclipboard.citationList;
-                    console.log("type of list is "+typeof citationList);
-                    citationList.push(finalText);
-                    chrome.storage.sync.set({ 'citationList': citationList}, function() {console.log('Citation Saved');});
-                        console.log("Citation appended");
-                    });
-                }
-              );
-            })
+            citImage.addEventListener('click', (event) => {
+                console.log("Citation button clicked");
+                let inputText = listPara.textContent.trim();
+              
+                doDjangoCall(
+                  "POST",
+                  "http://127.0.0.1:8000/text/getcitation",
+                  { 'citation_input': inputText },
+                  function (data) {
+                    const citationText = data;
+              
+                    if (citationText) {
+                      // Copy the citation to the clipboard
+                      navigator.clipboard.writeText(citationText).then(function() {
+                        console.log('Citation copied to clipboard');
+                        showSnackbar('Citation copied to clipboard!');
+                      }, function(err) {
+                        console.error('Could not copy citation: ', err);
+                        showSnackbar('Failed to copy citation to clipboard.');
+                      });
+                    } else {
+                      console.error('Citation generation failed:', data);
+                      showSnackbar('Citation generation failed.');
+                    }
+                  }
+                );
+              });
 
 
 
@@ -688,6 +705,14 @@ function addClipboardListItem(text,item_color) {
     });
 }
 
+function showSnackbar(message) {
+    let x = document.getElementById('snackbar');
+    x.textContent = message;
+    x.className = 'show';
+    setTimeout(function () { x.className = x.className.replace('show', ''); }, 3000);
+  }
+
+  
 
 function deleteElem(text){
     chrome.storage.sync.get(['list','listcolor'], clipboard => {
