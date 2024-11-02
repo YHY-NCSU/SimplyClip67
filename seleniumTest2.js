@@ -329,3 +329,62 @@ describe('Global Delete Functionality for Clipboard Items', function () {
         }
     }).timeout(20000); 
 });
+
+//Test functionality of moving list items down the order
+
+describe('Move list item down the order when move down icon is clicked', function () {
+    it('should move a clipboard item down the list when the move down button is clicked', async function () {
+        // Open the Chrome Browser with a custom profile if needed
+        const options = new chrome.Options();
+        // Uncomment and set the path if you need to use a custom user data directory
+        // options.addArguments('--user-data-dir=/path/to/your/custom/profile');
+
+        // Initialize driver to launch Chrome
+        const driver = new Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+
+        try {
+            // Launch SimplyClip page or relevant web app page
+            await driver.get('http://localhost:3000'); // Replace with actual URL if needed
+
+            // Wait until the clipboard items are present on the page
+            await driver.wait(until.elementLocated(By.css('.clipboard-item')), 10000);
+
+            // Locate all initial clipboard items
+            let clipboardItems = await driver.findElements(By.css('.clipboard-item'));
+            const initialItemCount = clipboardItems.length;
+
+            // Assert that there are at least two items to move
+            assert(initialItemCount > 1, 'Not enough clipboard items to test move down functionality');
+
+            // Locate the move down button for the first clipboard item
+            const moveDownButton = await clipboardItems[0].findElement(By.css('.move-down-button')); // Adjust selector if necessary
+            // Get the text of the first two items before the move
+            const firstItemText = await clipboardItems[0].getText();
+            const secondItemText = await clipboardItems[1].getText();
+
+            // Click the move down button
+            await moveDownButton.click();
+
+            // Wait for the list to update
+            await driver.wait(async () => {
+                const updatedClipboardItems = await driver.findElements(By.css('.clipboard-item'));
+                return (await updatedClipboardItems[1].getText()) === firstItemText;
+            }, 5000, 'Item was not moved within the expected time');
+
+            // Get the updated list of clipboard items
+            clipboardItems = await driver.findElements(By.css('.clipboard-item'));
+
+            // Assert that the first item has moved down
+            const updatedFirstItemText = await clipboardItems[1].getText();
+            assert.strictEqual(updatedFirstItemText, firstItemText, 'Move down button did not move the item correctly');
+        } finally {
+            // Close the browser
+            await driver.quit();
+        }
+    }).timeout(20000); // Increase timeout if necessary
+});
+
+//add test case to make sure if there is only one item in list then no action will be taken when move down icon is clicked
