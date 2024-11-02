@@ -6,10 +6,78 @@ const { Builder, By, Key, until } = require('selenium-webdriver');
 
 require('chromedriver');
 
+describe('Verify setup with Google Search',function() {
+    it('browser should open', async function () {
+        this.timeout(10000);
+        // Open the Chrome Browser with a custom profile
+        const options = new chrome.Options()
+            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+
+        // Initialise driver to launch Chrome
+        const driver = new webdriver.Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+        // Launch Google.com
+        driver.get('http://google.com');
+
+        // Search for abc in the searchbox in Chrome and Press Enter
+        const searchBox = driver.findElement(webdriver.By.name('q'));
+        searchBox.sendKeys('abc', Key.RETURN);
+
+        // Check if the value in the searchbox is equal to the value you entered
+        searchBox.getAttribute('value').then(function(value) {
+            assert.equal(value, 'abc');
+        });
+
+        // Close the browser
+        driver.close();
+
+        // Quit the browser
+        driver.quit();
+    });
+});
+
+describe('Check browser copy functionality',function() {
+    it('text should be copied', async function () {
+
+        // Open the Chrome Browser with a custom profile
+        const options = new chrome.Options()
+            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+
+        // Initialise driver to launch Chrome
+        const driver = new webdriver.Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+
+        // Launch Google.com
+        driver.get('http://google.com');
+
+        // Search for abc in the searchbox in Chrome and Press Enter
+        const searchBox = driver.findElement(webdriver.By.name('q'));
+        searchBox.sendKeys('hello', Key.RETURN);
+
+        // Store the text in the first div in the search results page
+        let results = driver.findElement(By.xpath("html/body/div[1]/div[5]/div[4]/div[5]/div[1]/div[1]/div/div/div"));
+
+        // Check if the value is stored
+        results.getAttribute('value').then(function(value) {
+            assert.equal(value, results.getText());
+        });
+
+        // Close the browser
+        driver.close();
+
+        // Quit the browser
+        driver.quit();
+    }).timeout(10000);
+});
+
 describe('Check search and highlight input functionality', function () {
     it('should input text in the search bar and highlight matching text in SimplyClip clipboard', async function () {
         // Open the Chrome Browser with a custom profile
-        const options = new chrome.Options();
+        const options = new chrome.Options().addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -19,7 +87,7 @@ describe('Check search and highlight input functionality', function () {
 
         try {
             // Launch SimplyClip page or relevant web app page
-            await driver.get('http://localhost:3000'); // Replace with actual URL if needed
+            await driver.get('http://google.com'); // Replace with actual URL if needed
 
             // Locate the search input field
             const searchInput = await driver.findElement(By.xpath("//input[@id='search-input']"));
@@ -59,7 +127,7 @@ describe('Check search and highlight input functionality', function () {
 describe('Check URL icon display for clipboard items that are URLs', function () {
     it('should show a URL icon for clipboard items that are URLs in SimplyClip', async function () {
         // Open the Chrome Browser with a custom profile
-        const options = new chrome.Options();
+        const options = new chrome.Options().addArguments('--user-data-dir=/Users/ejazahmed/Desktop');;;
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -69,7 +137,7 @@ describe('Check URL icon display for clipboard items that are URLs', function ()
 
         try {
             // Launch SimplyClip page or relevant web app page
-            await driver.get('http://localhost:3000'); // Replace with actual URL if needed
+            await driver.get('http://google.com'); // Replace with actual URL if needed
 
             // Locate a clipboard item that is a URL
             const clipboardItem = await driver.findElement(By.xpath("//div[contains(@class, 'clipboard-item') and contains(text(), 'http')]"));
@@ -94,7 +162,7 @@ describe('Check URL icon display for clipboard items that are URLs', function ()
 describe('Check YouTube icon display for clipboard items that are YouTube links', function () {
     it('should show a YouTube icon for clipboard items that are YouTube links in SimplyClip', async function () {
         // Open the Chrome Browser with a custom profile
-        const options = new chrome.Options();
+        const options = new chrome.Options().addArguments('--user-data-dir=/Users/ejazahmed/Desktop');;;
             
 
         // Initialise driver to launch Chrome
@@ -105,7 +173,7 @@ describe('Check YouTube icon display for clipboard items that are YouTube links'
 
         try {
             // Launch SimplyClip page or relevant web app page
-            await driver.get('http://localhost:3000'); // Replace with actual URL if needed
+            await driver.get('http://google.com'); // Replace with actual URL if needed
 
             // Locate a clipboard item that is a YouTube link
             const clipboardItem = await driver.findElement(By.xpath("//div[contains(@class, 'clipboard-item') and contains(text(), 'youtube.com')]"));
@@ -130,7 +198,7 @@ describe('Check YouTube icon display for clipboard items that are YouTube links'
 describe('Check URL icon absence for clipboard items that are YouTube links', function () {
     it('should not show a URL icon for clipboard items that are YouTube links in SimplyClip', async function () {
         // Open the Chrome Browser with a custom profile
-        const options = new chrome.Options();
+        const options = new chrome.Options().addArguments('--user-data-dir=/Users/ejazahmed/Desktop');;
             
 
         // Initialise driver to launch Chrome
@@ -141,7 +209,7 @@ describe('Check URL icon absence for clipboard items that are YouTube links', fu
 
         try {
             // Launch SimplyClip page or relevant web app page
-            await driver.get('http://localhost:3000'); // Replace with actual URL if needed
+            await driver.get('http://google.com'); // Replace with actual URL if needed
 
             // Locate a clipboard item that is a YouTube link
             const clipboardItem = await driver.findElement(By.xpath("//div[contains(@class, 'clipboard-item') and contains(text(), 'youtube.com')]"));
@@ -171,7 +239,7 @@ describe('Check URL icon absence for clipboard items that are YouTube links', fu
 describe('Clipboard Search Functionality to filter out items with specific text', function () {
     it('should display only clipboard items matching the search input text in SimplyClip', async function () {
         // Open the Chrome Browser with a custom profile if needed
-        const options = new chrome.Options();
+        const options = new chrome.Options().addArguments('--user-data-dir=/Users/ejazahmed/Desktop');;
        
 
         // Initialize driver to launch Chrome
@@ -182,7 +250,7 @@ describe('Clipboard Search Functionality to filter out items with specific text'
 
         try {
             // Launch SimplyClip page or relevant web app page
-            await driver.get('http://localhost:3000'); // Replace with actual URL if needed
+            await driver.get('http://google.com'); // Replace with actual URL if needed
 
             // Wait until the page is loaded and the clipboard items are present
             await driver.wait(until.elementLocated(By.css('.clipboard-item')), 10000);
@@ -228,7 +296,7 @@ describe('Clipboard Search Functionality to filter out items with specific text'
 describe('Delete Functionality for Clipboard Items', function () {
     it('should remove a clipboard item when its delete button is clicked', async function () {
         // Open the Chrome Browser with a custom profile if needed
-        const options = new chrome.Options();
+        const options = new chrome.Options().addArguments('--user-data-dir=/Users/ejazahmed/Desktop');;
         // Uncomment and set the path if you need to use a custom user data directory
         // options.addArguments('--user-data-dir=/path/to/your/custom/profile');
 
@@ -240,7 +308,7 @@ describe('Delete Functionality for Clipboard Items', function () {
 
         try {
             // Launch SimplyClip page or relevant web app page
-            await driver.get('http://localhost:3000'); // Replace with actual URL if needed
+            await driver.get('http://google.com'); // Replace with actual URL if needed
 
             // Wait until the clipboard items are present on the page
             await driver.wait(until.elementLocated(By.css('.clipboard-item')), 10000);
@@ -281,7 +349,7 @@ describe('Delete Functionality for Clipboard Items', function () {
 describe('Global Delete Functionality for Clipboard Items', function () {
     it('should remove all clipboard items when the global delete button is clicked', async function () {
         // Open the Chrome Browser with a custom profile if needed
-        const options = new chrome.Options();
+        const options = new chrome.Options().addArguments('--user-data-dir=/Users/ejazahmed/Desktop');;
         // Uncomment and set the path if you need to use a custom user data directory
         // options.addArguments('--user-data-dir=/path/to/your/custom/profile');
 
@@ -293,7 +361,7 @@ describe('Global Delete Functionality for Clipboard Items', function () {
 
         try {
             // Launch SimplyClip page or relevant web app page
-            await driver.get('http://localhost:3000'); // Replace with actual URL if needed
+            await driver.get('http://google.com'); // Replace with actual URL if needed
 
             // Wait until the clipboard items are present on the page
             await driver.wait(until.elementLocated(By.css('.clipboard-item')), 10000);
@@ -335,7 +403,7 @@ describe('Global Delete Functionality for Clipboard Items', function () {
 describe('Move list item down the order when move down icon is clicked', function () {
     it('should move a clipboard item down the list when the move down button is clicked', async function () {
         // Open the Chrome Browser with a custom profile if needed
-        const options = new chrome.Options();
+        const options = new chrome.Options().addArguments('--user-data-dir=/Users/ejazahmed/Desktop');;
         // Uncomment and set the path if you need to use a custom user data directory
         // options.addArguments('--user-data-dir=/path/to/your/custom/profile');
 
@@ -347,7 +415,7 @@ describe('Move list item down the order when move down icon is clicked', functio
 
         try {
             // Launch SimplyClip page or relevant web app page
-            await driver.get('http://localhost:3000'); // Replace with actual URL if needed
+            await driver.get('http://google.com'); // Replace with actual URL if needed
 
             // Wait until the clipboard items are present on the page
             await driver.wait(until.elementLocated(By.css('.clipboard-item')), 10000);

@@ -9,7 +9,7 @@ const {Key,
 
 describe('Verify setup with Google Search',function() {
     it('browser should open', async function () {
-
+        this.timeout(10000);
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
             .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
