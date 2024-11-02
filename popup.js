@@ -786,7 +786,7 @@ function addClipboardListItem(text,item_color) {
             });
         let x = document.getElementById("snackbar");
         x.className = "show";
-        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 300);
     });
 }
 
@@ -850,7 +850,7 @@ function showSnackbar(message) {
     let x = document.getElementById('snackbar');
     x.textContent = message;
     x.className = 'show';
-    setTimeout(function () { x.className = x.className.replace('show', ''); }, 3000);
+    setTimeout(function () { x.className = x.className.replace('show', ''); }, 300);
   }
 
   

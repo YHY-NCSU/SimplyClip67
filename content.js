@@ -120,7 +120,7 @@ const setClipboardText = async (clipText) => {
 
 window.addEventListener('mouseout',function(){
     if(time_interval_set===undefined)
-        time_interval_set = setInterval(readClipboardData,2000)
+        time_interval_set = setInterval(readClipboardData,200)
 })
 window.addEventListener('mouseover',function(){
     clearInterval(time_interval_set);
@@ -135,6 +135,6 @@ document.addEventListener('visibilitychange',function(){
         time_interval_set=undefined;
     }else{
         if(time_interval_set==undefined)
-            time_interval_set = setInterval(readClipboardData,2000);
+            time_interval_set = setInterval(readClipboardData,200);
     }
 })
