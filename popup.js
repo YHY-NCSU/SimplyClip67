@@ -24,6 +24,34 @@ checkbox.addEventListener('click',checkMode)
 let _clipboardList = document.querySelector("#clipboard_list");
 let addButton = document.getElementById('add-btn');
 
+function doDjangoCall(type, url, data, callback) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+            if (xmlhttp.status == 200) {
+                var response = xmlhttp.responseText;
+                // Assuming backend returns plain text
+                if (callback) callback(response);
+            } else {
+                console.error('Error in AJAX request:', xmlhttp.statusText);
+                showSnackbar('Error in AJAX request.');
+            }
+        }
+    };
+
+    xmlhttp.open(type, url, true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    if (type === 'POST') {
+        const encodedData = Object.keys(data).map(key => {
+            return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]);
+        }).join('&');
+        xmlhttp.send(encodedData);
+    } else {
+        xmlhttp.send();
+    }
+}
+
 addButton.addEventListener('click', (event) => {
         let textitem = ''
         let emptyDiv = document.getElementById('empty-div');
@@ -488,8 +516,8 @@ function addClipboardListItem(text,item_color) {
     upArrowImage.classList.add("upArrow");
     downArrowImage.src = '/images/downArrow.png';
     downArrowImage.classList.add("downArrow");
-    summImage.src = './images/summarizer.png';
-    summImage.classList.add("summarize");
+    // summImage.src = './images/summarizer.png';
+    // summImage.classList.add("summarize");
 
     citImage.src = './images/cite2.png';
     citImage.classList.add("citation");
@@ -568,8 +596,8 @@ function addClipboardListItem(text,item_color) {
     contentDiv.appendChild(upArrowDiv);
     downArrowDiv.appendChild(downArrowImage);
     contentDiv.appendChild(downArrowDiv);
-    summDiv.appendChild(summImage);
-    contentDiv.appendChild(summDiv);
+    //summDiv.appendChild(summImage);
+    //contentDiv.appendChild(summDiv);
 
     contentDiv.classList.add("content");
     listItem.appendChild(contentDiv);
@@ -622,34 +650,6 @@ function addClipboardListItem(text,item_color) {
           xmlhttp.send();
         }
       }
-
-
-
-    summImage.addEventListener('click', (event) => {
-        console.log("Summarize button clicked");
-        let finalText = "";
-            let inputText = listPara.textContent;
-            doDjangoCall(
-                "GET",
-                "http://127.0.0.1:8000/text/summarize/"+inputText+"",
-                function (data) {
-                  summarizedText = data;
-                  finalText = " Summarized Text :- " + summarizedText;
-                  console.log(finalText);
-
-                  chrome.storage.sync.get(['summarizedList'], summclipboard => {
-                    let summlist = summclipboard.summarizedList;
-                    console.log("type of list is "+typeof summlist);
-                    summlist.push(finalText);
-                    chrome.storage.sync.set({ 'summarizedList': summlist }, function() {console.log('Summary Saved');});
-                        console.log("summary appended");
-                    });
-
-                }
-              );
-
-
-            })
 
 
             citImage.addEventListener('click', (event) => {
@@ -788,6 +788,62 @@ function addClipboardListItem(text,item_color) {
         x.className = "show";
         setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
     });
+}
+
+// Add event listener for the new summarization button
+document.getElementById('summarize-btn').addEventListener('click', () => {
+    console.log("Global Summarize button clicked");
+
+    // Fetch all copied texts
+    chrome.storage.sync.get(['originalList'], data => {
+        let texts = data.originalList || [];
+
+        if (texts.length === 0) {
+            showSnackbar("No texts to summarize.");
+            return;
+        }
+
+        // Optional: Show a loading indicator
+        showSnackbar("Generating summary...");
+
+        // Send texts to backend for summarization
+        doDjangoCall(
+            "POST",
+            "http://127.0.0.1:8000/text/summarize_all",
+            { 'texts': JSON.stringify(texts) },
+            function (data) {
+                const summaryText = data;
+
+                if (summaryText) {
+                    // Generate and download Word document
+                    downloadSummaryAsDoc(summaryText);
+                    showSnackbar("Summary downloaded as Word document!");
+                } else {
+                    console.error('Summarization failed:', data);
+                    showSnackbar('Summarization failed.');
+                }
+            }
+        );
+    });
+});
+
+// Function to download summary as a Word document
+function downloadSummaryAsDoc(summary) {
+    const blob = new Blob(['\ufeff', summary], {
+        type: 'application/msword'
+    });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'SimplyClip_Summary.doc';
+    document.body.appendChild(link);
+    if (navigator.msSaveOrOpenBlob) {
+        navigator.msSaveOrOpenBlob(blob, 'SimplyClip_Summary.doc');
+    } else {
+        link.click();
+    }
+    document.body.removeChild(link);
 }
 
 function showSnackbar(message) {
