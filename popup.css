@@ -96,6 +96,8 @@ ul li{
     transform: translateX(1px);
 }
 
+/* will dictate css if image is copied into clipboard */
+
 .list-div img {
     display: block;
     margin: auto;
