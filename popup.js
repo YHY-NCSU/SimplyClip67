@@ -152,7 +152,7 @@ function getClipboardText() {
                     if (typeof listcolor !== 'undefined' && typeof listcolor[indexOfItem] !== 'undefined') {
                         color = listcolor[indexOfItem];
                       } else {
-                        color = document.body.classList.contains('dark_mode') ? 'red' : 'black';
+                        color = 'black';
                       }
                     addClipboardListItem(item,color);
                 });
@@ -392,7 +392,7 @@ function addClipboardListItem(text,item_color) {
     else if (type === 'url') listItem.classList.add("general-link");
     else listItem.classList.add("text-entry");
        let listDiv = document.createElement("div"),
-       highlightButton = document.createElement("button"),
+       //highlightButton = document.createElement("button"),
         deleteDiv = document.createElement("div"),
         editDiv = document.createElement("div"),
         colorTabsDiv = document.createElement("div"),

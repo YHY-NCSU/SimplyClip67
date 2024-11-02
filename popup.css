@@ -96,6 +96,8 @@ ul li{
     transform: translateX(1px);
 }
 
+/* will dictate css if image is copied into clipboard */
+
 .list-div img {
     display: block;
     margin: auto;
@@ -488,6 +490,65 @@ ul li{
 
 ul li {
     height: auto;
+}
+
+/* Align icons for better CSS */
+
+/* Add specific styles for the list item icons */
+/* Add specific styles for the list item icons */
+.list-div {
+    display: flex;
+    align-items: center; /* Center align items vertically */
+    gap: 5px; /* Reduce space between the icon and text */
+    flex-wrap: nowrap; /* Ensure items stay in a single line */
+    overflow: hidden; /* Prevent overflow of items */
+}
+
+
+
+.list-div p {
+    flex-grow: 1; /* Ensure text takes up the remaining space */
+    margin: 0; /* Remove default margin */
+    overflow: auto; /* Allow scrolling for long text */
+    text-overflow: ellipsis; /* Add ellipsis for long text */
+    white-space: pre-wrap; /* Allow text wrapping */
+    max-height: 100px; /* Set a reasonable max height */
+}
+
+/* icons and checkbox on same line */
+/* Ensure icons and checkbox align on the same line */
+.content {
+    display: flex;
+    align-items: center; /* Align all items vertically */
+    justify-content: space-between; /* Distribute items evenly */
+    width: 100%; /* Ensure content takes full width */
+}
+
+/* Increase size of the checkbox */
+.checkbox {
+    width: 20px; /* Increase width */
+    height: 20px; /* Increase height */
+    margin-right: 5px; /* Add margin for spacing */
+}
+
+/* CSS CHANGES FOR FIXING IMAGE CSS */
+
+}
+
+
+
+/* Icon container taking up the other half */
+.list-div .icon-container {
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Style for icons */
+.icon {
+    width: 25px;
+    height: 25px;
 }
 
 #summarize-btn {
