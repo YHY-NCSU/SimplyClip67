@@ -537,31 +537,23 @@ ul li {
 
 /* CSS CHANGES FOR FIXING IMAGE CSS */
 
-.list-div {
-    display: flex;
-    align-items: center;
-    width: 100%;
 }
 
-.list-div .image-container {
-    flex: 1; /* Take up half the row */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Restrict image size for consistency */
+.list-div img {
+    max-width: 100%;
+    max-height: 100px;
 }
 
+/* Icon container taking up the other half */
 .list-div .icon-container {
-    flex: 1; /* Take up the other half of the row */
+    flex: 1;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.list-div img {
-    max-width: 100%; /* Ensure images don't exceed the container size */
-    max-height: 100px;
-}
-
+/* Style for icons */
 .icon {
     width: 25px;
     height: 25px;
