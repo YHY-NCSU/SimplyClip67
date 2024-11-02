@@ -502,13 +502,7 @@ ul li {
     overflow: hidden; /* Prevent overflow of items */
 }
 
-.list-div img {
-    display: inline-block;
-    vertical-align: middle; /* Align icon with text */
-    width: 20px; /* Adjust size for consistent appearance */
-    height: 20px;
-    margin-right: 3px; /* Adjust space between icon and text */
-}
+
 
 .list-div p {
     flex-grow: 1; /* Ensure text takes up the remaining space */
@@ -539,11 +533,7 @@ ul li {
 
 }
 
-/* Restrict image size for consistency */
-.list-div img {
-    max-width: 100%;
-    max-height: 100px;
-}
+
 
 /* Icon container taking up the other half */
 .list-div .icon-container {
