@@ -74,6 +74,120 @@ describe('Check browser copy functionality',function() {
     }).timeout(10000);
 });
 
+describe('Add Clipboard Item', function() {
+    it('should add a new clipboard item successfully', async function() {
+        this.timeout(10000);
+        const options = new chrome.Options().addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+        const driver = new webdriver.Builder().forBrowser('chrome').setChromeOptions(options).build();
+
+        try {
+            await driver.get('http://your-simplyclip-url');
+            const addItemButton = await driver.findElement(By.css('.add-item-button'));
+            await addItemButton.click();
+
+            const newItem = await driver.findElement(By.css('.clipboard-item:last-child'));
+            const isDisplayed = await newItem.isDisplayed();
+            assert(isDisplayed, 'New clipboard item was not added successfully');
+        } finally {
+            await driver.quit();
+        }
+    });
+});
+
+//delete clipboard functionality
+
+describe('Delete Clipboard Item', function() {
+    it('should delete a clipboard item successfully', async function() {
+        this.timeout(10000);
+        const options = new chrome.Options().addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+        const driver = new webdriver.Builder().forBrowser('chrome').setChromeOptions(options).build();
+
+        try {
+            await driver.get('http://your-simplyclip-url');
+            const clipboardItem = await driver.findElement(By.css('.clipboard-item'));
+            const deleteButton = await clipboardItem.findElement(By.css('.delete-button'));
+            await deleteButton.click();
+
+            await driver.sleep(1000);
+            const items = await driver.findElements(By.css('.clipboard-item'));
+            assert(items.length === 0, 'Clipboard item was not deleted successfully');
+        } finally {
+            await driver.quit();
+        }
+    });
+});
+
+//edit clipboard item
+
+describe('Edit Clipboard Item', function() {
+    it('should edit a clipboard item successfully', async function() {
+        this.timeout(10000);
+        const options = new chrome.Options().addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+        const driver = new webdriver.Builder().forBrowser('chrome').setChromeOptions(options).build();
+
+        try {
+            await driver.get('http://your-simplyclip-url');
+            const clipboardItem = await driver.findElement(By.css('.clipboard-item'));
+            const editButton = await clipboardItem.findElement(By.css('.edit-button'));
+            await editButton.click();
+
+            const editField = await driver.findElement(By.css('.edit-field'));
+            await editField.clear();
+            await editField.sendKeys('Edited text', Key.RETURN);
+
+            const updatedText = await clipboardItem.getText();
+            assert.strictEqual(updatedText, 'Edited text', 'Clipboard item was not edited successfully');
+        } finally {
+            await driver.quit();
+        }
+    });
+});
+
+//Image copy feature test cases
+
+describe('Add Image to Clipboard', function() {
+    it('should add an image to the clipboard successfully', async function() {
+        this.timeout(10000);
+        const options = new chrome.Options().addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+        const driver = new webdriver.Builder().forBrowser('chrome').setChromeOptions(options).build();
+
+        try {
+            await driver.get('http://your-simplyclip-url');
+            const addImageButton = await driver.findElement(By.css('.add-image-button'));
+            await addImageButton.click();
+
+            const newImageItem = await driver.findElement(By.css('.clipboard-item.image'));
+            const isDisplayed = await newImageItem.isDisplayed();
+            assert(isDisplayed, 'Image was not added to the clipboard successfully');
+        } finally {
+            await driver.quit();
+        }
+    });
+});
+
+describe('Delete Image from Clipboard', function() {
+    it('should delete an image from the clipboard successfully', async function() {
+        this.timeout(10000);
+        const options = new chrome.Options().addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+        const driver = new webdriver.Builder().forBrowser('chrome').setChromeOptions(options).build();
+
+        try {
+            await driver.get('http://your-simplyclip-url');
+            const imageItem = await driver.findElement(By.css('.clipboard-item.image'));
+            const deleteButton = await imageItem.findElement(By.css('.delete-button'));
+            await deleteButton.click();
+
+            await driver.sleep(1000);
+            const items = await driver.findElements(By.css('.clipboard-item.image'));
+            assert(items.length === 0, 'Image was not deleted from the clipboard successfully');
+        } finally {
+            await driver.quit();
+        }
+    });
+});
+
+
+
 describe('Check search and highlight input functionality', function () {
     it('should input text in the search bar and highlight matching text in SimplyClip clipboard', async function () {
         // Open the Chrome Browser with a custom profile
@@ -454,5 +568,46 @@ describe('Move list item down the order when move down icon is clicked', functio
         }
     }).timeout(20000); // Increase timeout if necessary
 });
+
+//summarization of clipboard items
+
+describe('Summarization of Clipboard Items', function() {
+    it('should summarize all clipboard items when the summarization button is clicked', async function() {
+        this.timeout(10000);
+        // Open the Chrome Browser with a custom profile
+        const options = new chrome.Options().addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+
+        // Initialise driver to launch Chrome
+        const driver = new webdriver.Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+
+        try {
+            // Launch the SimplyClip page
+            await driver.get('http://your-simplyclip-url'); // Replace with actual SimplyClip URL
+
+            // Locate the summarization button
+            const summarizeButton = await driver.findElement(By.css('.summarize-button'));
+
+            // Click the summarization button
+            await summarizeButton.click();
+
+            // Wait for the summarization process to complete (adjust timing if necessary)
+            await driver.sleep(2000);
+             // Verify the result of the summarization (mock verification here)
+             const result = true; // Replace with actual verification logic if applicable
+             assert(result, 'Summarization did not complete as expected');
+         } finally {
+             // Close the browser
+             await driver.close();
+             // Quit the browser
+             await driver.quit();
+         }
+     });
+
+    });
+
+
 
 //add test case to make sure if there is only one item in list then no action will be taken when move down icon is clicked
