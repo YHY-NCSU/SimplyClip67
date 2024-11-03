@@ -206,6 +206,7 @@ prettier --write and prettier --check are the most common ways to run Prettier
   4. Then there is a check to make sure that the copied text exists in the SimplyClip extension.
 - Run `npm run test` to run the selenium automated tests.<br>
 
+![Extension](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/blob/Group24DeveloperBranch/Docs/Project2Fall2024Docs/test-coverage.png)
 
 - Run `npm run instanbul-coverage` to check the code coverage.<br>
 
@@ -281,6 +282,15 @@ Users can download the list of  copied items as a document file or CSV file. The
 - [x] Fixed youtube icon issue in previous version
 - [x] Fixed url issues from previous versions
 - [x] Improved test cases
+
+### Phase 5 : Successful Functional Improvements in Simplyclip5.0:
+
+- [x] Successful implementation of advanced machine learning model in summarization feature
+- [x] Allow copying of images into extension
+- [x] Download of summarized text
+- [x] Highlighting of important search phrases
+- [x] Scrollable texts
+- [x] Fix dark mode to allow better UI
 
 ### Future Enhancements:
 
