@@ -33,7 +33,7 @@
     "build": "npm build",
     "test": "npm run single",
     "istanbul-coverage": "nyc --reporter=html mocha seleniumTest2.js",
-    "single": "./node_modules/.bin/mocha seleniumTest2.js"
+    "single": "./node_modules/.bin/mocha seleniumTest.js"
   },
   "dependencies": {
     "chromedriver": "^130.0.2",
