@@ -103,6 +103,10 @@ While working on finding reuse we spent significant amount of time searching and
  
  <!--[![Watch the video](https://img.youtube.com/vi/MYr_7qhdeLo/hqdefault.jpg)](https://youtu.be/MYr_7qhdeLo)-->
 
+ <video src="images/SimplyClip Demo.mp4" controls="controls" style="max-width: 100%; height: auto;">
+    Your browser does not support the video tag.
+</video>
+
 
 https://user-images.githubusercontent.com/66715000/139998327-13eff7db-3375-4a1b-b888-5ed63115e31b.mp4
 
