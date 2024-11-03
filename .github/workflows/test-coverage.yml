@@ -27,10 +27,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Run the test and generate coverage for `seleniumTest3.js`
-      - name: Run test coverage for seleniumTest3.js
+      # Run the test and generate coverage for `seleniumTest.js`
+      - name: Run test coverage for seleniumTest.js
         run: |
-          npx nyc mocha seleniumTest3.js
+          npx nyc mocha seleniumTest.js
 
       # Upload test coverage report as an artifact (optional)
       - name: Upload Coverage Report
