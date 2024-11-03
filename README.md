@@ -209,7 +209,9 @@ prettier --write and prettier --check are the most common ways to run Prettier
 
 - Run `npm run instanbul-coverage` to check the code coverage.<br>
 
-![Extension](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/tree/Group24DeveloperBranch/Docs/Project2Fall2024Docs/code-coverage.png)
+![Extension](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/blob/Group24DeveloperBranch/Docs/Project2Fall2024Docs/code-coverage.png)
+
+
 
 - Run citationTest1.py for Citation Unit Test.<br>
 ![Extension](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/Project3/Docs/images/CitationUnitTest.png)
