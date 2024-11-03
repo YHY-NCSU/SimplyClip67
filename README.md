@@ -311,8 +311,8 @@ Users can download the list of  copied items as a document file or CSV file. The
 | Name                   | Unity ID                           |
 |------------------------|------------------------------------|
 | Dharani Guda           | dguda                              |
-| Archismita Ghosh       | aghosh                             |
-| Paul MacNichol         | pmacnic                            |
+| Archismita Ghosh       | aghosh7                             |
+| Paul MacNichol         | pemacnic                           |
 
 ## 🙏 Acknowledgements <a name="Acknowledgement"></a>
 We would like to thank Professor Dr Timothy Menzies for helping us understand the process of building a good Software Engineering project. We would also like to thank the teaching assistants San Gilson, Andre Lustosa, Xueqi (Sherry) Yang, Yasitha Rajapaksha, and Rahul Yedida for their support throughout the project.
