@@ -2,33 +2,33 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10211680.svg)](https://zenodo.org/records/10211680)
 
 ![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m789313708-ea25af592e8a7a84c009055e)
-<a href="https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/LICENSE" target="blank">
-<img src="https://img.shields.io/github/license/EZ7051/SimplyClip?style=flat-square" alt="SimplyClip license" />
-[![GitHub Release](https://img.shields.io/badge/release-v5.1-blue)](https://github.com/EZ7051/SimplyClip)
-![GitHub language count](https://img.shields.io/github/languages/count/EZ7051/SimplyClip)
+<a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/blob/Group24DeveloperBranch/LICENSE" target="blank">
+<img src="https://img.shields.io/github/license/CSC510-Software-Engineering-Fall-2024/SimplyClip?style=flat-square" alt="SimplyClip license" />
+[![GitHub Release](https://img.shields.io/badge/release-v5.2-blue)](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip)
+![GitHub language count](https://img.shields.io/github/languages/count/CSC510-Software-Engineering-Fall-2024/SimplyClip)
 ![Test Cases](https://img.shields.io/badge/tests-passing-green)
-![GitHub contributors](https://img.shields.io/github/contributors/EZ7051/SimplyClip)
-[![GitHub-size](https://img.shields.io/github/languages/code-size/EZ7051/SimplyClip)](https://github.com/EZ7051/SimplyClip)
-[![Coverage Status](https://img.shields.io/badge/code%20coverage-100%25-brightgreen)](https://github.com/EZ7051/SimplyClip#-testcase-coverage)
-<a href="https://github.com/EZ7051/SimplyClip/forks" target="blank">
-<img src="https://img.shields.io/github/forks/EZ7051/SimplyClip?style=flat-square" alt="SimplyClip forks"/>
+![GitHub contributors](https://img.shields.io/github/contributors/CSC510-Software-Engineering-Fall-2024/SimplyClip)
+[![GitHub-size](https://img.shields.io/github/languages/code-size/CSC510-Software-Engineering-Fall-2024/SimplyClip)](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip)
+[![Coverage Status](https://img.shields.io/badge/code%20coverage-100%25-brightgreen)](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip#-testcase-coverage)
+<a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/forks" target="blank">
+<img src="https://img.shields.io/github/forks/CSC510-Software-Engineering-Fall-2024/SimplyClip?style=flat-square" alt="SimplyClip forks"/>
 </a>
-<a href="https://github.com/EZ7051/SimplyClip/stargazers" target="blank">
-<img src="https://img.shields.io/github/stars/EZ7051/SimplyClip?style=flat-square" alt="SimplyClip stars"/>
+<a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/stargazers" target="blank">
+<img src="https://img.shields.io/github/stars/CSC510-Software-Engineering-Fall-2024/SimplyClip?style=flat-square" alt="SimplyClip stars"/>
 </a>
-<a href="https://github.com/EZ7051/SimplyClip/issues" target="blank">
-<img src="https://img.shields.io/github/issues/EZ7051/SimplyClip?style=flat-square" alt="SimplyClip issues"/>
+<a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/issues" target="blank">
+<img src="https://img.shields.io/github/issues/CSC510-Software-Engineering-Fall-2024/SimplyClip?style=flat-square" alt="SimplyClip issues"/>
 </a>
-<a href="https://github.com/EZ7051/SimplyClip/issues?q=is%3Aissue+is%3Aclosed" target="blank">
-<img src="https://img.shields.io/github/issues-closed/EZ7051/SimplyClip" alt="SimplyClip issues closed"/>
+<a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/issues?q=is%3Aissue+is%3Aclosed" target="blank">
+<img src="https://img.shields.io/github/issues-closed/CSC510-Software-Engineering-Fall-2024/SimplyClip" alt="SimplyClip issues closed"/>
 </a>
-<a href="https://github.com/EZ7051/SimplyClip/pulls" target="blank">
-<img src="https://img.shields.io/github/issues-pr/EZ7051/SimplyClip?style=flat-square" alt="SimplyClip pull-requests"/>
+<a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/pulls" target="blank">
+<img src="https://img.shields.io/github/issues-pr/CSC510-Software-Engineering-Fall-2024/SimplyClip?style=flat-square" alt="SimplyClip pull-requests"/>
 </a>
-<a href="https://github.com/EZ7051/SimplyClip/graphs/commit-activity" alt="commit activity">
-<img src="https://img.shields.io/github/commit-activity/w/EZ7051/SimplyClip" /></a> 
-<a href="https://img.shields.io/github/repo-size/EZ7051/SimplyClip" alt="repo size">
-<img src="https://img.shields.io/github/repo-size/EZ7051/SimplyClip" /></a>
+<a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/graphs/commit-activity" alt="commit activity">
+<img src="https://img.shields.io/github/commit-activity/w/CSC510-Software-Engineering-Fall-2024/SimplyClip" /></a> 
+<a href="https://img.shields.io/github/repo-size/CSC510-Software-Engineering-Fall-2024/SimplyClip" alt="repo size">
+<img src="https://img.shields.io/github/repo-size/CSC510-Software-Engineering-Fall-2024/SimplyClip" /></a>
 
 ### &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;:paperclips: &emsp;  Clipboard Made Easy For Research &emsp; :paperclips:
 
@@ -43,7 +43,7 @@
 ---
 
  
-&emsp; &emsp; &emsp; &emsp; &emsp;  ![](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/images/SimplyClip_title.jpeg)
+&emsp; &emsp; &emsp; &emsp; &emsp;  ![](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/blob/Group24DeveloperBranch/images/SimplyClip_title.jpeg)
 
 ---
 # Description
@@ -141,10 +141,10 @@ https://user-images.githubusercontent.com/66715000/139998327-13eff7db-3375-4a1b-
  
 ## :shipit: Developers Note
 Basic knowledge of **JavaScript**, **HTML** ,**CSS** should be good enough to contribute to the project
-- [**popup.js**](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/popup.js)
-- [**popup.html**](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/popup.html)
-- [**popup.css**](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/popup.css)
-- [**content.js**](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/content.js)
+- [**popup.js**](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/blob/Group3DeveloperBranch/popup.js)
+- [**popup.html**](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/blob/Group3DeveloperBranch/popup.html)
+- [**popup.css**](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/blob/Group3DeveloperBranch/popup.css)
+- [**content.js**](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/blob/Group3DeveloperBranch/content.js)
 
 These are the only 4 files you will be working on and rest all are just configuration and documentation files. <br><br>
 We will be more than happy to help you extend the functionality of this extension. <br>
@@ -154,17 +154,17 @@ We will be more than happy to help you extend the functionality of this extensio
 All you need is Google Chrome! 🕺
 
 1.  Get the repsitory using any of the below two methords :
-    - Download :arrow_down: the ***[repository](https://github.com/EZ7051/SimplyClip)*** using Code > Download Zip on our project github page.
+    - Download :arrow_down: the ***[repository](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip)*** using Code > Download Zip on our project github page.
     - Clone the reporitory using  ***[GIT](https://git-scm.com)*** 
     ```
-    https://github.com/EZ7051/SimplyClip
+    https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip
     ```
 1. Manually install Entension using below steps.
     - Enable the developer mode from Chrome > Settings > extension.
     - Click on ***load Unpacked*** button and select the root folder of this repository.
-![Extension](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/Docs/images/Extensions.png)
+![Extension](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/blob/Group24DeveloperBranch/Docs/images/Extensions.png)
     - Enable the chrome extension. <br/>
-![Extension](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/images/SimplyClip_title.jpeg)
+![Extension](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/blob/Group24DeveloperBranch/images/SimplyClip_title.jpeg)
 
 ---
 ## 📦 IDE and Packages
@@ -230,7 +230,7 @@ Users can download the list of  copied items as a document file or CSV file. The
 2) When loading the extension for the first time, reload the pages in order to allow the URLs to prompt for permissions to access the system clipboard.
 3) If none of the above steps work, consider reloading the extension and all the browser pages.
 4) If the issue still persists, please consider writing us at simlyclipse43@gmail.com and we will get back to you as soon as possible.
-5) You're also free to report a bug in our repository and clearly stating the issue that you're facing. Please make sure to follow the guidelines mentioned in [CONTRIBUTING.md](https://github.com/EZ7051/SimplyClip/blob/Group3DeveloperBranch/Project3/Contributing.md)
+5) You're also free to report a bug in our repository and clearly stating the issue that you're facing. Please make sure to follow the guidelines mentioned in [CONTRIBUTING.md](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/blob/Group24DeveloperBranch/Project2/Contributing.md)
 
 ---
  
@@ -290,19 +290,17 @@ Users can download the list of  copied items as a document file or CSV file. The
 ## :handshake: Contributors
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/EZ7051"><img src="https://avatars.githubusercontent.com/u/35006207?v=4" width="75px;" alt=""/><br /><sub><b>Ejaz</b></sub></a></td>
-    <td align="center"><a href="https://github.com/shyni0201"><img src="https://avatars.githubusercontent.com/u/72161297?v=4" width="75px;" alt=""/><br /><sub><b>Shynitha</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/sumalatha-99"><img src="https://avatars.githubusercontent.com/u/26276595?v=4" width="75px;" alt=""/><br /><sub><b>Sumalatha</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/soubhagya31"><img src="https://avatars.githubusercontent.com/u/143368827?v=4" width="75px;" alt=""/><br /><sub><b>Soubhagya</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/archig97"><img src="https://avatars.githubusercontent.com/u/26276595?v=4" width="75px;" alt=""/><br /><sub><b>Archismita</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/Dharani-Guda"><img src="https://avatars.githubusercontent.com/u/26276595?v=4" width="75px;" alt=""/><br /><sub><b>Dharani</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/PaulMacNichol"><img src="https://avatars.githubusercontent.com/u/32798037?v=4" width="75px;" alt=""/><br /><sub><b>Paul MacNichol</b></sub></a><br /></td>
   </tr>
 </table>
 
 | Name                   | Unity ID                           |
 |------------------------|------------------------------------|
-| Ejaz Ahamed Shaik      | eshaik                             |
-| Shynitha Muthyam       | smuthya                            |
-| Sumalatha Mashetty     | smashet                            |
-| Soubhagya Akkena       | sakkena                            |
+| Dharani Guda           | dguda                              |
+| Archismita Ghosh       | aghosh                             |
+| Paul MacNichol         | pmacnic                            |
 
 ## 🙏 Acknowledgements <a name="Acknowledgement"></a>
 We would like to thank Professor Dr Timothy Menzies for helping us understand the process of building a good Software Engineering project. We would also like to thank the teaching assistants San Gilson, Andre Lustosa, Xueqi (Sherry) Yang, Yasitha Rajapaksha, and Rahul Yedida for their support throughout the project.
