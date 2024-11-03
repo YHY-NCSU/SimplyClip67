@@ -1,0 +1,40 @@
+name: Test Coverage Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Adjust the Node.js version as needed
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Run the test and generate coverage for `seleniumTest2.js`
+      - name: Run test coverage for seleniumTest2.js
+        run: |
+          npx nyc mocha seleniumTest2.js
+
+      # Upload test coverage report as an artifact (optional)
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage
