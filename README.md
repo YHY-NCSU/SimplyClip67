@@ -282,9 +282,9 @@ Users can download the list of  copied items as a document file or CSV file. The
 
 ### Future Enhancements:
 
-- [ ] Highlight important text box in the clipboard
-- [ ] Better training  data for Summarizer 
-- [ ] Copy image to clipboard
+- [ ] Cross browser support
+- [ ] Shortcut optimization
+- [ ] API Integration
  
 ---
 ## :handshake: Contributors
