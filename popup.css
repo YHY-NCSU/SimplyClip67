@@ -285,13 +285,13 @@ ul li{
 }
 
 #search {
-    margin-left: 15px !important;
+    margin-left: 10px !important;
     width: 60% !important;
     margin-top: 6px;
 }
 
 #searchText {
-    width: 79% !important;
+    width: 60% !important;
     max-height: 200px;
 }
 #header {
@@ -533,7 +533,7 @@ ul li {
 
 /* CSS CHANGES FOR FIXING IMAGE CSS */
 
-}
+
 
 
 
