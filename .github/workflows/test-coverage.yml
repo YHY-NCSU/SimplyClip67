@@ -30,7 +30,7 @@ jobs:
       # Run the test and generate coverage for `seleniumTest.js`
       - name: Run test coverage for seleniumTest.js
         run: |
-          npx nyc mocha seleniumTest.js
+          nyc --reporter=html mocha seleniumTest.js
 
       # Upload test coverage report as an artifact (optional)
       - name: Upload Coverage Report
