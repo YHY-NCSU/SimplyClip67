@@ -562,14 +562,13 @@
 <a name='L503'></a><a href='#L503'>503</a>
 <a name='L504'></a><a href='#L504'>504</a>
 <a name='L505'></a><a href='#L505'>505</a>
-<a name='L506'></a><a href='#L506'>506</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L506'></a><a href='#L506'>506</a>
+<a name='L507'></a><a href='#L507'>507</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -668,7 +667,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -861,7 +859,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1045,12 +1042,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1066,17 +1063,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&nbsp;
-const assert = require('assert');
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const assert = require('assert');
 let webdriver = require("selenium-webdriver");
 let chromedriver = require('chromedriver');
 let chrome = require("selenium-webdriver/chrome");
 const {Key,
     By} = require("selenium-webdriver");
-&nbsp;
-&nbsp;
-describe('Verify setup with Google Search',function() {
+    
+    describe('Verify setup with Google Search',function() {
     it('browser should open', async function () {
         this.timeout(10000);
         // Open the Chrome Browser with a custom profile
@@ -1172,7 +1172,6 @@ describe('Check simply clip functionality',function() {
 &nbsp;
         //Retrieve the result from the clipboard list in the extension
         let clipboard_result = driver.findElement(By.className("clipboard_list"));
-&nbsp;
         //Check if the copied value exists in the clipboard list of the extension
         clipboard_result.getAttribute('value').then(<span class="fstat-no" title="function not covered" >fu</span>nction(value) {
 <span class="cstat-no" title="statement not covered" >            assert.equal(value, results.getText());</span>
@@ -1366,7 +1365,6 @@ describe('Check Merge functionality',function() {
     }).timeout(10000);
 });
 &nbsp;
-&nbsp;
 describe('Check Summarize functionality',function() {
     it('copied text should exist in SimplyClip clipboard', async function () {
         // Open the Chrome Browser with a custom profile
@@ -1550,36 +1548,41 @@ describe('Check dark mode functionality',function() {
 &nbsp;
         // Launch Google.com
         driver.get('http://google.com');
+         // Search for dark mode button and click on it
+         const dark_mode = driver.findElement(By.xpath("/html/body/div[1]/label[2]/span"));
+         dark_mode.sendKeys(Key.RETURN);
+         dark_mode.click();
+ 
+         //Checkbox for selecting the text
+         const checkbx1 = driver.findElement(By.xpath("/html/body/ul/li[1]/div/input"));
+         checkbx1.click();
+ 
+         const checkbx2 = driver.findElement(By.xpath("/html/body/ul/li[2]/div/input"));
+         checkbx2.click();
+ 
+         // Search for merge button
+         const merge = driver.findElement(By.xpath("/html/body/div[1]/div[2]/img"));
+         merge.click();
+ 
+         // Close the browser
+         driver.close();
+ 
+         // Quit the browser
+         driver.quit();
+     }).timeout(10000);
+ });
 &nbsp;
-        // Search for dark mode button and click on it
-        const dark_mode = driver.findElement(By.xpath("/html/body/div[1]/label[2]/span"));
-        dark_mode.sendKeys(Key.RETURN);
-        dark_mode.click();
 &nbsp;
-        const checkbx1 = driver.findElement(By.xpath("/html/body/ul/li[1]/div/input"));
-        checkbx1.click();
 &nbsp;
-        const checkbx2 = driver.findElement(By.xpath("/html/body/ul/li[2]/div/input"));
-        checkbx2.click();
 &nbsp;
-        // Search for merge button
-        const merge = driver.findElement(By.xpath("/html/body/div[1]/div[2]/img"));
-        merge.click();
-&nbsp;
-        // Close the browser
-        driver.close();
-&nbsp;
-        // Quit the browser
-        driver.quit();
-    }).timeout(10000);
-});</pre></td></tr></table></pre>
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sat Nov 02 2024 20:13:15 GMT-0400 (Eastern Daylight Time)
+                at Wed Nov 13 2024 21:21:48 GMT-0500 (Eastern Standard Time)
             </div>
         </div>
         <script src="prettify.js"></script>
