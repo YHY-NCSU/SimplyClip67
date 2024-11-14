@@ -6,10 +6,10 @@
 <img src="https://img.shields.io/github/license/CSC510-Software-Engineering-Fall-2024/SimplyClip?style=flat-square" alt="SimplyClip license" />
 [![GitHub Release](https://img.shields.io/badge/release-v5.2-blue)](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip)
 ![GitHub language count](https://img.shields.io/github/languages/count/CSC510-Software-Engineering-Fall-2024/SimplyClip)
-![Test Cases](https://img.shields.io/badge/tests-passing-green)
+[![Test Cases](https://img.shields.io/badge/tests-passing-green)](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/actions/workflows/coverage.yml)
 ![GitHub contributors](https://img.shields.io/github/contributors/CSC510-Software-Engineering-Fall-2024/SimplyClip)
 [![GitHub-size](https://img.shields.io/github/languages/code-size/CSC510-Software-Engineering-Fall-2024/SimplyClip)](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip)
-[![Coverage Status](https://img.shields.io/badge/code%20coverage-100%25-brightgreen)](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip#-testcase-coverage)
+[![Coverage Status](https://img.shields.io/badge/code%20coverage-100%25-brightgreen)](https://csc510-software-engineering-fall-2024.github.io/SimplyClip/)
 <a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/forks" target="blank">
 <img src="https://img.shields.io/github/forks/CSC510-Software-Engineering-Fall-2024/SimplyClip?style=flat-square" alt="SimplyClip forks"/>
 </a>
