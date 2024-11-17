@@ -28,3 +28,8 @@ chrome.contextMenus.create({
     }
   });
   
+  chrome.commands.onCommand.addListener((command) => {
+    if (command === "download-csv") {
+      chrome.runtime.sendMessage({ action: "downloadCSV" });
+    }
+  });

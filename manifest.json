@@ -35,5 +35,14 @@
       "id": "simplyclip@example.com",
       "strict_min_version": "126.0"
     }
+  },
+  "commands": {
+    "download-csv": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Download clipboard contents as CSV"
+    }
   }
 }

@@ -281,7 +281,6 @@ function addClipboardImageItem(imageDataUrl) {
     });
   }
   
-  
 /**
  * Gets the source URL and the image url for the copied image/text
  * @param {*} textContent
@@ -1265,3 +1264,41 @@ let textArea = document.querySelector("#searchText");
 textArea.oninput = () => {
     textArea.style.height = (textArea.scrollHeight)+"px";
 }
+
+// Add this near the top of the file
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.action === "downloadCSV") {
+      downloadClipboardTextAsCsv();
+    }
+  });
+  
+  // Modify the existing downloadClipboardTextAsCsv function to make it reusable
+  function downloadClipboardTextAsCsv() {
+    chrome.storage.sync.get(['list'], clipboard => {
+      let list = clipboard.list;
+      if (list === undefined || list.length === 0) {
+        showSnackbar("No items to download");
+        return;
+      }
+  
+      let csvContent = "data:text/csv;charset=utf-8,";
+      list.forEach(function(item) {
+        let row = item.replace(/"/g, '""');
+        csvContent += '"' + row + '"\r\n';
+      });
+  
+      var encodedUri = encodeURI(csvContent);
+      var link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "clipboard_contents.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showSnackbar("CSV file downloaded");
+    });
+  }
+  
+  // Keep the existing event listener for the CSV download button
+  document.getElementsByClassName('csv')[0].addEventListener('click', (event) => {
+    downloadClipboardTextAsCsv();
+  });
