@@ -52,50 +52,100 @@ function doDjangoCall(type, url, data, callback) {
     }
 }
 
+// addButton.addEventListener('click', (event) => {
+//         let textitem = ''
+//         let emptyDiv = document.getElementById('empty-div');
+//         let downloadDiv1 = document.getElementById('download-btn1');
+//         let downloadDiv2 = document.getElementById('download-btn2');
+//         let searchInput = document.getElementById('searchText');
+
+
+//         emptyDiv.classList.add('hide-div');
+//         downloadDiv1.style.display = 'block';
+//         downloadDiv2.style.display = 'block';
+//         document.getElementsByClassName('doc')[0].addEventListener('click', (event) => {
+//             downloadClipboardTextAsDoc()
+//         })
+//         document.getElementsByClassName('csv')[0].addEventListener('click', (event) => {
+//             downloadClipboardTextAsCsv()
+//         })
+//         searchInput.style.display = 'block';
+//         searchInput.addEventListener('keyup', () => {
+//             searchClipboardText();
+//         })
+//         chrome.storage.sync.get(['list','listcolor'], text => {
+//             let list = text.list;
+//             let listcolor = text.listcolor;
+//             list == undefined && (list = []);
+//             list.unshift("");
+//             listcolor.unshift("black");
+//             chrome.storage.sync.set({ 'list': list, 'listcolor': listcolor  })
+//         })
+//         chrome.storage.sync.get(['listURL'], url => {
+//             let urlList = url.listURL;
+//             urlList == undefined && (urlList = []);
+//             urlList.unshift("");
+//             chrome.storage.sync.set({ 'listURL': urlList })
+//         })
+//         chrome.storage.sync.get(['originalList'], original => {
+//             let originalList = original.originalList;
+//             originalList == undefined && (originalList = []);
+//             originalList.unshift("");
+//             chrome.storage.sync.set({ 'originalList': originalList })
+//         })
+//         addClipboardListItem(textitem)
+//     }
+// )
+
 addButton.addEventListener('click', (event) => {
-        let textitem = ''
-        let emptyDiv = document.getElementById('empty-div');
-        let downloadDiv1 = document.getElementById('download-btn1');
-        let downloadDiv2 = document.getElementById('download-btn2');
-        let searchInput = document.getElementById('searchText');
+    let textitem = '';
+    let emptyDiv = document.getElementById('empty-div');
+    let downloadDiv1 = document.getElementById('download-btn1');
+    let downloadDiv2 = document.getElementById('download-btn2');
+    let searchInput = document.getElementById('searchText');
 
+    emptyDiv.classList.add('hide-div');
+    downloadDiv1.style.display = 'block';
+    downloadDiv2.style.display = 'block';
+    
+    // Capture the current time
+    const currentTime = new Date().toISOString();
 
-        emptyDiv.classList.add('hide-div');
-        downloadDiv1.style.display = 'block';
-        downloadDiv2.style.display = 'block';
-        document.getElementsByClassName('doc')[0].addEventListener('click', (event) => {
-            downloadClipboardTextAsDoc()
-        })
-        document.getElementsByClassName('csv')[0].addEventListener('click', (event) => {
-            downloadClipboardTextAsCsv()
-        })
-        searchInput.style.display = 'block';
-        searchInput.addEventListener('keyup', () => {
-            searchClipboardText();
-        })
-        chrome.storage.sync.get(['list','listcolor'], text => {
-            let list = text.list;
-            let listcolor = text.listcolor;
-            list == undefined && (list = []);
-            list.unshift("");
+    // Capture the current tab URL
+    chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+        let currentURL = tabs[0].url;
+
+        // Get existing clipboard data
+        chrome.storage.sync.get(['list', 'listcolor', 'listURL', 'listTime'], data => {
+            let list = data.list || [];
+            let listcolor = data.listcolor || [];
+            let urlList = data.listURL || [];
+            let timeList = data.listTime || [];
+
+            // Add new entry at the start of each list
+            list.unshift(textitem);
             listcolor.unshift("black");
-            chrome.storage.sync.set({ 'list': list, 'listcolor': listcolor  })
-        })
-        chrome.storage.sync.get(['listURL'], url => {
-            let urlList = url.listURL;
-            urlList == undefined && (urlList = []);
-            urlList.unshift("");
-            chrome.storage.sync.set({ 'listURL': urlList })
-        })
-        chrome.storage.sync.get(['originalList'], original => {
-            let originalList = original.originalList;
-            originalList == undefined && (originalList = []);
-            originalList.unshift("");
-            chrome.storage.sync.set({ 'originalList': originalList })
-        })
-        addClipboardListItem(textitem)
-    }
-)
+            urlList.unshift(currentURL);
+            timeList.unshift(currentTime);
+
+            // Save updated lists back to storage
+            chrome.storage.sync.set({
+                'list': list,
+                'listcolor': listcolor,
+                'listURL': urlList,
+                'listTime': timeList
+            }, () => {
+                addClipboardListItem(textitem);
+            });
+        });
+    });
+
+    searchInput.style.display = 'block';
+    searchInput.addEventListener('keyup', () => {
+        searchClipboardText();
+    });
+});
+
 /**
  * Gets the copied text from storage and calls addClipboardListItem function to populate list in the pop-up
  * @example
@@ -1251,41 +1301,45 @@ textArea.oninput = () => {
     textArea.style.height = (textArea.scrollHeight)+"px";
 }
   
-  // Modify the existing downloadClipboardTextAsCsv function to make it reusable
-  function downloadClipboardTextAsCsv() {
-    let data = [];
-    chrome.storage.sync.get(['list'], clipboard => {
-        clipboardData = clipboard.list
-        chrome.storage.sync.get(['listURL'], url => {
-            urlData = url.listURL
-            chrome.storage.sync.get(['originalList'], original => {
-                originalData = original.originalList
-                clipboardData.forEach((d, index) => {
-                    let rowData = [];
-                    rowData.push(d)
-                    rowData.push(originalData[index])
-                    rowData.push(urlData[index])
-                    data.push(rowData)
-                })
-
-                var csv = 'Edited Text,Original Copied Text,Website URL\n';
-                data.forEach(function (row) {
-                    for (let i in row) {
-                        row[i] = row[i].replace(/"/g, '""');
-                    }
-
-                    csv += '"' + row.join('","') + '"';
-                    csv += "\n";
-                });
-
-                var hiddenElement = document.createElement('a');
-                hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
-                hiddenElement.target = '_blank';
-                hiddenElement.download = 'SimplyClip.csv';
-                hiddenElement.click();
-            })
-        })
-    })
+function downloadClipboardTextAsCsv() {
+    chrome.storage.sync.get(['list', 'listURL'], function(result) {
+        let list = result.list || [];
+        let urlList = result.listURL || [];
+        
+        // Create CSV content with proper line breaks
+        let csvRows = [];
+        
+        // Add header row
+        csvRows.push(['Copied Text', 'Source URL']);
+        
+        // Add data rows
+        for (let i = 0; i < list.length; i++) {
+            // Skip the first empty entry if it exists
+            if (list[i] === '') continue;
+            
+            // Properly escape fields
+            let url = urlList[i] || '';
+            let text = list[i].replace(/"/g, '""'); // Escape quotes
+            
+            csvRows.push([
+                `"${text}"`,
+                `"${url}"`
+            ]);
+        }
+        
+        // Join rows with proper line breaks
+        let csvContent = csvRows.map(row => row.join(',')).join('\n');
+        
+        // Create and trigger download
+        let blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        let url = URL.createObjectURL(blob);
+        let link = document.createElement("a");
+        link.setAttribute("href", url);
+        link.setAttribute("download", "clipboard_data.csv");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    });
 }
 
 function downloadClipboardTextAsJson() {
