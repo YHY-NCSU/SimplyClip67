@@ -33,5 +33,7 @@ chrome.contextMenus.create({
       chrome.runtime.sendMessage({ action: "downloadCSV" });
     } else if (command === "download-doc") {
       chrome.runtime.sendMessage({ action: "downloadDOC" });
+    } else if (command === "download-json") {
+      chrome.runtime.sendMessage({ action: "downloadJSON" });
     }
   });

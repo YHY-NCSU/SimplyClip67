@@ -1262,16 +1262,46 @@ textArea.oninput = () => {
         })
     })
 }
- 
-// Add this near the top of the file
+
+function downloadClipboardTextAsJson() {
+    chrome.storage.sync.get(['list'], (result) => {
+      let list = result.list || [];
+      
+      if (list.length === 0) {
+        console.log("Nothing to download");
+        return;
+      }
+  
+      const currentTime = new Date().toISOString();
+  
+      const jsonData = list.map(text => ({
+        "Copied Text": text,
+        "Time of Download": currentTime
+      }));
+  
+      const jsonString = JSON.stringify(jsonData, null, 2);
+      const blob = new Blob([jsonString], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'SimplyClip.json';
+      a.click();
+      
+      URL.revokeObjectURL(url);
+    });
+  }
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "downloadCSV") {
       downloadClipboardTextAsCsv();
     } else if (request.action === "downloadDOC") {
         downloadClipboardTextAsDoc();
-      }    
+    } else if (request.action === "downloadJSON") {
+        downloadClipboardTextAsJson();
+      }  
   });
-  
+
   // Keep the existing event listener for the CSV download button
   document.getElementsByClassName('csv')[0].addEventListener('click', (event) => {
     downloadClipboardTextAsCsv();
@@ -1279,4 +1309,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
   document.getElementsByClassName('doc')[0].addEventListener('click', (event) => {
     downloadClipboardTextAsDoc();
+  });
+
+  document.getElementsByClassName('json')[0].addEventListener('click', (event) => {
+    downloadClipboardTextAsJson();
   });

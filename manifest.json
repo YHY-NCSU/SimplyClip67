@@ -50,6 +50,13 @@
         "mac": "Command+Shift+L"
       },
       "description": "Download clipboard contents as DOC"
+    },
+    "download-json": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+U",
+        "mac": "Command+Shift+U"
+      },
+      "description": "Download clipboard contents as JSON"
     }
   }
 }
