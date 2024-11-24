@@ -175,7 +175,7 @@ function getClipboardImages() {
       }
     });
 }
-  
+
 function addClipboardImageItem(imageDataUrl) {
     let listItem = document.createElement("li"),
       listDiv = document.createElement("div"),
@@ -218,11 +218,26 @@ function addClipboardImageItem(imageDataUrl) {
     upArrowDiv.appendChild(upArrowImage);
     downArrowDiv.appendChild(downArrowImage);
   
+    // New code added for download functionality
+    let downloadButton = document.createElement("button");
+    downloadButton.textContent = "Download";
+    downloadButton.classList.add("download-image");
+    downloadButton.setAttribute("data-toggle", "tooltip");
+    downloadButton.setAttribute("title", "Click to download the image!");
+  
+    downloadButton.addEventListener("click", () => {
+      downloadImage(imageDataUrl);
+    });
+  
+    contentDiv.appendChild(downloadButton);
+    // End of new code
+  
     contentDiv.appendChild(listDiv);
     contentDiv.appendChild(deleteDiv);
     contentDiv.appendChild(upArrowDiv);
     contentDiv.appendChild(downArrowDiv);
     contentDiv.classList.add("content");
+  
     listItem.appendChild(contentDiv);
     _clipboardList.appendChild(listItem);
   
@@ -239,6 +254,16 @@ function addClipboardImageItem(imageDataUrl) {
     });
   }
   
+  function downloadImage(imageDataUrl) {
+    let link = document.createElement("a");
+    link.href = imageDataUrl;
+    link.download = "clipboard_image" + ".png";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showSnackbar("Image downloaded successfully!");
+  }
+
   function deleteImageItem(imageDataUrl) {
     chrome.storage.local.get(["imageList"], function (result) {
       let imageList = result.imageList || [];
