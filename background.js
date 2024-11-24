@@ -31,5 +31,7 @@ chrome.contextMenus.create({
   chrome.commands.onCommand.addListener((command) => {
     if (command === "download-csv") {
       chrome.runtime.sendMessage({ action: "downloadCSV" });
+    } else if (command === "download-doc") {
+      chrome.runtime.sendMessage({ action: "downloadDOC" });
     }
   });

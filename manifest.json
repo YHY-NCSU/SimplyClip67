@@ -43,6 +43,13 @@
         "mac": "Command+Shift+Y"
       },
       "description": "Download clipboard contents as CSV"
+    },
+    "download-doc": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L"
+      },
+      "description": "Download clipboard contents as DOC"
     }
   }
 }

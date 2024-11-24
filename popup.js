@@ -1225,13 +1225,6 @@ let textArea = document.querySelector("#searchText");
 textArea.oninput = () => {
     textArea.style.height = (textArea.scrollHeight)+"px";
 }
-
-// Add this near the top of the file
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.action === "downloadCSV") {
-      downloadClipboardTextAsCsv();
-    }
-  });
   
   // Modify the existing downloadClipboardTextAsCsv function to make it reusable
   function downloadClipboardTextAsCsv() {
@@ -1269,8 +1262,21 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         })
     })
 }
+ 
+// Add this near the top of the file
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.action === "downloadCSV") {
+      downloadClipboardTextAsCsv();
+    } else if (request.action === "downloadDOC") {
+        downloadClipboardTextAsDoc();
+      }    
+  });
   
   // Keep the existing event listener for the CSV download button
   document.getElementsByClassName('csv')[0].addEventListener('click', (event) => {
     downloadClipboardTextAsCsv();
+  });
+
+  document.getElementsByClassName('doc')[0].addEventListener('click', (event) => {
+    downloadClipboardTextAsDoc();
   });
