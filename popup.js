@@ -1110,45 +1110,6 @@ getClipboardText();
  * @example
  * downloadClipboardTextAsCsv()
  */
-function downloadClipboardTextAsCsv() {
-    let data = [];
-    chrome.storage.sync.get(['list'], clipboard => {
-        clipboardData = clipboard.list
-        chrome.storage.sync.get(['listURL'], url => {
-            urlData = url.listURL
-            chrome.storage.sync.get(['originalList'], original => {
-                originalData = original.originalList
-                clipboardData.forEach((d, index) => {
-                    let rowData = [];
-                    rowData.push(d)
-                    rowData.push(originalData[index])
-                    rowData.push(urlData[index])
-                    data.push(rowData)
-                })
-
-                var csv = 'Edited Text,OriginalText,URL\n';
-                data.forEach(function (row) {
-                    for (let i in row) {
-                        row[i] = row[i].replace(/"/g, '""');
-                    }
-
-                    csv += '"' + row.join('","') + '"';
-                    csv += "\n";
-                });
-
-                var hiddenElement = document.createElement('a');
-                hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
-                hiddenElement.target = '_blank';
-                hiddenElement.download = 'simplyClip.csv';
-                hiddenElement.click();
-            })
-        })
-    })
-
-
-
-
-}
 /**
  * Deletes all the text copied in the simplyclip clipboard
  * @example
@@ -1274,29 +1235,40 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   
   // Modify the existing downloadClipboardTextAsCsv function to make it reusable
   function downloadClipboardTextAsCsv() {
+    let data = [];
     chrome.storage.sync.get(['list'], clipboard => {
-      let list = clipboard.list;
-      if (list === undefined || list.length === 0) {
-        showSnackbar("No items to download");
-        return;
-      }
-  
-      let csvContent = "data:text/csv;charset=utf-8,";
-      list.forEach(function(item) {
-        let row = item.replace(/"/g, '""');
-        csvContent += '"' + row + '"\r\n';
-      });
-  
-      var encodedUri = encodeURI(csvContent);
-      var link = document.createElement("a");
-      link.setAttribute("href", encodedUri);
-      link.setAttribute("download", "clipboard_contents.csv");
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      showSnackbar("CSV file downloaded");
-    });
-  }
+        clipboardData = clipboard.list
+        chrome.storage.sync.get(['listURL'], url => {
+            urlData = url.listURL
+            chrome.storage.sync.get(['originalList'], original => {
+                originalData = original.originalList
+                clipboardData.forEach((d, index) => {
+                    let rowData = [];
+                    rowData.push(d)
+                    rowData.push(originalData[index])
+                    rowData.push(urlData[index])
+                    data.push(rowData)
+                })
+
+                var csv = 'Edited Text,Original Copied Text,Website URL\n';
+                data.forEach(function (row) {
+                    for (let i in row) {
+                        row[i] = row[i].replace(/"/g, '""');
+                    }
+
+                    csv += '"' + row.join('","') + '"';
+                    csv += "\n";
+                });
+
+                var hiddenElement = document.createElement('a');
+                hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+                hiddenElement.target = '_blank';
+                hiddenElement.download = 'SimplyClip.csv';
+                hiddenElement.click();
+            })
+        })
+    })
+}
   
   // Keep the existing event listener for the CSV download button
   document.getElementsByClassName('csv')[0].addEventListener('click', (event) => {
