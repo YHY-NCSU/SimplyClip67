@@ -862,6 +862,38 @@ function addClipboardListItem(text,item_color) {
         x.className = "show";
         setTimeout(function () { x.className = x.className.replace("show", ""); }, 300);
     });
+
+    // Create star/bookmark button
+    let starButton = document.createElement("button");
+    starButton.textContent = "☆"; // Use a star symbol
+    starButton.classList.add("star-button");
+    
+    // Check if item is already bookmarked
+    chrome.storage.sync.get(['bookmarkedList'], (data) => {
+        let bookmarkedList = data.bookmarkedList || [];
+        if (bookmarkedList.includes(text)) {
+            starButton.textContent = "★"; // Filled star for bookmarked items
+        }
+    });
+
+    // Add event listener for bookmarking
+    starButton.addEventListener('click', () => {
+        chrome.storage.sync.get(['bookmarkedList'], (data) => {
+            let bookmarkedList = data.bookmarkedList || [];
+            if (bookmarkedList.includes(text)) {
+                // Remove from bookmarks
+                bookmarkedList.splice(bookmarkedList.indexOf(text), 1);
+                starButton.textContent = "☆";
+            } else {
+                // Add to bookmarks
+                bookmarkedList.push(text);
+                starButton.textContent = "★";
+            }
+            chrome.storage.sync.set({ 'bookmarkedList': bookmarkedList });
+        });
+    });
+
+    contentDiv.appendChild(starButton); 
 }
 
 // Add event listener for the new summarization button
@@ -1053,69 +1085,6 @@ merging.addEventListener('click', () => {
 })
 
 /**
- * Retrives the copied text from the storage ,
- * generates a doc file and
- * downloads the file
- * @example
- * downloadClipboardTextAsDoc()
- */
-function downloadClipboardTextAsDoc(){
-    chrome.storage.sync.get(['list'], clipboard => {
-        chrome.storage.sync.get(['citationList'], citclipboard => {
-            chrome.storage.sync.get(['summarizedList'], summclipboard => {
-            let list = clipboard.list;
-            let summList = summclipboard.summarizedList;
-            let citList = citclipboard.citationList;
-            let emptyDiv = document.getElementById('empty-div');
-            if (list === undefined || list.length === 0) {
-                emptyDiv.classList.remove('hide-div');
-                console.log("Nothing to download")
-            }
-            else {
-                var list_of_items = []
-                //var list_of_summ_items = []
-                emptyDiv.classList.add('hide-div');
-                if (typeof list !== undefined){
-                    list.forEach(item => {
-                        list_of_items = list_of_items + item + "\n\n"
-                    });
-                if (typeof summList !== undefined){
-                    summList.forEach(item => {
-                        console.log(item);
-                        list_of_items = list_of_items + item + "\n\n"
-                    });
-                if (typeof citList !== undefined){
-                    citList.forEach(item => {
-                        console.log(item);
-                        list_of_items = list_of_items + item + "\n\n"
-                    });
-
-                var link, blob, url;
-                blob = new Blob(['\ufeff', list_of_items], {
-                    type: 'application/msword'
-                });
-
-                    url = URL.createObjectURL(blob);
-                    link = document.createElement('A');
-                    link.href = url;
-                    link.download = 'SimplyClip';
-                    document.body.appendChild(link);
-                    if (navigator.msSaveOrOpenBlob )
-                        navigator.msSaveOrOpenBlob( blob, 'SimplyClip.doc');
-                    else link.click();  // other browsers
-                    document.body.removeChild(link);
-                }
-                }
-                }
-            }
-        });
-    });
-   });
-}
-
-
-
-/**
  * Filters the
  * displayed copied text list that matches search text in the search box
  * @example
@@ -1138,7 +1107,6 @@ function searchClipboardText() {
         }
     }
 }
-
 
 var enabled = true;
 var myButton = document.getElementById('toggle-button');
@@ -1178,18 +1146,6 @@ myButton.onchange = () => {
 
 getClipboardText();
 
-/**
- * Retrives the copied text, original copied text and URL of copied text from the storage ,
- * generates a CSV file and
- * downloads the file
- * @example
- * downloadClipboardTextAsCsv()
- */
-/**
- * Deletes all the text copied in the simplyclip clipboard
- * @example
- * deleteAllText()
- */
 function deleteAllText() {
     chrome.storage.sync.set({ 'list': [] }, () => {});
     chrome.storage.sync.set({ 'originalList': [] }, () => {});
@@ -1299,6 +1255,56 @@ myButton2.onchange = () => {
 let textArea = document.querySelector("#searchText");
 textArea.oninput = () => {
     textArea.style.height = (textArea.scrollHeight)+"px";
+}
+
+//Function to download data as doc file
+function downloadClipboardTextAsDoc() {
+    chrome.storage.sync.get(['list'], clipboard => {
+        let list = clipboard.list;
+        let emptyDiv = document.getElementById('empty-div');
+        
+        if (list === undefined || list.length === 0) {
+            emptyDiv.classList.remove('hide-div');
+            console.log("Nothing to download");
+            return;
+        }
+
+        emptyDiv.classList.add('hide-div');
+        
+        // Create timestamp for the download
+        const currentTime = new Date().toLocaleString();
+        
+        // Create content with timestamp header
+        let docContent = `Downloaded on: ${currentTime}\n\n`;
+        
+        // Add list items
+        if (Array.isArray(list)) {
+            list.forEach(item => {
+                if (item) { // Only add non-empty items
+                    docContent += item + "\n\n";
+                }
+            });
+        }
+
+        // Create and trigger download
+        const blob = new Blob(['\ufeff', docContent], {
+            type: 'application/msword'
+        });
+
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('A');
+        link.href = url;
+        link.download = 'SimplyClip.doc';
+        document.body.appendChild(link);
+        
+        if (navigator.msSaveOrOpenBlob) {
+            navigator.msSaveOrOpenBlob(blob, 'SimplyClip.doc');
+        } else {
+            link.click();
+        }
+        
+        document.body.removeChild(link);
+    });
 }
   
 function downloadClipboardTextAsCsv() {
