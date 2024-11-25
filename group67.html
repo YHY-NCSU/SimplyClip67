@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clipboard API External App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #output {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Clipboard Extension API Test</h1>
+    <button id="fetchData">Fetch Clipboard Data</button>
+    <button id="addData">Add New Clipboard Data</button>
+    <input type="text" id="newData" placeholder="Enter new clipboard data" style="width: 300px;">
+    <div id="output">Output will appear here...</div>
+
+    <script>
+        // Replace with your extension ID (available from chrome://extensions when loaded)
+        const extensionId = "mhnigekkbihnaphglbkmocffcgbilmdf";
+
+        // Fetch clipboard data from the extension
+        document.getElementById("fetchData").addEventListener("click", () => {
+            chrome.runtime.sendMessage(extensionId, { action: "getClipboardData" }, (response) => {
+                if (response && response.data) {
+                    displayOutput("Fetched Clipboard Data:", response.data.join("\n"));
+                } else {
+                    displayOutput("Error:", response ? response.error : "Unknown error");
+                }
+            });
+        });
+
+        // Add new clipboard data to the extension
+        document.getElementById("addData").addEventListener("click", () => {
+            const newData = document.getElementById("newData").value;
+            if (!newData) {
+                alert("Please enter clipboard data to add.");
+                return;
+            }
+
+            chrome.runtime.sendMessage(extensionId, { action: "addClipboardData", data: newData }, (response) => {
+                if (response && response.success) {
+                    displayOutput("Success:", `Added "${newData}" to clipboard.`);
+                } else {
+                    displayOutput("Error:", response ? response.error : "Failed to add data.");
+                }
+            });
+        });
+
+        // Helper function to display output in the page
+        function displayOutput(title, content) {
+            const output = document.getElementById("output");
+            output.innerHTML = `<strong>${title}</strong><pre>${content}</pre>`;
+        }
+    </script>
+</body>
+</html>
