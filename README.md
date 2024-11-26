@@ -2,7 +2,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10211680.svg)](https://zenodo.org/records/10211680)
 
 ![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m789313708-ea25af592e8a7a84c009055e)
-<a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/blob/Group24DeveloperBranch/LICENSE" target="blank">
+<a href="https://github.com/YHY-NCSU/SimplyClip67/blob/Group67FeatureBranch/LICENSE" target="blank">
 <img src="https://img.shields.io/github/license/YHY-NCSU/SimplyClip67?style=flat-square" alt="SimplyClip license" />
 [![GitHub Release](https://img.shields.io/badge/release-v5.2-blue)](https://github.com/YHY-NCSU/SimplyClip67)
 ![GitHub language count](https://img.shields.io/github/languages/count/YHY-NCSU/SimplyClip67)
