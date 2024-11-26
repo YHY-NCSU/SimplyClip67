@@ -867,12 +867,14 @@ function addClipboardListItem(text,item_color) {
     let starButton = document.createElement("button");
     starButton.textContent = "☆"; // Use a star symbol
     starButton.classList.add("star-button");
+    starButton.style.fontSize = "1.7em"
     
     // Check if item is already bookmarked
     chrome.storage.sync.get(['bookmarkedList'], (data) => {
         let bookmarkedList = data.bookmarkedList || [];
         if (bookmarkedList.includes(text)) {
             starButton.textContent = "★"; // Filled star for bookmarked items
+            starButton.style.fontSize = "1.7em";
         }
     });
 
