@@ -37,3 +37,23 @@ chrome.contextMenus.create({
       chrome.runtime.sendMessage({ action: "downloadJSON" });
     }
   });
+
+  chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) => {
+    if (request.action === "getClipboardData") {
+        chrome.storage.sync.get(["list"], (result) => {
+            sendResponse({ data: result.list || [] });
+        });
+    } else if (request.action === "addClipboardData") {
+        const newItem = request.data;
+        chrome.storage.sync.get(["list"], (result) => {
+            let list = result.list || [];
+            list.unshift(newItem); // Add new item to the top
+            chrome.storage.sync.set({ list }, () => {
+                sendResponse({ success: true });
+            });
+        });
+    } else {
+        sendResponse({ error: "Invalid action" });
+    }
+    return true; // Indicates async response
+});
