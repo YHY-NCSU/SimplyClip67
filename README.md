@@ -292,11 +292,22 @@ Users can download the list of  copied items as a document file or CSV file. The
 - [x] Scrollable texts
 - [x] Fix dark mode to allow better UI
 
-### Future Enhancements:
+### Phase 6: Successful Functional Improvements in Simplyclip6.0:
 
-- [ ] Cross browser support
-- [ ] Shortcut optimization
-- [ ] API Integration
+- [x] Cross browser support
+- [x] Custom Keyboard Shortcuts
+- [x] API Integration to modify data of clipboard programmatically
+- [x] Copied Images can now be downloaded!
+- [x] Copied text can now be downloaded in JSON file.
+- [x] Bookmark any number of specific copied texts.
+- [x] Simplified data formatting in DOC, CSV, & JSON files.
+
+### Future Enhancements:
+- [ ] Voice Input.
+- [ ] Categorize copied content.
+- [ ] Highlight copied text.
+- [ ] Filter content based on bookmark or categories.
+- [ ] Integration with Notion.
  
 ---
 ## :handshake: Contributors
