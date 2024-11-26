@@ -3,17 +3,17 @@
 
 ![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m789313708-ea25af592e8a7a84c009055e)
 <a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/blob/Group24DeveloperBranch/LICENSE" target="blank">
-<img src="https://img.shields.io/github/license/CSC510-Software-Engineering-Fall-2024/SimplyClip?style=flat-square" alt="SimplyClip license" />
-[![GitHub Release](https://img.shields.io/badge/release-v5.2-blue)](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip)
-![GitHub language count](https://img.shields.io/github/languages/count/CSC510-Software-Engineering-Fall-2024/SimplyClip)
-[![Test Cases](https://img.shields.io/badge/tests-passing-green)](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/actions/workflows/coverage.yml)
-![GitHub contributors](https://img.shields.io/github/contributors/CSC510-Software-Engineering-Fall-2024/SimplyClip)
-[![GitHub-size](https://img.shields.io/github/languages/code-size/CSC510-Software-Engineering-Fall-2024/SimplyClip)](https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip)
+<img src="https://img.shields.io/github/license/YHY-NCSU/SimplyClip67?style=flat-square" alt="SimplyClip license" />
+[![GitHub Release](https://img.shields.io/badge/release-v5.2-blue)](https://github.com/YHY-NCSU/SimplyClip67)
+![GitHub language count](https://img.shields.io/github/languages/count/YHY-NCSU/SimplyClip67)
+[![Test Cases](https://img.shields.io/badge/tests-passing-green)](https://github.com/YHY-NCSU/SimplyClip67/actions/workflows/coverage.yml)
+![GitHub contributors](https://img.shields.io/github/contributors/YHY-NCSU/SimplyClip67)
+[![GitHub-size](https://img.shields.io/github/languages/code-size/YHY-NCSU/SimplyClip67)](https://github.com/YHY-NCSU/SimplyClip67)
 [![Coverage Status](https://img.shields.io/badge/code%20coverage-98.36%25-brightgreen)](https://csc510-software-engineering-fall-2024.github.io/SimplyClip/)
 <a href="https://github.com/YHY-NCSU/SimplyClip67/forks" target="blank">
-<img src="https://img.shields.io/github/forks/CSC510-Software-Engineering-Fall-2024/SimplyClip?style=flat-square" alt="SimplyClip forks"/>
+<img src="https://img.shields.io/github/forks/YHY-NCSU/SimplyClip67?style=flat-square" alt="SimplyClip forks"/>
 </a>
-<a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/stargazers" target="blank">
+<a href="https://github.com/YHY-NCSU/SimplyClip67/stargazers" target="blank">
 <img src="https://img.shields.io/github/stars/YHY-NCSU/SimplyClip67?style=flat-square" alt="SimplyClip stars"/>
 </a>
 <a href="https://github.com/YHY-NCSU/SimplyClip67/issues" target="blank">
@@ -22,7 +22,7 @@
 <a href="https://github.com/YHY-NCSU/SimplyClip67/issues?q=is%3Aissue+is%3Aclosed" target="blank">
 <img src="https://img.shields.io/github/issues-closed/YHY-NCSU/SimplyClip67" alt="SimplyClip issues closed"/>
 </a>
-<a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/pulls" target="blank">
+<a href="https://github.com/YHY-NCSU/SimplyClip67/pulls" target="blank">
 <img src="https://img.shields.io/github/issues-pr/YHY-NCSU/SimplyClip67?style=flat-square" alt="SimplyClip pull-requests"/>
 </a>
 <a href="https://github.com/YHY-NCSU/SimplyClip67/graphs/commit-activity" alt="commit activity">
