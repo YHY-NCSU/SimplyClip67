@@ -260,9 +260,21 @@ ul li{
     cursor: pointer;
 
 }
+#download-btn3{
+    float: right;
+
+    margin-top:20px;
+    padding-top: 7px;
+    cursor: pointer;
+
+}
 
 
 #download-btn2:hover{
+    transform: translateY(1px);
+}
+
+#download-btn3:hover{
     transform: translateY(1px);
 }
 
