@@ -25,10 +25,10 @@
 <a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/pulls" target="blank">
 <img src="https://img.shields.io/github/issues-pr/YHY-NCSU/SimplyClip67?style=flat-square" alt="SimplyClip pull-requests"/>
 </a>
-<a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/graphs/commit-activity" alt="commit activity">
-<img src="https://img.shields.io/github/commit-activity/w/CSC510-Software-Engineering-Fall-2024/SimplyClip" /></a> 
-<a href="https://img.shields.io/github/repo-size/CSC510-Software-Engineering-Fall-2024/SimplyClip" alt="repo size">
-<img src="https://img.shields.io/github/repo-size/CSC510-Software-Engineering-Fall-2024/SimplyClip" /></a>
+<a href="https://github.com/YHY-NCSU/SimplyClip67/graphs/commit-activity" alt="commit activity">
+<img src="https://img.shields.io/github/commit-activity/w/YHY-NCSU/SimplyClip67" /></a> 
+<a href="https://img.shields.io/github/repo-size/YHY-NCSU/SimplyClip67" alt="repo size">
+<img src="https://img.shields.io/github/repo-size/YHY-NCSU/SimplyClip67" /></a>
 
 ### &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;:paperclips: &emsp;  Clipboard Made Easy For Research &emsp; :paperclips:
 
