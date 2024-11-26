@@ -19,7 +19,7 @@
 <a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/issues" target="blank">
 <img src="https://img.shields.io/github/issues/CSC510-Software-Engineering-Fall-2024/SimplyClip?style=flat-square" alt="SimplyClip issues"/>
 </a>
-<a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/issues?q=is%3Aissue+is%3Aclosed" target="blank">
+<a href="https://github.com/YHY-NCSU/SimplyClip67/issues?q=is%3Aissue+is%3Aclosed" target="blank">
 <img src="https://img.shields.io/github/issues-closed/CSC510-Software-Engineering-Fall-2024/SimplyClip" alt="SimplyClip issues closed"/>
 </a>
 <a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/pulls" target="blank">
