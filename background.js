@@ -57,4 +57,3 @@ chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) => 
   }
   return true; // Indicates async response
 });
-
