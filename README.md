@@ -14,16 +14,16 @@
 <img src="https://img.shields.io/github/forks/CSC510-Software-Engineering-Fall-2024/SimplyClip?style=flat-square" alt="SimplyClip forks"/>
 </a>
 <a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/stargazers" target="blank">
-<img src="https://img.shields.io/github/stars/CSC510-Software-Engineering-Fall-2024/SimplyClip?style=flat-square" alt="SimplyClip stars"/>
+<img src="https://img.shields.io/github/stars/YHY-NCSU/SimplyClip67?style=flat-square" alt="SimplyClip stars"/>
 </a>
-<a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/issues" target="blank">
-<img src="https://img.shields.io/github/issues/CSC510-Software-Engineering-Fall-2024/SimplyClip?style=flat-square" alt="SimplyClip issues"/>
+<a href="https://github.com/YHY-NCSU/SimplyClip67/issues" target="blank">
+<img src="https://img.shields.io/github/issues/YHY-NCSU/SimplyClip67?style=flat-square" alt="SimplyClip issues"/>
 </a>
 <a href="https://github.com/YHY-NCSU/SimplyClip67/issues?q=is%3Aissue+is%3Aclosed" target="blank">
-<img src="https://img.shields.io/github/issues-closed/CSC510-Software-Engineering-Fall-2024/SimplyClip" alt="SimplyClip issues closed"/>
+<img src="https://img.shields.io/github/issues-closed/YHY-NCSU/SimplyClip67" alt="SimplyClip issues closed"/>
 </a>
 <a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/pulls" target="blank">
-<img src="https://img.shields.io/github/issues-pr/CSC510-Software-Engineering-Fall-2024/SimplyClip?style=flat-square" alt="SimplyClip pull-requests"/>
+<img src="https://img.shields.io/github/issues-pr/YHY-NCSU/SimplyClip67?style=flat-square" alt="SimplyClip pull-requests"/>
 </a>
 <a href="https://github.com/CSC510-Software-Engineering-Fall-2024/SimplyClip/graphs/commit-activity" alt="commit activity">
 <img src="https://img.shields.io/github/commit-activity/w/CSC510-Software-Engineering-Fall-2024/SimplyClip" /></a> 
