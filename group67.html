@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clipboard API External App</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('/images/tiles_bg.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Header */
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #cc0000;
+        }
+
+        /* Buttons */
+        button {
+            background-color: #cc0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin: 5px 0;
+        }
+
+        button:hover {
+            background-color: #990000;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            background-color: #660000;
+            transform: translateY(0);
+        }
+
+        /* Input */
+        input[type="text"] {
+            width: calc(100% - 50px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #cc0000;
+            box-shadow: 0 0 5px rgba(204, 0, 0, 0.5);
+        }
+
+        /* Output Box */
+        #output {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #output strong {
+            color: #cc0000;
+        }
+
+        #output pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Dark Mode Styles */
+        body.dark {
+            background-color: #121212;
+            color: #f4f4f4;
+        }
+
+        body.dark .container {
+            background-color: rgba(30, 30, 30, 0.9);
+            color: #f4f4f4;
+        }
+
+        body.dark button {
+            background-color: #cc0000;
+        }
+
+        body.dark button:hover {
+            background-color: #990000;
+        }
+
+        body.dark #output {
+            background-color: #1e1e1e;
+            border-color: #333;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .footer.dark {
+            color: #999;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .dark-mode-toggle button {
+            padding: 10px 15px;
+            background: #fff;
+            border: 2px solid #cc0000;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #cc0000;
+        }
+
+        .dark-mode-toggle button:hover {
+            background: #cc0000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clipboard Extension API Integration</h1>
+        <div class="dark-mode-toggle">
+            <button id="toggleDarkMode">Dark Mode</button>
+        </div>
+        <button id="fetchData">Fetch Clipboard Data</button>
+        <button id="addData">Add New Clipboard Data</button>
+        <input type="text" id="newData" placeholder="Enter new clipboard data">
+        <div id="output">Output will appear here...</div>
+    </div>
+    <div class="footer">
+        &copy; SimplyClip. All rights reserved.
+    </div>
+
+    <script>
+        // Replace with your extension ID (available from chrome://extensions when loaded)
+        const extensionId = "mhnigekkbihnaphglbkmocffcgbilmdf";
+
+        // Fetch clipboard data from the extension
+        document.getElementById("fetchData").addEventListener("click", () => {
+            chrome.runtime.sendMessage(extensionId, { action: "getClipboardData" }, (response) => {
+                if (response && response.data) {
+                    displayOutput("Fetched Clipboard Data:", response.data.join("\n"));
+                } else {
+                    displayOutput("Error:", response ? response.error : "Unknown error");
+                }
+            });
+        });
+
+        // Add new clipboard data to the extension
+        document.getElementById("addData").addEventListener("click", () => {
+            const newData = document.getElementById("newData").value;
+            if (!newData) {
+                alert("Please enter clipboard data to add.");
+                return;
+            }
+
+            chrome.runtime.sendMessage(extensionId, { action: "addClipboardData", data: newData }, (response) => {
+                if (response && response.success) {
+                    displayOutput("Success:", `Added "${newData}" to clipboard.`);
+                } else {
+                    displayOutput("Error:", response ? response.error : "Failed to add data.");
+                }
+            });
+        });
+
+        // Helper function to display output in the page
+        function displayOutput(title, content) {
+            const output = document.getElementById("output");
+            output.innerHTML = `<strong>${title}</strong><pre>${content}</pre>`;
+        }
+
+        // Dark mode toggle
+        const toggleButton = document.getElementById("toggleDarkMode");
+        toggleButton.addEventListener("click", () => {
+            document.body.classList.toggle("dark");
+        });
+    </script>
+</body>
+</html>

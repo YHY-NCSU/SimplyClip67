@@ -138,3 +138,12 @@ document.addEventListener('visibilitychange',function(){
             time_interval_set = setInterval(readClipboardData,200);
     }
 })
+
+chrome.storage.sync.get(['list', 'bookmarkedList'], (clipboard) => {
+  let list = clipboard.list || [];
+  let bookmarkedList = clipboard.bookmarkedList || [];
+  // Initialize if undefined
+  if (!Array.isArray(bookmarkedList)) {
+      bookmarkedList = [];
+  }
+});
