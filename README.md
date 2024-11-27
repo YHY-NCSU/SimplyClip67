@@ -1,10 +1,10 @@
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10211680.svg)](https://zenodo.org/records/10211680)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14226765.svg)](https://doi.org/10.5281/zenodo.14226765)
 
 ![Uptime Robot ratio (30 days)](https://img.shields.io/uptimerobot/ratio/m789313708-ea25af592e8a7a84c009055e)
 <a href="https://github.com/YHY-NCSU/SimplyClip67/blob/Group67FeatureBranch/LICENSE" target="blank">
 <img src="https://img.shields.io/github/license/YHY-NCSU/SimplyClip67?style=flat-square" alt="SimplyClip license" />
-[![GitHub Release](https://img.shields.io/badge/release-v5.2-blue)](https://github.com/YHY-NCSU/SimplyClip67)
+[![GitHub Release](https://img.shields.io/badge/release-v6.0-blue)](https://github.com/YHY-NCSU/SimplyClip67)
 ![GitHub language count](https://img.shields.io/github/languages/count/YHY-NCSU/SimplyClip67)
 [![Test Cases](https://img.shields.io/badge/tests-passing-green)](https://github.com/YHY-NCSU/SimplyClip67/actions/workflows/coverage.yml)
 ![GitHub contributors](https://img.shields.io/github/contributors/YHY-NCSU/SimplyClip67)
