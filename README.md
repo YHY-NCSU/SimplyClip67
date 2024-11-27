@@ -9,7 +9,7 @@
 [![Test Cases](https://img.shields.io/badge/tests-passing-green)](https://github.com/YHY-NCSU/SimplyClip67/actions/workflows/coverage.yml)
 ![GitHub contributors](https://img.shields.io/github/contributors/YHY-NCSU/SimplyClip67)
 [![GitHub-size](https://img.shields.io/github/languages/code-size/YHY-NCSU/SimplyClip67)](https://github.com/YHY-NCSU/SimplyClip67)
-[![Coverage Status](https://img.shields.io/badge/code%20coverage-97.87%25-brightgreen)](file:///C:/SimplyClip/SimplyClip67/coverage/index.html)
+[![Code Coverage](https://img.shields.io/badge/coverage-97.87%25-brightgreen)](https://github.com/YHY-NCSU/SimplyClip67/blob/Group67FeatureBranch/coverage/index.html)
 <a href="https://github.com/YHY-NCSU/SimplyClip67/forks" target="blank">
 <img src="https://img.shields.io/github/forks/YHY-NCSU/SimplyClip67?style=flat-square" alt="SimplyClip forks"/>
 </a>
