@@ -313,9 +313,9 @@ Users can download the list of  copied items as a document file or CSV file. The
 ## :handshake: Contributors
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/harshchaudhari08"><img src="https://avatars.githubusercontent.com/u/26276595?v=4" width="75px;" alt=""/><br /><sub><b>Harsh</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/YashChaudhary16"><img src="https://avatars.githubusercontent.com/u/26276595?v=4" width="75px;" alt=""/><br /><sub><b>Yash</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/Yuvraj-SB"><img src="https://avatars.githubusercontent.com/u/32798037?v=4" width="75px;" alt=""/><br /><sub><b>Yuvraj</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/harshchaudhari08"><img src="https://avatars.githubusercontent.com/u/121843030?v=4" width="75px;" alt=""/><br /><sub><b>Harsh</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/YashChaudhary16"><img src="https://avatars.githubusercontent.com/u/124380387?v=4" width="75px;" alt=""/><br /><sub><b>Yash</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/Yuvraj-SB"><img src="https://avatars.githubusercontent.com/u/138799623?v=4" width="75px;" alt=""/><br /><sub><b>Yuvraj</b></sub></a><br /></td>
   </tr>
 </table>
 
@@ -326,7 +326,7 @@ Users can download the list of  copied items as a document file or CSV file. The
 | Yuvraj Singh Bhatia        | ybhatia2                           |
 
 ## 🙏 Acknowledgements <a name="Acknowledgement"></a>
-We would like to thank Professor Dr Timothy Menzies for helping us understand the process of building a good Software Engineering project. We would also like to thank the teaching assistants San Gilson, Andre Lustosa, Xueqi (Sherry) Yang, Yasitha Rajapaksha, and Rahul Yedida for their support throughout the project.
+A heartfelt thanks to Professor Dr. Timothy Menzies for helping us understand the process of building a good Software Engineering project. We would also like to thank the all the TA staff to be there to help us at any provided time and providing special slots for our demos. We would also like to thank Group 24 members - Dharani Guda, Archismita Ghosh, Paul MacNichol to provide us this project with their insights.
 
-*** If you have any further queries, contact us on the above emails. Enjoy using SimplyClip! ***
+***If you have any further queries, contact us on the above emails. Enjoy using SimplyClip!***
 
