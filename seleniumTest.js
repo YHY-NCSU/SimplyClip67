@@ -10,7 +10,7 @@ const {Key,
         this.timeout(10000);
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/Yash/Desktop');
+            .addArguments('--user-data-dir=/Users/yuvraj/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -35,11 +35,11 @@ const {Key,
         // Quit the browser
         driver.quit();
     });
-    it('browser should open from a different user', async function () {
+    it('browser opening with a diffrent username', async function () {
         this.timeout(10000);
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/Yash/Desktop');
+            .addArguments('--user-data-dir=/Users/yash/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -49,11 +49,11 @@ const {Key,
         // Launch Google.com
         driver.get('http://google.com');
 
-        // Search for abc in the searchbox in Chrome and Press Enter
+        
         const searchBox = driver.findElement(webdriver.By.name('q'));
         searchBox.sendKeys('abc', Key.RETURN);
 
-        // Check if the value in the searchbox is equal to the value you entered
+       
         searchBox.getAttribute('value').then(function(value) {
             assert.equal(value, 'abc');
         });
@@ -72,7 +72,7 @@ describe('Check browser copy functionality',function() {
 
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+            .addArguments('--user-data-dir=/Users/harsh/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -101,24 +101,21 @@ describe('Check browser copy functionality',function() {
         // Quit the browser
         driver.quit();
     }).timeout(10000);
-    it('url should be copied', async function () {
 
-        // Open the Chrome Browser with a custom profile
+    it('image should be copied', async function () {
+
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+            .addArguments('--user-data-dir=/Users/yuvraj/Desktop');
 
-        // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
             .forBrowser('chrome')
             .setChromeOptions(options)
             .build();
 
-        // Launch Google.com
         driver.get('http://google.com');
 
-        // Search for abc in the searchbox in Chrome and Press Enter
         const searchBox = driver.findElement(webdriver.By.name('q'));
-        searchBox.sendKeys('hello', Key.RETURN);
+        searchBox.sendKeys('hi', Key.RETURN);
 
         // Store the text in the first div in the search results page
         let results = driver.findElement(By.xpath("html/body/div[1]/div[5]/div[4]/div[5]/div[1]/div[1]/div/div/div"));
@@ -140,7 +137,7 @@ describe('Check simply clip functionality',function() {
     it('copied text should exist in SimplyClip clipboard', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+            .addArguments('--user-data-dir=/Users/yuvraj/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -174,13 +171,42 @@ describe('Check simply clip functionality',function() {
         // Quit the browser
         driver.quit();
     }).timeout(10000);
+
+    it('delete all text should work', async function () {
+        const options = new chrome.Options()
+            .addArguments('--user-data-dir=/Users/yash/Desktop');
+
+        const driver = new webdriver.Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+
+        driver.get('http://google.com');
+
+        const searchBox = driver.findElement(webdriver.By.name('q'));
+        searchBox.sendKeys('hi', Key.RETURN);
+
+        let results = driver.findElement(By.xpath("html/body/div[1]/div[5]/div[4]/div[5]/div[1]/div[1]/div/div/div"));
+
+        results.sendKeys(Key.COMMAND, 'c');
+
+        let clipboard_result = driver.findElement(By.className("clipboard_list"));
+       
+        clipboard_result.getAttribute('value').then(function(value) {
+            assert.equal(value, results.getText());
+        });
+
+        driver.close();
+
+        driver.quit();
+    }).timeout(10000);
 });
 
 describe('Check sorting functionality',function() {
-    it('copied text should exist in SimplyClip clipboard', async function () {
+    it('search and highlight works', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+            .addArguments('--user-data-dir=/Users/yuvraj/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -201,13 +227,32 @@ describe('Check sorting functionality',function() {
         // Quit the browser
         driver.quit();
     }).timeout(10000);
+    it('find copied text searchbar works', async function () {
+        
+        const options = new chrome.Options()
+            .addArguments('--user-data-dir=/Users/yuvraj/Desktop');
+
+        const driver = new webdriver.Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+
+        driver.get('http://google.com');
+
+        const priority_down = driver.findElement(By.xpath("/html/body/ul/li[1]/div/div[5]/img"));
+        priority_down.click();
+
+        driver.close();
+
+        driver.quit();
+    }).timeout(10000);
 });
 
 describe('Check Document export functionality',function() {
-    it('copied text should exist in SimplyClip clipboard', async function () {
+    it('DOC file can be downloaded', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+            .addArguments('--user-data-dir=/Users/HARSH/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -228,10 +273,30 @@ describe('Check Document export functionality',function() {
         // Quit the browser
         driver.quit();
     }).timeout(10000);
+
+    it('CSV file downloaded', async function () {
+       
+        const options = new chrome.Options()
+            .addArguments('--user-data-dir=/Users/yash/Desktop');
+
+        const driver = new webdriver.Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+
+        driver.get('http://google.com');
+
+        const priority_down = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[3]/img"));
+        priority_down.click();
+
+        driver.close();
+
+        driver.quit();
+    }).timeout(10000);
 });
 
 describe('Check edit text functionality',function() {
-    it('copied text should exist in SimplyClip clipboard', async function () {
+    it('edit text works', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
             .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
@@ -253,6 +318,25 @@ describe('Check edit text functionality',function() {
         driver.close();
 
         // Quit the browser
+        driver.quit();
+    }).timeout(10000);
+
+    it('edit text is saved', async function () {
+        const options = new chrome.Options()
+            .addArguments('--user-data-dir=/Users/yuvraj/Desktop');
+
+        const driver = new webdriver.Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+
+        driver.get('http://google.com');
+
+        const priority_down = driver.findElement(By.xpath("/html/body/ul/li/div/div[2]/img"));
+        priority_down.click();
+
+        driver.close();
+
         driver.quit();
     }).timeout(10000);
 });
@@ -293,10 +377,45 @@ describe('Check the color tab functionality',function() {
         // Quit the browser
         driver.quit();
     }).timeout(10000);
+    it('color change works in dark mode', async function () {
+        // Open the Chrome Browser with a custom profile
+        const options = new chrome.Options()
+            .addArguments('--user-data-dir=/Users/yuvraj/Desktop');
+
+        // Initialise driver to launch Chrome
+        const driver = new webdriver.Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+
+        // Launch Google.com
+        driver.get('http://google.com');
+
+        // Search for the color dropdown
+        const colorTabBlue = driver.findElement(By.xpath("/html/body/ul/li/div/div[2]/img"));
+        colorTabBlue.click();
+        colorTabBlue.sendKeys('Blue');
+
+        const colorTabRed = driver.findElement(By.xpath("/html/body/ul/li/div/div[2]/img"));
+        colorTabRed.click();
+        colorTabRed.sendKeys('Red');
+
+        const colorTabGreen = driver.findElement(By.xpath("/html/body/ul/li/div/div[2]/img"));
+        colorTabGreen.click();
+        colorTabGreen.sendKeys('Green');
+        
+
+
+        // Close the browser
+        driver.close();
+
+        // Quit the browser
+        driver.quit();
+    }).timeout(10000);
 });
 
 describe('Check citation functionality',function() {
-    it('copied text should exist in SimplyClip clipboard', async function () {
+    it('checking citation function', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
             .addArguments('--user-data-dir=/Users/risha/Desktop');
@@ -320,14 +439,32 @@ describe('Check citation functionality',function() {
         // Quit the browser
         driver.quit();
     }).timeout(10000);
+    it('citation functionality works', async function () { 
+        const options = new chrome.Options()
+            .addArguments('--user-data-dir=/Users/yash/Desktop');
+
+        const driver = new webdriver.Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+
+        driver.get('http://google.com');
+
+        const checkCitation = driver.findElement(By.xpath("/html/body/ul/li[1]/div/div[8]/img"));
+        checkCitation.click();
+
+        driver.close();
+
+        driver.quit();
+    }).timeout(10000);
 });
 
 
 describe('Check Merge functionality',function() {
-    it('copied text should exist in SimplyClip clipboard', async function () {
+    it('selected copied texts can be merged', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+            .addArguments('--user-data-dir=/Users/yash/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -357,10 +494,10 @@ describe('Check Merge functionality',function() {
 });
 
 describe('Check Summarize functionality',function() {
-    it('copied text should exist in SimplyClip clipboard', async function () {
+    it('text gets summarized', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/risha/Desktop');
+            .addArguments('--user-data-dir=/Users/yuvraj/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -408,10 +545,28 @@ describe('Check Citation for each text functionality',function() {
         // Quit the browser
         driver.quit();
     }).timeout(10000);
+    it('copied text citied correctly', async function () {
+        const options = new chrome.Options()
+            .addArguments('--user-data-dir=/Users/yash/Desktop');
+
+        const driver = new webdriver.Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+
+        driver.get('http://google.com');
+
+        const Citation = driver.findElement(By.xpath("/html/body/ul/li[1]/div/div[8]/img"));
+        Citation.click();
+
+        driver.close();
+
+        driver.quit();
+    }).timeout(10000);
 });
 
 describe('Check dark mode functionality',function() {
-    it('copied text should exist in SimplyClip clipboard', async function () {
+    it('darkmode works', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
             .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
@@ -436,11 +591,31 @@ describe('Check dark mode functionality',function() {
         // Quit the browser
         driver.quit();
     }).timeout(10000);
+    it('darkmode on api integrated html file works', async function () {
+        const options = new chrome.Options()
+            .addArguments('--user-data-dir=/Users/yash/Desktop');
 
-    it('summarization should exist in SimplyClip clipboard', async function () {
+        const driver = new webdriver.Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
+
+        driver.get('http://google.com');
+
+        const dark_mode = driver.findElement(By.xpath("/html/body/div[1]/label[2]/span"));
+        dark_mode.sendKeys(Key.RETURN);
+        dark_mode.click();
+
+        driver.close();
+
+        driver.quit();
+    }).timeout(10000);
+
+
+    it('buttons are visible in dark mode', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+            .addArguments('--user-data-dir=/Users/yuvraj/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -466,11 +641,11 @@ describe('Check dark mode functionality',function() {
         // Quit the browser
         driver.quit();
     }).timeout(10000);
-
-    it('citation should exist in SimplyClip clipboard', async function () {
+   
+    it('copied text is visible in dark mode', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+            .addArguments('--user-data-dir=/Users/yash/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -496,11 +671,11 @@ describe('Check dark mode functionality',function() {
         // Quit the browser
         driver.quit();
     }).timeout(10000);
-
-    it('document download should exist in SimplyClip clipboard', async function () {
+   
+    it('search and highlight works in dark mode', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+            .addArguments('--user-data-dir=/Users/yash/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
@@ -526,10 +701,11 @@ describe('Check dark mode functionality',function() {
         // Quit the browser
         driver.quit();
     }).timeout(10000);
-    it('merge should exist in SimplyClip clipboard', async function () {
+    
+    it('bookmark works in dark mode', async function () {
         // Open the Chrome Browser with a custom profile
         const options = new chrome.Options()
-            .addArguments('--user-data-dir=/Users/ejazahmed/Desktop');
+            .addArguments('--user-data-dir=/Users/yuvraj/Desktop');
 
         // Initialise driver to launch Chrome
         const driver = new webdriver.Builder()
