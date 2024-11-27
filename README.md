@@ -313,17 +313,17 @@ Users can download the list of  copied items as a document file or CSV file. The
 ## :handshake: Contributors
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/archig97"><img src="https://avatars.githubusercontent.com/u/26276595?v=4" width="75px;" alt=""/><br /><sub><b>Archismita</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/Dharani-Guda"><img src="https://avatars.githubusercontent.com/u/26276595?v=4" width="75px;" alt=""/><br /><sub><b>Dharani</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/PaulMacNichol"><img src="https://avatars.githubusercontent.com/u/32798037?v=4" width="75px;" alt=""/><br /><sub><b>Paul MacNichol</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/harshchaudhari08"><img src="https://avatars.githubusercontent.com/u/26276595?v=4" width="75px;" alt=""/><br /><sub><b>Harsh</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/YashChaudhary16"><img src="https://avatars.githubusercontent.com/u/26276595?v=4" width="75px;" alt=""/><br /><sub><b>Yash</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/Yuvraj-SB"><img src="https://avatars.githubusercontent.com/u/32798037?v=4" width="75px;" alt=""/><br /><sub><b>Yuvraj</b></sub></a><br /></td>
   </tr>
 </table>
 
 | Name                   | Unity ID                           |
 |------------------------|------------------------------------|
-| Dharani Guda           | dguda                              |
-| Archismita Ghosh       | aghosh7                             |
-| Paul MacNichol         | pemacnic                           |
+| Harsh Chaudhari           | hchaudh3                             |
+| Yash Chaudhary       | ychaudh                             |
+| Yuvraj Singh Bhatia        | ybhatia2                           |
 
 ## 🙏 Acknowledgements <a name="Acknowledgement"></a>
 We would like to thank Professor Dr Timothy Menzies for helping us understand the process of building a good Software Engineering project. We would also like to thank the teaching assistants San Gilson, Andre Lustosa, Xueqi (Sherry) Yang, Yasitha Rajapaksha, and Rahul Yedida for their support throughout the project.
