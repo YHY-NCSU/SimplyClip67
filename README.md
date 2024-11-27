@@ -69,6 +69,11 @@ SimplyClip6.0 :paperclips: is a google chrome extension which enables singular s
 - Give the word count of copied text in the text box.
 - Works across all tabs in the browser
 - Works like a charm for research work
+- Bookmark any copied content.
+- Download copied images.
+- Download data in JSON file format.
+- Update or modify clipboard data with external web app through API integration.
+- Use custom keyboard shortcuts to download data in desired formats.
 - many more... 
  
  ## 📖 Use Case 
