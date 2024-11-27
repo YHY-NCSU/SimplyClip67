@@ -48,7 +48,7 @@
 ---
 # Description
 
-SimplyClip4.0 :paperclips: is a google chrome extension which enables singular shared clipboard for research students and power users. Unlimited focus!!!
+SimplyClip6.0 :paperclips: is a google chrome extension which enables singular shared clipboard for research students and power users. Unlimited focus!!!
  
  ## :white_check_mark: What Simply Clip Can Do?
 
